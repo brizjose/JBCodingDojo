@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+
+//traversing means being able to target children, parents or siblings of the tagged element...
+
+// .parent(),   .siblings(),  .children()
+
+        $(document).ready(function(){
+            $('p').parent().append('howdy!');
+            
+            $('h3, p').click(function(){
+                $(this).siblings('p').hide();            
+            });    
+
+// you can chain the traverse methods 
+// here we target the sibling of the button, which is the <ul>, then reach out to the children of <ul> which are the <li> items
+
+        $('button').click(function(){
+            var ability = $('button').siblings().children('.singer').attr('class');
+            var instrument = $('button').siblings().children('.bass_player').attr('class');
+            $(this).siblings().children('.singer').text(ability);
+            $(this).siblings().children('.bass_player').text(instrument);
+        });    
+
+        });
+
+    </script>
+</head>
+<body>
+    <div id='myDiv'>
+        <p>Here is a paragraph.  It is a beautiful paragraph.</p>
+        <h3>Michael Choi</h3>
+        <h3>John Supsupin</h3>
+        <h3>Trey Villafane</h3>
+    </div>
+    
+    <button>Click me for crazy things!</button>
+    <ul>
+        <li class='singer'>Tom Petty</li>
+        <li class='singer'>Eric Clapton</li>
+        <li class='singer'>Ozzy Osbourne</li>
+        <li class='bass_player'>Michael Manring</li>
+        <li class='bass_player'>Doug Pinnick</li>
+    </ul>
+</body>
+</html>

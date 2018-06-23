@@ -1,0 +1,11 @@
+var myNumber = 42;
+var myName = "Jose";
+console.log('my name is ',myName,' and my number is ',myNumber);
+var temp = myNumber;
+var myNumber = myName;
+var myName = temp;
+console.log('my name is ',myName,' and my number is ',myNumber);
+var temp = myNumber;
+var myNumber = myName;
+var myName = temp;
+console.log('my name is ',myName,' and my number is ',myNumber);
