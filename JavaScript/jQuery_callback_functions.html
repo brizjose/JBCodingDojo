@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+
+        //functions that will be called back can be set outside the $(document).ready(function(){});
+
+        function attach_h3_handlers() {
+            $('h3').click( function() { alert('You clicked an H3!'); });
+        }
+
+        //inside document.ready functions are called back and these will also trigger dynamically generated content.
+
+        $(document).ready( function() {
+          
+            attach_h3_handlers();
+          
+            $('button').click( function() {
+                $('div').append('<h3>I am a dynamically generated H3</h3>');
+                attach_h3_handlers();
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <div>
+            <button>Click me to add a new H3 tag!</button>
+            <h3>Click me to see a message!</h3>
+    </div>
+</body>
+</html>
