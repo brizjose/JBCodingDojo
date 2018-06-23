@@ -1,0 +1,132 @@
+<!doctype HTML>
+<html>
+<head>  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>HTML Basics</title>
+    <meta name="description" content="Description content:  The text here describes what the webpage is about. It's what will show up in search results for search engines like
+    google under the title of the webpage. It's important that this is relevant
+    to your page and well written!", "width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<>
+    <h1>Heading for the whole page</h1>
+    <h2>An important header</h2>
+    <h3>A header</h3>
+    <h4>Another header</h4> 
+    <h5>Less important header</h5>
+    <h6>Least important header</h6> 
+    <p>So yeah, there are six levels for headers and then there's paragraph --this-- for written content.</p>
+    <p>Next up, images.  Images is a standalone tag.  You can use this for page elements or for background images.  Two required attributes of images are src --source-- and alt --stands for alternate, and used to describe the image in a few words--.  When not using CSS, other required attributes are hight and width.</p>
+    <img src="https://speeddating.tn/wp-content/uploads/2017/09/dating-5-quick-cheap-couples-costumes-for-the-couple-whos-literally-broke-af.jpg" alt="Friendly alien" height=100 width=150>
+    <p>Another type of tag is a link.  Link tags are "a" tags.  The openning of the "a" tag requires the href attribute that tells it where the link should go. Inside the openning and closing tags you write the text that'll appear as link.</p>
+    <a href="https://futurism.com">Explore</a>
+    <p>Next up, lists.  There are ordered and unordered lists.  The only difference between them is the "o" or "u" in the tag.</p>
+    <h4>Things to do if aliens visit you:</h4>
+    <ol>
+        <li>Say hello with a hand gesture</li>
+        <li>Smile</li>
+        <li>Wait</li>
+    </ol>
+    <h4>Signs that aliens trully exist:</h4>
+    <ul>
+        <li>Recurring dreams about aliens</li>
+        <li>Daydream about aliens</li>
+        <li>Spaceship lands on your roof</li>
+    </ul>
+    <p>The other type of tag is the table.  Organized in columns and tables, the th tags are for columns and the tr tags are for rows.  Each row has td tags for the data.  See below!!</p>
+    <table>
+        <thead>
+            <th>Ship</th>
+            <th>Capacity</th>
+            <th>Velocity</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ACHP</td>
+                <td>8 aliens</td>
+                <td>4000 mph</td>
+            </tr>   
+            <tr>
+                <td>Demigod</td>
+                <td>6 aliens</td>
+                <td>20000 mph</td>
+            </tr>
+            <tr>
+                <td>Star8</td>
+                <td>8 aliens</td>
+                <td>8800 mph</td>
+            </tr>
+            <tr>
+                <td>RoxPK</td>
+                <td>2 aliens</td>
+                <td>12000 mph</td>
+            </tr>
+        </tbody>
+    </table>    
+    <p>Tags are responsible for all data exchange between front and back end.  They take an input, send it to the back end to be processed and return a response.  The form tag two attributes:  action and method, that decide where information gets sent and how it gets sent respectively.</p>
+    <p>Form element can take different shapes.  Can contain input, text fiel, label elements, for example.  See examples below:</p>
+    <p>Attributes within the form labels help link them.  Example:  a "for" attribute in one form will link with an "id" attribute in another form.  the "type" attribute designates the type of data for the expected input.  Example:  text.  The "name" attribute is used to send front end data to the back end.</p>
+    <p>The input form element to capture a user name's name or email address:</p>
+    <form>
+        <label for='first name'>First name:</label>
+        <input type='text' id='first name' name='first name'>
+        <label for='last name'>Last name:</label>
+        <input type='text' id='last name' name='last name'>
+        <label for='email'>email:</label>
+        <input type='text' id='email' name='email'>
+    </form>
+    <p>For a password field:</p>
+    <form>
+        <label for='password'>Password:</label>
+        <input type='password' id='password' name='passord'>
+        <p>For a "choose one" list of options, the type to use is "radio":</p>
+        <label for='male'>Male</label>
+        <input type='radio' id='male' name='gender' value='male'>
+        <label for='female'>Female</label>
+        <input type='radio' id='female' name='gender' value='female'>
+    </form>
+    <p>For drop down menus, the form changes, use "select" tag with "option" child tags:</p>
+    <form>
+        <select name='gender'>
+            <option value='blank'></option>
+            <option value='male'>Male</option>
+            <option value='female'>Female</option>
+        </select>
+    </form>
+    <p>For a list from which you can pick multiple choices, use same "lable + input" combination and use type = checkboxes:</p>
+    <form>
+        <label for='blue'>Blue</label>
+        <input type='checkbox' id='blue' name='color' value='blue'>
+        <label for='red'>Red</label>
+        <input type='checkbox' id='red' name='color' value='red'>
+        <label for='yellow'>Yellow</label>
+        <input type='checkbox' id='yellow' name='color' value='yellow'>
+        <label for='green'>Green</label>
+        <input type='checkbox' id='green' name='color' value='green'>
+        <label for='purple'>Purple</label>
+        <input type='checkbox' id='purple' name='color' value='purple'>
+    </form>
+    <p>To create a text area where user can enter free form text, there's the "textarea" tag:</p>
+    <form>
+        <textarea id='freeform'></textarea>
+    </form>
+    <p>There is a form to pass data to the back-end without displaying this field on the webpage.  Useful for validations and to pass along data.  This is the same "input" tag with "hidden" type (not shows of course).</p>
+    <form>
+        <input type='hidden' name='id' value='7'>
+    </form>
+    <p>To create a submit button, use "input" and "submit" type:</p>
+    <form>
+        <input type='submit' value='submit'>
+    </form>
+    <p>The "label + input" pair may be coded differently from above to take this shape:</p>
+    <p>Please register:</p>
+    <form>
+        <label>
+            Name:<input type='text' id='name' name='name'>
+        </label>
+    </form>
+    <p>Semantic coding means using tags that are specific for the element within the website's structure.  Example, instead of using more generic div and span, use header, nav, section, article, aside, footer.</p>
+</body>
+</html>

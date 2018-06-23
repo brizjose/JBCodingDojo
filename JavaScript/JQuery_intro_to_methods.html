@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="jQuery Methods" content="this is an introduction to the jQuery methods">
+    <title>Intro to jQuery Methods</title>
+    <script src="jquery-3.3.1.js"></script>
+    <script type="text/javascript">
+        
+        $(document).ready(function(){
+
+            //How it works:
+            //1. select an ELEMENT, CLASS or ID using the jQuery selector
+            //2. add an event listener, how you want the event to be triggered
+            //3. write the event code, usually a function
+
+            //EFFECTS METHODS toggle the visibility property of the targeted items
+            
+            $('p').hide();
+
+            $('.hide').click(function(){
+                $('p').hide();
+            });    
+
+            $('.show').click(function(){
+                $('p').show();
+            });
+
+            $('.toggle').click(function(){
+                $('h2, h3').toggle("slow");
+            });
+
+            $('.slideup').click(function(){
+                $('h1').slideUp();
+            });
+            
+            $('.slidedown').click(function(){
+                $('h1').slideDown();
+            });
+
+            $('.slidetoggle').click(function(){
+                $('h1').slideToggle();
+            });
+
+            $('.fadein').click(function(){
+                $('h3').fadeIn();
+            });
+
+            $('.fadeout').click(function(){
+                $('h3').fadeOut();
+
+            });
+            //MANIPULATION METHODS add or change either text or html to the document and overrides what's already there
+
+            $('h3').hover(function(){
+                $('h2').text('go see the Space Needle!');
+                }, function(){
+                    $('h2').text("What movie should I watch?");
+            });        
+            
+            $('.append').click(function(){
+                $('.result').append('<p>.append adds HTML content after</p>');
+            });
+
+            $('.append').click(function(){
+                $('.result').prepend('<p>.prepend adds content before</p>');
+
+            });
+
+            $('.append').click(function(){
+                $('.result').after('<p>.after simply adds more content after</p>');
+            });
+            
+            $('.append').click(function(){
+                $('.result').before('<p>.before simply adds more content before</p>')
+            })
+
+            $('.selected').click(function(){
+                alert($(this).attr());
+            })
+
+            //CSS METHOD:  finds every CSS property that has that name, and changes to the value specified after the comma
+
+            $('button').click(function(){
+                $(this).css('background-color', 'yellow');
+            });
+
+            $('p').click(function(){
+                $(this).addClass("selected");
+            })
+
+            //jQuery as GETTER vs jQuery as SETTER
+            //as GETTER, leave the 2nd parenthesis blank:
+
+            var header1 = $('h3').text();
+            console.log(header1);
+            
+            //as SETTER, write something on the parenthesis.  This was done before in the .hover example.
+        });
+    
+    </script>
+
+    <style>
+        .selected{
+            background-color: blue;
+        }
+        .result{
+            outline: 1px solid red;
+            display: inline-block;
+        }
+
+    </style>
+</head>
+<body>
+
+    <button class="hide">Hide</button>
+    <button class="show">Show</button>
+    <button class="append">Append</button>
+    <button class="toggle">Toggle</button>
+    <button class="slideup">Slide Up</button>
+    <button class="slidedown">Slide Down</button>
+    <button class="slidetoggle">Slide Toggle</button>
+    <button class="fadein">Fade In</button>
+    <button class="fadeout">Fade Out</button>
+
+    <h1>Header</h1>
+    <h3>Mr. Knowitall</h3>
+    <h2>What movie should I watch?</h2>
+    <p>Paragraph 1 with class of none</p>
+    <p>Paragraph 2 with class of none</p>
+    <div class='result'></div>
+    
+</body>
+</html>

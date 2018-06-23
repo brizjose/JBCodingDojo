@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 1px dotted red;
+}
+div.wrapper {
+    width: 425px;
+    background-color: blanchedalmond;
+    margin: 10px auto;
+}
+header {
+    width: 400px;
+    line-height: 50px;
+    margin: auto;
+}
+    header *{
+        display: inline-block;
+        vertical-align: middle;
+    }
+    header img {
+        width: 55px;
+    }
+main {
+    width: 400px;
+    margin: auto;    
+}
+    main *{
+        display: inline-block;
+    }
+    main div {
+        border: 2px solid black;
+        width: 70px;
+        height: 70px;
+        position: relative;
+    }
+    main img {
+        width: 60px;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }

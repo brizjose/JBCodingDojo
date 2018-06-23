@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Assignment: jQuery Functions</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            $('.hiding').hide();
+            
+            $('.top button').click(function(){
+                $('.top p').addClass("red");
+            });
+
+            $('.middle button').click(function(){
+                $('.hiding').slideToggle();
+            });
+
+            $('.bottom button').click(function(){
+                $('.bottom p').append('<p>Howdy</p>');
+            });
+
+        });
+    
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            /* outline: 1px dotted red; */
+        }
+        #container {
+            width: 500px;
+            margin: 20px auto;
+        }
+        div.middle {
+            border-top: 3px solid black;
+            border-bottom: 3px solid black;
+        }
+        div {
+            padding: 20px;
+            position: relative;
+        }
+        h1 {
+            display: block;
+            text-align: center;
+        }
+        div > button, p {
+            display: inline-block;
+        }
+        p {
+            position: absolute;
+            margin: 0 20px
+        }
+        p.hiding {
+            display: block;
+            margin: 0 130px;
+            background-color: skyblue;
+        }
+        .red {
+            color: red;
+            font-weight: bolder;
+            background-color: pink;
+        }
+        
+    </style>
+</head>
+<body>
+
+
+    <div id="container">
+        <div class="top">
+            <h1>AddClass</h1>
+            <button>AddClass</button>
+            <p>Click the button to add a class 'red' to this paragraph</p>
+        </div>
+        <div class="middle">
+            <h1>Slidetoggle</h1>
+            <button>Slidetoggle</button>
+            <p>Click the button to slidetoggle a hidden paragraph</p>
+            <p class="hiding">Voila! The hidden paragraph!</p>
+        </div>
+        <div class="bottom">
+            <h1>Append</h1>
+            <button>Append</button>
+            <p>Click the button to append a new paragraph</p>
+        </div>
+    </div>
+
+    
+</body>
+</html>

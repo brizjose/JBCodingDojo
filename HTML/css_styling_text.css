@@ -1,0 +1,32 @@
+/* Text styling */
+
+/* 
+color:              color name, HEX or RGB
+text-align:         center, left, right, justify.  needs text to be a block
+text-decoration:    overline, line-through, underline, underline overline
+                    can be done line by line:  text-decoration-line;  text-decoration-style; text-decoration-color;  initial;  inherit
+                    example:  text-decoration: underline overline dotted red;
+font-family:        quoted if name has more than one word.  some fonts are web-safe as are widely supported:
+                    verdana, arial, "trebuchet ms", "times new roman", georgia, "andale mono", "courier new", "comic sans", impact
+font-size:          can be defined as fixed: point (pt) and pixel (px) or floating:  percent (%) and em 
+                    equivalents:    12pt    =   16px    =   100%    =   1em
+                                    6pt     =   8px     =   50%     =   0.5em
+font-style:         normal, italic, oblique, initial, inherit
+font-weight:        normal, bold, bolder, lighter; or set numerically:  100, 200, etc; or set to inherit, or initial  */
+
+/* The span tag
+
+Think of it as a div for styling text.  Styling by using an id or class.  
+
+<span></span> tags go in the HTML and have their CSS selector:
+
+HTML
+
+<p>Because it is important <span class="important">this text is bold</span> and this one is not.</p>
+
+CSS
+
+.important {
+    font-weight:  bold;
+}                                                                                   */
+

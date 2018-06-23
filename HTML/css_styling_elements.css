@@ -1,0 +1,85 @@
+/* Common properties that affect all elements */
+
+/* Width and Height:
+
+Can use px or %.  Use px if fixed or % if adjusted to content.
+The height property determines how much content the element can hold.  If need more, adjust height and width adjusts itself maintaining the relationship.
+If height is not set, only width, the element will resize to fit its content.  So most of the time you'll want to set it.
+In fact, if you leave either height or width unset, element will expand to fit. */
+
+a   {
+    width: 24px;
+}
+div {
+    width: 100%;
+    height: 25%;
+}
+img {
+    height: 30px;    
+}
+
+/* Overflow:
+
+Determines what will happen if content is too much for the container.
+hidden:             Can hide the info
+visible:            Can show it no matter what
+scroll or auto:     Can scroll or create a scroll bar
+inherit:            property as per parent element  
+initial:            use the default value as set in the * selector or browser's default */
+
+div {
+    overflow: scroll;
+}
+
+/* Background:
+
+Can be set all in one line or one line per property.
+If in one line, the order is:
+
+    background: color image repeat attachment position  */
+
+div {
+    background: #ffffff url(image_tree.png) no-repeat right top; 
+}
+
+/* Background line by line:
+
+background-color:          color name, HEX, or RGB
+background-image:          url(image file location and name)
+background-repeat:         for horizontally:  repeat-x;  for vertically:  repeat-y;  show once:  no-repeat;
+background-attachment:     even as you scroll it stays:  fixed;  or scroll with the content:  scroll;
+background-position:       in pairs of coordenates, example:  right top   */
+
+/* Border:
+
+Can be set in one line:
+    
+    border: width style color
+    
+only style is required  */
+
+p   {
+    border: 1px dotted black
+}
+
+/* Border line by line
+
+border-style (required):    dotted, dashed, solid, double, groove, ridge, inset, outset, none, hidden
+border-width:               can be set in px, pt, cm, em, others
+border-color:               color name, HEX, RGB, transparent
+border-radius:              makes rounded border set in px or %, example:  border-radius:  5px;   
+individual sides:           border-top-style, border-right-width, etc
+just one side:              border-left, or border-bottom
+indiv sides shorthand:      if four specified:      affects (in this order) top, right, bottom, left
+                            if three specified:     affects top, right & left, bottom
+                            if two specified:       affects top & bottom, right & left 
+                            if one specified:       affects all sides */
+
+
+p   {
+    border-left: 6px solid red;
+    background-color: gray;
+}
+
+
+

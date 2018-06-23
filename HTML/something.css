@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 1px dotted red;
+}
+
+.container {
+    width: 60%;
+    margin: auto;
+}
+body > button {
+    display: inline-block;
+    vertical-align: top;
+}
+
+@media only screen and (min-width: 1024px){
+    .navbutton {
+        width: 25%;
+        background-color: blue;
+        font-size: 3em;
+        padding: 1em;
+    }
+    
+}
+
+@media only screen and (max-width: 1023px){
+    .navbutton {
+        widows: 50%;
+        background-color: red;
+        font-size: 2em;
+        padding: 1em;
+    }
+    
+}
+
+@media only screen and (max-width: 480px){
+    .navbutton {
+        width: 100%;
+        background-color: yellow;
+        font-size: 1em;
+        padding: 1em;
+    }
+    
+}

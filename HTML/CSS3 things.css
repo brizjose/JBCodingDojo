@@ -1,0 +1,102 @@
+/* 
+Select First Child, Last Child, n-th child
+*/
+
+p:first-child {
+
+}
+
+p:last-child {
+
+}
+
+p:nth-child(3) {
+
+}
+
+p:nth-of-type(4){
+
+}
+
+
+/* 
+Box Shadow
+syntax:  box-shadow: h-offset   v-offset   blur    spread    color
+*/
+
+h1 {
+    box-shadow: 5px 5px 5px 5px yellow;
+}
+
+h2 {
+    box-shadow: 5px 5px 3px red, 5px 5px 4px yellow, 5px 5px 5px blue;
+}
+
+/* 
+Opacity:  can be set with 1 being the 100% opaque.
+*/
+
+.awesome {
+    opacity: 0.5;
+}
+
+/*  
+RGBA:  red green blue alpha.  with alpha being opacity
+*/
+
+.blurry {
+    background-color: rgba(255, 100, 0, 0.5);
+}
+
+/* 
+Multiple background images: can be applied, separated with commas
+
+the syntax specifies:  
+
+        on an html image tag ---> img:  src=   alt=  width: ;
+        on css background: image ---> url()  repeat*  position** 
+        
+        *  repeat can be no-repeat, repeat-x for horizontal, repeat-y for vertical
+        ** can give coordinates:  right top, left bottom, center center
+        *** if position and size are specified here, got to separate them with a / sign
+        
+        background: #eeeeee url(display_our_blocks_assignment/images/aidorucat.png) center / 50% no-repeat;
+
+        below are two images combined, separated by comma...
+*/
+
+body {
+    background: url(first_image.png) no-repeat top left, url(second_image.phg) repeat-x bottom left;
+}
+
+/* 
+Transitions are used to change properties during a specified time, so it looks animated.  Example change width in 2 second time span:
+*/
+
+div { 
+    width: 100px;
+    transition: width 2s;
+    -webkit-transition: width 2s; 
+    /* -webkit- is a browser prefix for use in Safari */
+}
+
+div:hover {
+    width: 300px;
+    /* width of the div will increase by 200px over 2 seconds when you hover over it */
+}
+
+/* 
+Transformations are used to rotate, skew, move, deform, scale and applies 2d and 3d transformations to an element.
+*/
+
+div.a {
+    transform: rotate();
+}
+
+div.b {
+    transform: skewY();
+}
+
+div.c {
+    transform: matrix()
+}

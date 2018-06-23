@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 1px solid gray;
+}
+
+h1 {
+    font-size: 1rem;
+    line-height: 1.25rem;
+    background-color: gray;
+}
+
+p {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    background-color: lightgray;
+    margin: 5px;
+    padding: 5px;
+
+}
+
+.strong {
+    font-size: 0.75rem;
+    font-weight: bolder;
+    border: none;
+    margin: none;
+    padding: none;  
+}
+
+.quer {
+    background-color: lightyellow;
+}
+
+@media only screen and (max-width: 480px){
+    .lg-4 {
+        visibility: hidden;
+        height: 0px;
+        margin: 0px;
+        padding: 0px;
+    }
+    .md-2 {
+        visibility: hidden;
+        height: 0px;
+        margin: 0px;
+        padding: 0px;
+    }
+    .sm-1 {
+        visibility: visible;
+        /* height: 1rem; */
+        /* margin: 5px; */
+        /* padding: 5px; */
+
+    }
+}
+
+@media only screen and (min-width: 841px){
+    .lg-4 {
+        visibility: hidden;
+        height: 0px;
+        margin: 0px;
+        padding: 0px;
+    }
+    .md-2 {
+        visibility: visible;
+    }
+    .sm-1 {
+        visibility: hidden;
+        height: 0px;
+        margin: 0px;
+        padding: 0px;
+    }
+}
+
+
+@media only screen and (min-width: 1024px){
+    .lg-4 {
+        visibility: visible;
+    }
+    .md-2 {
+        visibility: hidden;
+        height: 0px;
+        margin: 0px;
+        padding: 0px;
+    }
+    .sm-1 {
+        visibility: hidden;
+        height: 0px;
+        margin: 0px;
+        padding: 0px;
+    }
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="jQuery practice exercises with the functions Dojo wants us to focus on">
+    
+    <title>Introduction to jQuery</title>
+    
+    <style type="text/css">
+    #boxtainer{
+        width: 100px;
+    }
+    .boxes{
+        width: 20px;
+        height: 20px;
+        background-color: yellowgreen;
+        outline: 1px dotted red;
+        display: inline-block;
+    }
+    .redboxes{
+        width: 20px;
+        height: 20px;
+        background-color: red;
+        outline: 1px dotted yellow;
+        display: inline-block;
+    }
+    .boom{
+        background-color: red;
+        font-weight: bolder;
+        font-size: 3em;
+    }
+    .bars{
+        width: 10%;
+        height: 100px;
+        background-color: yellow;
+        outline: 1px solid black;
+        /* position: fixed;     */
+        display: inline-block;
+    }
+    </style>
+
+    <script src="jquery-3.3.1.js"></script>
+</head>
+<body>
+    
+    <!-- hide these... -->
+    <p class="boom">Booom!!</p>
+    <p>SURPRISE!</p>
+    <button>Click and see</button>
+    <a class="normal" href="#">Just wait</a>
+    <a class="slowfade" href="#">and see what happens</a>
+    <p class="boom">Booom!!</p>
+    <p>wELCOMe tO The sHOw</p>
+    <h1>Don't want to be weird, but I can appear and disappear at the click of a button.</h1>
+    <h3>I Hide</h3>
+    <h3>If You Touch Me</h3>
+    <p class="boom">Booom!!</p>
+    <div id="boxtainer"></div>
+
+    <script>
+        $('p, h1, h3').hide();  //these elements start out not appearing at all on the page
+        $('h3').click( function() {$(this).hide();})  //these elements start out not appearing at all on the page
+        $('button').click( function() { $('a.normal').hide(); } ); //hide makes it disappear
+        $('button').click( function() { $('a.slowfade').hide(3000); } ); //hides, specifies how many milliseconds
+        $('button').click( function() { $('p').show(); } ); //show makes it show
+        $('button').click( function() { $('h1').toggle("slow"); } ); //toggle makes it appear and disappear
+        $('button').click( meToo ); //toggle makes it appear and disappear, instructions set in a function, looks better than the above examples
+        $('button').click( function() { $('p.boom').show(); $('p.boom').hide("slow"); } ); //shows then hides slowly without specifying miliseconds
+        
+        function drawBoxes(){
+            for(var i = 0; i < 5; i++){
+                document.getElementById('boxtainer').innerHTML += '<div class="boxes"></div>';
+            }
+            console.log(i," boxes");
+        }    //this will only work when called, which is at the click of the button, see below.
+
+        for(var i = 0; i < 5; i++){
+            $('<div class="redboxes"></div>').appendTo(document.body);
+        }           // this is creating six boxes that appear at first render
+    
+        $('button').click(function() { 
+            $(drawBoxes); 
+            } );   // this draws boxes when button is clicked
+
+        $('.redboxes').click(function() { 
+            $(this).hide(); 
+        });   //hide each box one by one as you click it
+            
+        $('#boxtainer').click(function(){
+            $(this).slideUp("slow");
+        });
+        
+        function meToo(){
+            $('h3').show("slow");
+        }  //makes element show when function called.  in this case, click of button    
+
+        function drawColumns(){
+            for(var i = 0; i < 10; i++){
+                $('<div class="bars"></div>').appendTo(document.body);
+            }
+        }   
+        drawColumns();   
+
+        function alternateColor(){
+            if($('bars[i]' % 2 ))
+        }
+
+    </script>    
+
+
+
+</body>
+</html>

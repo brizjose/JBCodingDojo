@@ -1,0 +1,26 @@
+header {
+    position: relative;
+}
+
+.navbar {
+    position: absolute;
+    right: 0;
+}
+
+.navbutton {
+    display: inline-block;
+}
+main {
+    position: relative;
+    height: 500px;
+}
+main > img {
+    width: 100px;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+}

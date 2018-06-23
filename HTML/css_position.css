@@ -1,0 +1,191 @@
+/* Center something horizontally right the middle of the screen with `margin: auto;`
+
+#container {
+    margin: auto;
+}
+
+or
+
+#container {
+    margin: 0 auto;
+}
+
+which means 0 at top and bottom and auto at right left.        
+
+Centering with `margin: auto;` REQUIRES width to be specified for the element.  Height is optional in this case.  */
+
+#container {
+    background-color: black;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Centering something horizontally right the middle of a container with position relative and position absolute
+
+The container is set to `position: relative;` and the target element is set to `position: absolute;`.
+
+Then, the left margin set to = (width of parent - width of element) / 2         */
+
+#container > p {
+    color: white;
+    font-size: 8px;
+    width: 100px;
+    text-align: center;
+    position: absolute;
+    left: 50px;
+}
+
+/* Centering when the widths are fluid is accomplish with margins set as percentages (%):
+
+#container p{
+    left: 50%;
+    margin:  0 0 0 -150px;
+}
+    In words:  do a left margin of 50% and add a left margin = width of child / 2
+*/
+
+#container2 {
+    background-color: red;
+    height: 100px;
+    width: 70%;
+    margin: 10px auto;
+    position: relative;
+}
+
+#container2 p {
+    color: brown;
+    height: 80%;
+    width: 500px;
+    position: absolute;
+    left: 50%;
+    margin: 0 0 0 -250px;
+}
+
+/* But what if child also has a % width?
+
+Same formula applies.  Do:
+
+#container p{
+    left: 50%;
+    margin:  0 0 0 -35%;
+}
+    In words:  do a left margin of 50% and add a left margin = width of child / 2, assuming this child's width is 70%
+
+*/
+
+#container3 {
+    background-color: blueviolet;
+    height: 100px;
+    width: 70%;
+    margin: 10px auto;
+    position: relative;
+}
+
+#container3 p {
+    color: violet;
+    height: 80px;
+    width: 70%;
+    position: absolute;
+    left: 50%;
+    margin: 0 0 0 -35%;
+}
+
+/* Dead Center
+
+This is achieved by incorporating the top margin in the equation:
+
+#container p{
+    top: 50%;
+    left: 50%;
+    margin:  -40px 0 0 -250px;
+}
+    In words:  do a top margin of 50%, left margin of 50% and add a top margin = hight of child / 2 and a left margin = width of child / 2.  The above assumes child height is 80px and width is 500px.
+
+*/
+
+#container4 {
+    background-color: green;
+    height: 100px;
+    width: 70%;
+    margin: 10px auto;
+    position: relative;
+}
+
+#container4 p {
+    color: yellowgreen;
+    height: 80px;
+    width: 500px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -40px 0 0 -250px;
+}
+
+/* another syntax for Dead-Center if ***container has fixed width and height***.......... */
+
+/* #containerx p {
+    color: yellowgreen;
+    height: 80px;
+    width: 500px;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+} */
+
+/* Centering a background image is easy.  
+
+Background image means that the image is pulled in with CSS, not the HTML code...
+
+body {
+    background: color url() no-repeat center
+}
+
+per the properties:  color image position / size repeat origin clip attachment;
+
+*/
+
+#container5 {
+    background-color: green;
+    height: 300px;
+    width: 300px;
+    margin: 10px auto;
+    position: relative;
+    background: #eeeeee url(display_our_blocks_assignment/images/aidorucat.png) center / 50% no-repeat;
+    /* background-size: 50%; */
+}
+
+/* POSITION PROPERTY RECAP
+
+Static = this is the default.  Just means element stays where it is based on HTML structure.  Follows normal document flow, and is subject to the Box Model -- content + padding + border + margin
+
+Absolute = breaks with the document flow, its position is determined by the 'top' and 'left' properties relative to the parent element containing it that is not position static.  Therefore, if all parents use the default static positioning, the element will be placed based on the screen.  
+
+Relative = Follows normal document flow, the position can be modified by shifting from where it would normally be sitting.  Elements around a relatively-shifted element ignore the shift.
+
+Fixed = It afixes itself in position within the window/screen.  Breaks document flow and stays put even as you scroll.  Uses top, right, bottom, left properties based on screen.
+
+*/
+
+/* USE FUNCTIONS:  CALC(), ATTR(), GRADIENT()
+
+calc() let's you do calculations to set margins, for example.  
+
+h1 {
+    margin-left: calc(100% - 50px);
+}
+
+this would press the element to the right minus 50 pixels to allow for the element's width.
+
+gradient () is used to style backgrounds.  Use w3schools to see syntax.
+*/
+
+#container6 {
+    width: 200px;
+    margin-left: calc(100% - 300px);  
+}

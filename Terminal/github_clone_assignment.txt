@@ -1,0 +1,29 @@
+
+Jose Briz@LAPTOP-I7B89FAA MINGW32 ~/Desktop/CodingDojo/codes/JBCodingDojo/Terminal
+$ mkdir street_fighter
+
+Jose Briz@LAPTOP-I7B89FAA MINGW32 ~/Desktop/CodingDojo/codes/JBCodingDojo/Terminal
+$ ls
+ assignments.txt                 github_push_assignment.txt
+ commands.txt                    github_push_assignment_result.JPG
+ Git/                            learning_git_assignment.txt
+'Git Message Capture.JPG'        street_fighter/
+'Git Message Fix Author.JPG'     terminus_pony.JPG
+'Git Message Fix.JPG'           'vs add extensions.JPG'
+ git_basic_repo_assignment.txt
+
+Jose Briz@LAPTOP-I7B89FAA MINGW32 ~/Desktop/CodingDojo/codes/JBCodingDojo/Terminal
+$ cd street_fighter
+
+Jose Briz@LAPTOP-I7B89FAA MINGW32 ~/Desktop/CodingDojo/codes/JBCodingDojo/Terminal/street_fighter
+$ git init
+Initialized empty Git repository in C:/Users/Jose Briz/Desktop/CodingDojo/codes/JBCodingDojo/Terminal/street_fighter/.git/
+
+Jose Briz@LAPTOP-I7B89FAA MINGW32 ~/Desktop/CodingDojo/codes/JBCodingDojo/Terminal/street_fighter (master)
+$ git clone https://github.com/choi5983/street_fighter.git
+Cloning into 'street_fighter'...
+remote: Counting objects: 29, done.
+remote: Total 29 (delta 0), reused 0 (delta 0), pack-reused 29
+Unpacking objects: 100% (29/29), done.
+
+Jose Briz@LAPTOP-I7B89FAA MINGW32 ~/Desktop/CodingDojo/codes/JBCodingDojo/Terminal/street_fighter (master)

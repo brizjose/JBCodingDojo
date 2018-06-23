@@ -1,0 +1,132 @@
+/* IMPORTANT SELECTORS */
+
+/* The * selector is used to reset or set page defaults */
+
+*   {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+/* To select all children within a parent, the * can be used like so.... */
+
+div * {
+    padding: 10px;
+}
+
+/* A + B selector used to set the space between two elements */
+
+header + div {
+    margin-top: 50px;
+}
+
+/* Select elements preceding, example, all ul elements preceding a paragraph */
+
+p ~ ul  {
+    margin-bottom: 40px;
+}
+
+
+/* A > B selector to work with first level children of a parent element.  Example given is use 
+to select first level list items in an unordered list */
+
+ul > li {
+    background: black;
+    color: white;
+}
+
+/* a[href*="example"] used to style links in a different way.  Example shows how to style all 
+facebook links with color blue */
+
+a[href*="facebook"] {
+    color: blue;
+}
+
+/* A:not(B) used to style all elements except what you place in (B).  Example, if you want to 
+style all div's except footers */
+
+div:not(.footer) {
+    margin-bottom: 40px;
+}
+
+/* A:first-child/A:last-child are used to select the first and last child of a parent to, for example,
+remove margins or borders */
+
+ul li:first-child {
+    border: none;
+}
+
+ul li:last-child {
+    margin-right: 0px;
+}
+
+/* It is also possible to select the n-th child.  The 3rd child of an unordered list, for example. */
+
+ul li:nth-child(3) {
+    background: #ccc;
+}
+
+/* To count a child from the bottom up, can use A:nth-last-child(n).  Example, second from the bottom up
+of a list of unordered items. */
+
+ul li:nth-last-child(2) {
+    background: #ccc;
+}
+
+/* Select the n-th element of a specified type with A:nth-of-type.  For example, to select the 3rd 
+paragraph of a div */
+
+div p:nth-of-type(3) {
+    font-style: italic;
+}
+
+/* A:visited is used to change the aspect of a section already visited or clicked. */
+
+a:visited {
+    color: blue;
+}
+
+/* Selecto all paragraph elements */
+
+p   {
+    font-size: 12px;
+}
+
+/* Select all divs and paragraphs */
+
+div, p  {
+    font-size: 12px;
+}
+
+/* Select all paragraphs within a div */
+
+div p   {
+    font-size: 12px;
+}
+
+/* Drill through containers and parents into the child you want:  just keep separating with the space bar... */
+
+container div ul li {
+    font-size: 12px;
+}
+
+/* WEIGHTS:  selectors have different weights.  The more specific, the better, otherwise, conflicts will cause CSS to 
+choose the highest weight characteristics.
+
+Weights are calculated:
+
+a   element:    1 point
+b   .class:     10 points
+c   #id:        100 points
+
+So, for example, 
+
+li      selector weights 1 point
+ul li   selector weights 2 points
+li.red  selector weights 11 points
+#list   selector weights 100 points
+
+And CSS will give preference to the highest points if there are two selectors pointing at the same element and giving differet instructions
+
+*/

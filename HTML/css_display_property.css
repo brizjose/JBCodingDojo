@@ -1,0 +1,63 @@
+/* Inline and Block
+
+Inline elements take up only the space they need, and flow from one line to the next.
+By default, the following are inline elements:  <a> <img> <span> <input> <label> <select> <textarea>
+
+Block elements take up 100% the width of the parent, and stack on top of each other regardless of their widths.
+By default, the following are block items:  <body> <div> <form> <h1>-<h6> <p> <table> <ul> <ol> <li>
+
+Invalid:  to put block elements inside inline elements.  
+Example, not valid:
+        <a href="http://www.google.com><h1>google</h1></a>
+        valid:
+        <h1>Google<a href="http://www.google.com></a></h1>
+
+The default display of elements can be changed with CSS regardless of their nature.  
+
+Display is used to change from inline to block or to inline-block.  
+After display is set, the elements can be vertically aligned either top, bottom, middle, default.
+
+div#navbar a {
+    display: inline-block;
+    vertical-align: top;
+}                                                               */
+
+/* p{
+    background-color: gray;
+    display: block;
+} */
+
+a{
+    background-color: yellow;
+    /* display: block; */
+}
+
+ul{
+    background-color: blue;
+    /* display: inline-flex; */
+}
+
+ul li{
+    background-color: green;
+    display: inline;
+}
+
+/* get rid of list bullets */
+ul#navmenu{
+    list-style-type: none;
+}
+
+div#specially p {
+    background-color: #ffffff;
+    display: block;
+}
+
+.maincontent p {
+    background-color: #eee;
+    width: 300px;
+    margin: 10px;
+    padding: 20px;
+    font-size: 14px;
+    display: inline-block;
+     vertical-align: top;
+}

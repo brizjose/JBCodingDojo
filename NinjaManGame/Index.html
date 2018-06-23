@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ninja Man Game</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			line-height: 0;
+		}
+		.row {
+			line-height: 20px;		
+		}
+		.wall {
+			background-color: blue;
+			height: 40px;
+			width: 40px;
+			display: inline-block;		
+		}
+		.sushi {
+			background-color: black;
+			height: 40px;
+			width: 40px;
+			display: inline-block;
+			background-image: url('sushi.jpg');
+			background-size: contain;		
+		}
+
+		.shark {
+			background-color: black;
+			height: 40px;
+			width: 40px;
+			display: inline-block;
+			background-image: url('shark.jpg');
+			background-size: contain;
+		}
+		.blank {
+			background-color: black;
+			height: 40px;
+			width: 40px;
+			display: inline-block;		
+		}	
+		#score {
+			background-color: gray;
+			color: yellow;
+			font-size: 30px;
+			height: 40px;
+			width: 40px;
+			display: inline-block;
+			position: absolute;
+			left: 0px;
+			top: 0px;		
+		}	
+		#yellowman {
+			background-color: blue;
+			height: 40px;
+			width: 40px;
+			display: inline-block;
+			background-image: url('yellowman1.jpg');
+			background-size: contain;	
+			position: absolute;
+			left: 40px;
+			top: 40px;		
+		}
+	</style>
+
+</head>
+<body>
+	<div id="world"></div>
+	<div id="yellowman"></div>
+	<div id="score"></div>	
+</body>
+
+<script type="text/javascript">
+
+	var world = [
+		[1,1,1,1,1],
+		[1,0,0,2,1],
+		[1,0,1,2,1],
+		[1,2,0,2,1],
+		[1,0,1,0,1],
+		[1,1,1,0,1],
+		[1,0,2,2,1],
+		[1,3,1,2,1],
+		[1,0,0,2,1],
+		[1,1,1,1,1],
+	];
+
+	var worldDict = {
+		0: 'blank',
+		1: 'wall',
+		2: 'sushi',
+		3: 'shark',
+	}
+
+	function drawWorld(){
+		output = "";													//empty string
+
+		for(var row = 0; row < world.length; row++){					//loop generates rows
+			output += "<div	class = 'row'>"	  							//add this div to dynamically create them
+			for (var column = 0; column < world[row].length; column++){
+				output += "<div	class = '"+worldDict[world[row][column]]+"'></div>";				
+																		//iterates through array of arrays to create the columns
+			}
+			output += "</div>"
+		}
+
+		document.getElementById('world').innerHTML = 
+			output;
+	}
+	drawWorld();
+
+	var yellowman = {
+		x: 1,
+		y: 1
+	}	
+
+	var state = 2;
+
+	function moveYellowman (){
+		if(state == 1){
+			state = 2;	
+		}
+		else{
+			state = 1;
+		}
+		document.getElementById('yellowman').style.top = yellowman.y * 40 + 'px';
+		document.getElementById('yellowman').style.left = yellowman.x * 40 + 'px';
+		document.getElementById('yellowman').style.backgroundImage = "url('yellowman"+state+".jpg')";
+	}
+	moveYellowman();		
+
+	document.onkeydown = function(e){									//on key down we execute function 'e'
+		if (e.keyCode == 37){
+			if(world[yellowman.y][yellowman.x - 1] != 1){
+				yellowman.x--;
+			}
+		}
+		if (e.keyCode == 38){
+			if(world[yellowman.y - 1][yellowman.x] != 1){
+				yellowman.y--;
+			}
+		}
+		if (e.keyCode == 39){
+			if(world[yellowman.y][yellowman.x + 1] != 1){
+				yellowman.x++;
+			}
+		}
+		if (e.keyCode == 40){
+			if(world[yellowman.y + 1][yellowman.x] != 1){
+				yellowman.y++;
+			}
+		}
+		world[yellowman.y][yellowman.x] = 0;
+		drawWorld();
+		moveYellowman();
+		pointScore();
+	}								
+
+	function pointScore(){
+		var pointBucket = [];
+		var score = 0;
+		for(var i = 0; i < world.length; i++){
+			for(var u = 0; u < world[i].length; u++){
+				if(world[i][u] == 2 || world[i][u] == 3){
+					if(world[i][u] == 3){
+						score = score + 2;
+					}
+					else{
+						score = score + 1;
+					}
+				}
+			}
+			pointBucket.push(score);
+			continue;
+		}
+		document.getElementById("score").innerHTML = pointBucket.length - score;	
+	}	
+	pointScore();
+
+
+
+</script>
+</html>

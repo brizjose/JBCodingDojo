@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Document</title>
+
+</head>
+<body>
+    
+<script type="text/javascript">
+
+var Jose = {};
+
+//objects can store strings, numbers, arrays, other objects
+Jose = {
+    Name: 'Jose Briz',
+    Age: 43,
+    Title: 'Owner',
+    Company: ['Riskulture', 'The Drub', 'Binnies'],
+    Location: {
+        State: "Oklahoma",
+        City: "Oklahoma City",
+        Zip: 73113
+    }
+}
+
+//object values can be accesses through its keys
+console.log(Jose['Name']);
+console.log(Jose.Name);
+console.log(Jose.Company[2]);
+console.log(Jose.Location.State);
+console.log(Jose.Location['State']);
+
+//this adds a new key to the object
+Jose.snacks = ['chips','beer','yogurt','fruit'];
+
+console.log(Jose);
+
+//properties can be reasigned
+Jose.Age = 44;
+
+console.log(Jose.Age);
+
+//ARRAY of OBJECTS
+
+var glazedDonuts = [
+  {
+    frosting: 'glazed',
+    style: 'cake',
+    type: 'old fashioned',
+    age: '45',
+    time: 'minutes'
+  },
+  {
+    frosting: 'glazed',
+    style: 'yeast raised',
+    type: 'regular',
+    age: '5',
+    time: 'minutes'
+  },
+  {
+    frosting: 'glazed',
+    style: 'yeast raised',
+    type: 'jelly filled',
+    age: '1',
+    time: 'seconds'
+  }
+];
+
+//if you ask if you can buy the first donut on the rack if it has been out less than 25 mins...
+
+var purchase;
+//You
+if((glazedDonuts[0].age < 25 && glazedDonuts[0].time == 'minutes') || glazedDonuts[0].time == 'seconds'){
+  //shop owner
+  purchase = glazedDonuts[0];
+}
+else {
+  console.log('sorry it has been out a bit longer');
+}  
+
+//then you ask how many donuts have been out less than 25 mins...  you aggregate each object under a named variable, in this case, var donut, so then you can count objects
+
+var numPurchase = 0;
+for (var donut in glazedDonuts){
+  console.log(glazedDonuts[donut].type);
+  if((glazedDonuts[donut].age < 25 && glazedDonuts[donut].time == 'minutes') || glazedDonuts[donut].time == 'seconds'){
+    numPurchase++;
+  }
+  else {
+    console.log('not this donut...');
+   }
+}
+console.log(numPurchase);
+
+console.dir(document);
+
+console.log(document.body);
+
+var body = document.body;
+body.innerHTML = "Hello World";
+
+var bod = document.body;
+for(i = 0; i < 10; i++){
+    bod.innerHTML += "<p>This has gone through the loop " +i+ " times</p>"
+}
+
+var paragraphs = document.getElementsByTagName('p');
+console.log(paragraphs);
+for (var i = 0; i < paragraphs.length; i++){
+  console.log(paragraphs[i].addEventListener);
+  paragraphs[i].addEventListener('click', function(){
+    this.style.background='blue';
+  });
+}
+
+
+</script>
+
+
+</body>
+</html>

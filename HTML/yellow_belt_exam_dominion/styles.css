@@ -1,0 +1,316 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: Verdana, Tahoma, sans-serif;
+    /* outline: 1px dotted red; */
+}
+
+.wrapper {
+    width: 58.75rem;
+    margin: 0 auto;
+}
+
+header { 
+    text-align: right;
+    background: linear-gradient(#eeecea,#dbd7d0);
+    border-bottom: 1px solid white;
+    padding: 0 1rem;
+}
+
+.htop {
+    position: relative;
+    line-height: 3rem;
+}
+
+.htop * {
+    vertical-align: middle;
+} 
+
+#logo {
+    position: absolute;
+    left: 0;
+}
+
+.htop > button {
+    background: linear-gradient(#2460a4,#17477d);
+    color: white;
+    line-height: 1rem;
+    border: none;
+    border-radius: 0.5rem 0 0 0.5rem ;
+    padding: 0 2rem 0 0.5rem;
+    margin-right: 3rem;
+    font-size: 0.6em;
+}
+
+input {
+    width: 15rem;
+    height: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: -1px 1px 3px gray inset;
+}
+
+
+.nav li {
+    display: inline-block;
+    border-right: .1rem groove;
+    padding: 0 0.5rem;
+    color: gray;
+    font-size: 0.8em;
+}
+
+.nav :last-child {
+    border-right: none;
+}
+
+main {
+    background: linear-gradient(#3674bb,#1f446d);
+    border: 1px solid navy;
+    border-top: 0;
+}
+
+aside, .mainphoto, .blank {
+    display: inline-block;
+    vertical-align: top;
+}
+
+aside {
+    width: 14.7rem;
+}
+
+
+.login {
+    padding: 1rem;
+    display: block;
+}
+
+.userpass {
+    background-color: rgba(212, 219, 227, 1);
+    margin-bottom: 1rem;
+}
+
+.white {
+    background: linear-gradient(#133f6f,#2565ad);
+    border: 0.1rem solid rgba(212, 219, 227, 1);
+    padding: 0.5rem;
+    color: white;
+    text-shadow: 1px 1px 1px darkgray;
+}
+
+.loginbox {
+    padding: 0.5rem;
+}
+
+h2 {
+    font-size: 0.85em;
+    line-height: 1em;
+    margin-bottom: 0.3em;
+}
+
+h4 {
+    line-height: 1em;
+    font-size: 0.5em;
+}
+
+h3 {
+    font-weight: bolder;
+    font-size: 0.75em;
+    line-height: 1.2em;
+    margin-bottom: 0.5rem;
+}
+.loginbox > input, button {
+    border-radius: 0.3rem;
+}
+
+.loginbox > input {
+    width: 90%;
+    box-shadow: -1px 1px 3px gray inset;
+}
+
+h5 {
+    font-size: 0.7em;
+    font-weight: bold;
+    color: blue;  
+    line-height: 1em;
+    margin-bottom: 0.3em;  
+}
+
+.loginbox h5 {
+    margin-bottom: 0.7em;
+}
+
+.loginbox > button {
+    background: linear-gradient(#3b3c3b,#353535,#878787);
+    width: 5em;
+    color: white;
+    font-size: 0.7em;
+    line-height: 1.5em;
+    margin-right: 0;
+}
+
+p {
+    color: blue;
+    font-size: 0.75em;
+    line-height: 2em;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.newcustomer {
+    text-align: center;
+}
+
+.mainphoto {
+    width: 29rem;
+}
+
+.blank {
+    list-style-type: none;
+    width: 14rem;
+    color: transparent;
+    position: relative;
+}
+
+.blank li:first-child {
+    line-height: 66px;
+    background-color: rgba(23, 70, 122, 1)
+}
+
+.blank > li:nth-child(2) {
+    line-height: 55px;
+    background-color: rgba(27, 79, 137, 1)
+}
+
+.blank li:nth-child(3) {
+    line-height: 52px;
+    background-color: rgba(70, 129, 195, 1);
+}
+
+.blank li:nth-child(4) {
+    line-height: 55px;
+    background-color: rgba(80, 135, 199, 1)
+}
+
+.blank li:last-child {
+    line-height: 66px;
+    background-color: rgba(43, 110, 188, 1)
+}
+
+article {
+    background-color: rgba(212, 219, 227, 1); 
+    border: 1px solid navy;
+    border-top: 0;
+    line-height: 1.5em;
+    padding: 0 1rem;
+}
+article h3, h5 {
+    display: inline-block;
+}
+
+section {
+    background-color: rgba(31, 68, 109, 1);
+    border: 1px solid navy;
+    border-top: 0;
+    text-align: center;
+    padding: 1rem;
+}
+
+.featured {
+    border: 0.2rem solid rgba(225, 225, 217, 1);
+    background: white;
+    width: 15rem;
+    height: 5rem;
+    padding: 1rem;
+    display: inline-block;
+    position: relative;
+}
+
+.featured:nth-of-type(2) {
+    margin: 0 1rem;
+}
+
+section .featured img {
+    width: 5rem;
+    position: absolute;
+    left: 1rem;
+}
+
+section .featured .interesting {
+    position: absolute;
+    right: 1rem;
+
+}
+section .featured h3 {
+    text-align: left;
+    width: 9rem;
+    right: 1rem;
+    margin-bottom: 0.5em;
+}
+ 
+section .featured p {
+    text-align: left;
+    width: 9rem;
+    font-weight: normal;
+    line-height: 1em;
+} 
+
+footer {
+    border: 1px solid rgba(134,134,134,1);
+    border-top: 0;
+    background-color: rgba(225, 225, 217, 1);
+    height: 1.5rem;
+    padding: 0.3rem 0.5rem;
+}
+
+footer > ul, p, span {
+    display: inline-block;
+}
+
+footer p {
+    border-left: 2px groove;
+    padding-left: 1rem;
+    margin-left: 4rem;
+    color: gray;
+}
+
+span.bold {
+    font-weight: bolder;
+}
+
+span.green {
+    font-weight: bolder;
+    color: green;
+}
+
+.snippet {
+    width: 100px;
+    height: 18px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+    position: absolute;
+    margin: auto;
+    top: 65px;
+    right: 0;
+    bottom: 0;
+    left: 459px;
+    text-align: center;
+    z-index: 5;
+}
+
+.snippet .dot {
+    height: 9px;
+    width: 9px;
+    border-radius: 50%;
+    background-color: green;
+    display: inline-block;
+    margin: 5px;
+}
+
+.snippet .dot:nth-of-type(3) {
+    background-color: navy;
+}
+
+.userpass, .newcustomer, .snippet {
+    box-shadow: 0 1px 6px black;
+}
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script src="jquery-3.3.1.js"></script>
+    
+    <script>
+        console.log($);
+        console.log($());                           //library of all methods within jquery
+    
+        $(document).ready(function() {
+            alert('document ready!');         //can print to console for debugging
+
+            $('p').html('Tired of Hellow World!');
+            $('p').click(function(){                //printed to console for debugging
+                console.log('paragraph clicked!');
+                $('h1').fadeToggle();
+            });
+
+            var a = $('h1').html()      //can grab info from the html and put it somewhere for later use
+                console.log(a);
+            
+            $('p.second').click(function(){
+                $(this).toggle();
+            });
+
+        });
+    
+    </script>
+
+
+</head>
+<body>
+    <h1>Hellow World</h1>
+    <p>abcde</p>
+    <p class="second">fghij</p>
+</body>
+</html>

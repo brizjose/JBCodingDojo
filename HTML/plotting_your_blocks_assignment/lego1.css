@@ -1,0 +1,45 @@
+/* *{
+    outline: 1px dotted red;
+} */
+
+#container {
+    background-color: gray;
+    width: 890px;
+    height: 550px;
+    padding: 20px;
+}
+header {
+    background-color: green;
+    width: 890px;
+    height: 137px;
+    display: block;
+    margin-bottom: 20px;
+}
+section {
+    background-color: red;
+    width: 670px;
+    height: 355px;
+    float: right;
+    margin-left: 20px;
+    padding: 20px;
+}
+
+aside {
+    background-color: blue;
+    width: 160;
+    height: 254;
+    float: right;
+}
+article {
+    background-color: yellow;
+    width: 200px;
+    height: 200px;
+    float: left;
+    margin: 0 20px 20px 0;
+}
+section p {
+    background-color: purple;
+    width: 641px;
+    height: 100px;
+    float: left;
+}

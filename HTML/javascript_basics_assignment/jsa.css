@@ -1,0 +1,93 @@
+* {
+    /* outline: 1px dotted red; */
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+#container {
+    background-color: #1b335d;
+    width: 970px;
+    padding: 8px;
+    position: relative;
+}
+header {
+    background-color: #cf2f36;
+    color: #C2D7EB;
+    border-radius: 10px;
+    height: 50px;
+    display: block;
+    margin-bottom: 12px;
+    position: relative;
+    padding: 0;
+}
+aside {
+    background-color: #2a7d8c;
+    /* color: #56cad7; */
+    border-radius: 10px;
+    width: 150px;
+    padding: 13px;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 13px;
+}
+article {
+    background-color: #0e1822;
+    color: #BDCFDD;
+    border-radius: 10px;
+    width: 750px;
+    padding: 13px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 0 12px 12px;
+    font-size: 13px;
+}
+footer {
+    background-color: #5d6673;
+    color: #ADC3D6;
+    border-radius: 10px;
+    height: 20px;
+    padding: 13px;
+    position: relative;
+}
+header h1 {
+    position: absolute;
+    top: 50%;
+    font-size: 30px;
+    margin: -15px 0 0 10px;
+}
+footer p{
+    position: absolute;
+    top: 50%;
+    font-size: 13px;
+    margin: -6.5px 0 0 10px;  
+}
+article h2 {
+    margin-top: 13px;
+}
+article p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+article li {
+    margin: 0 0 10px 0;
+}
+ul {
+    list-style-position: inside;
+    margin-left: 0px;
+}
+ul ul {
+    list-style-position: inside;
+    margin-left: 18px;
+}
+.bulletpoint {
+    text-decoration: underline;
+    color: #56cad7;
+}
+.example {
+    color: #535ce0;
+    /* color: red; */
+}
+.link {
+    color: #56cad7;
+    text-decoration: underline;
+}

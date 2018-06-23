@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+    
+        $(document).ready(function(){
+
+            $('button').on('click', function(){
+                $('h1').css('color','red');
+            });            
+
+            $('body').on('click', 'h1', function(){
+                $('p').html("Voila!");
+            })
+
+        });
+    </script>
+</head>
+<body>
+
+    <h1>The Header</h1>
+    <h1>Secondary header</h1>
+    <button>Press to change header</button>
+    <p></p>
+
+</body>
+</html>

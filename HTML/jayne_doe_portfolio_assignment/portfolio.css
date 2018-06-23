@@ -1,0 +1,239 @@
+* {
+	font-family: Arial, Helvetica, sans-serif;
+	/* outline: 1px dotted red; */
+	padding: 0;
+	margin: 0;
+}
+body {
+    margin: 0 auto;
+    width: 970px;
+}
+header {
+    background-color: #f7f7f7;
+    width: inherit;
+    height: 50px;
+}
+main {
+    background: radial-gradient(#6f5964,#1f0e13);  
+}
+footer {
+    background-color: #f7f7f7;
+    width: inherit;
+    height: 60px;
+}
+article {
+    width: inherit;
+    height: auto;
+}
+section {
+    width: inherit;
+    height: auto;
+}
+header div {
+    display: inline-block;
+}
+#l {
+    margin-left:  15px;
+    line-height: 50px;
+}
+#r {
+    float: right;
+    margin-right: 15px;
+    line-height: 50px;
+}
+header h1 {
+    font-size:  30px;
+    font-family: "Comic Sans MS";
+}
+header p {
+    font-size: 25px;
+    font-weight: bolder;
+    text-align: right;
+
+}
+div#frame, div#who {
+    display: inline-block;
+    margin: 15px 0 0 15px;
+}
+div#frame {
+    width: 400px;
+    height: 241px;
+    background: url(images/photo_of_me.jpg) center / 100% no-repeat;
+    border: 5px solid #a8a8ad;
+}
+div#who {
+    width: 500px;
+    height: 250px;
+    position: absolute;
+    background-color: #ffffff;
+}
+div.project {
+    height: 550px;
+    width: 300px;
+    display: inline-block;
+    margin: 15px 0 15px 15px;
+    background: linear-gradient(to bottom right, #ffffff, #dbccda); 
+}
+div.subtitle {
+    background: linear-gradient(#a8a8ad,#878793,#a8a8ad);
+    height: 40px;
+    width: inherit;
+    display: block;
+}
+div.projart {
+    height: 160px;
+    width: inherit;
+    display: block;
+}
+div#lamode {
+    background: url(images/lamode.png) center / 100% no-repeat;
+
+}
+div#famtree {
+    background: url(images/familycontacts.png) center / 100% no-repeat;
+}
+div#fiveeleven {
+    background: url(images/fiveEleven.png) center / 100% no-repeat;
+}
+div.description {
+    height: 160px;
+    width: inherit;
+    display: block;
+}
+h2 {
+    line-height: 40px;
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: bolder;
+    margin-left: 10px;
+}
+h3 {
+    line-height: 40px;
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: bolder;
+    margin-left: 10px;
+}
+article p, a {
+    font-size: 16px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+} 
+p, a {
+    color: black;
+}
+section p {
+    font-size: 14px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+div.logos {
+    height: 50px;
+    width: inherit;
+}
+div.specific {
+    height: 115px;
+    width: inherit;
+}
+div.icon {
+    height: 35px;
+    width: 35px;
+    display: inline-block;
+    margin: 10px;
+    position: relative;
+}
+div.icon img {
+    display: block;
+    max-width: 35px;
+    max-height: 35px;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+div.button {
+    height: 30px;
+    width: inherit;
+    position: relative;
+}
+div.lamodebutton {
+    width: 65px;
+    position: absolute;
+    top: 5px;
+    left: 117.5px;
+    background-color: green;
+    border: solid darkgreen;
+    border-width: thin;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px gray;
+}
+div.famconbutton {
+    /* display: block; */
+    width: 111px;
+    position: absolute;
+    top: 5px;
+    left: 94.5px;
+    background-color: green;
+    border: solid darkgreen;
+    border-width: thin;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px gray;
+}
+div.fiveelevenbutton {
+    width: 72px;
+    position: absolute;
+    top: 5px;
+    left: 114.5px;
+    background-color: green;
+    border: solid darkgreen;
+    border-width: thin;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px gray;
+}
+div.button p {
+    margin: 0;
+    display: inline;
+    color: white;
+    text-align: center;
+}
+footer p#contactinfo {
+    width: 300px;
+    margin: auto;
+    line-height: 30px;
+    text-align: center;
+}
+footer div#socialmedia {
+    width: 409px;
+    margin: auto;
+    line-height: 30px;
+}
+div.soclogo {
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    position: relative;
+}
+div.soclogo img {
+    display: block;
+    max-width: 30px;
+    max-height: 30px;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+footer a {
+    height: 30px;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    font-style: italic;
+}
+

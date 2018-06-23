@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Objects Practice</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+var users = [{name: "Michael", age:37}, {name: "John", age:30}, {name: "David", age:27}];
+
+//different ways to print John's age:
+
+console.log(users[1].age);
+
+//print/log the name of the first object
+
+console.log(users[0].name);
+
+//use a loop to pring name and age of each
+for(person in users){
+    console.log(users[person].name," - ",users[person].age);
+}
+
+</script>
+    
+</body>
+</html>

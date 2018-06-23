@@ -1,0 +1,39 @@
+<!Doctype <!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+</head>
+<body>
+
+    <p>One P Tag</p>
+    <p>Second P Tag</p>
+    
+    <script type="text/javascript">
+        //to log the html documen in console so we can analyze it:
+        console.log(document)
+        
+        //to grab all parapgraphs and turn them into an array:
+        var my_p_tags = document.getElementsByTagName('p');
+
+        //to retrieve an element from the p tags array and assign it to a variable:
+        var first_p_tag = my_p_tags[0];
+
+        //to print variable to console:
+        console.log(first_p_tag);
+
+        //to analyze the details of the variable, there are functions available for it, like onclick
+        console.dir(first_p_tag);
+
+        //this would change the value of the variable and would be printed on the html
+        first_p_tag.innerHTML = "I just modified the HTML!"
+
+        //to interact with the html via JS through functions, example user clicking:
+        first_p_tag.onclick = function(){
+            alert("my first click event!")
+        }
+
+    </script>    
+
+</body>
+</html>
+

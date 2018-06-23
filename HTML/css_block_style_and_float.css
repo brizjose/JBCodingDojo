@@ -1,0 +1,89 @@
+/* 
+
+Overflow:  Because when floating all elements within a container the container collapses and disappears, and all elements just float around and create layout issues, the overflow styling exists.  When used within the container, it helps the container maintain its shape even if all elements inside it are floating.  Overflow is used along height: auto.
+
+Ghost element:  Another solution is to create a ghost element that does not have any information but exists in the container and can be unfloated with a unique id with cleared properties (clear: both). 
+
+Example below.  comment out the ghost div in the html file and use overflow + height auto.  or, comment out overflow + height auto and use the ghost div element!!  */
+
+#container{
+    background-color: gray;
+    width: 900px;
+    /* overflow: hidden;
+    height: auto; */
+    margin: 10px 0;
+}
+
+.block{
+    background-color: green;
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    margin: 0 20px;
+    padding: 20px;
+    float: left;
+}
+
+#ghost{
+    clear: both;
+}
+
+/* THREE RULES OF BLOCK DESIGN
+
+1. Total Area
+Width is how much horizontal space a block occupies.  this is the designer's headache.  
+
+Total width = (content width) + (padding x 2) + (border x 2) + (margin x 2)
+
+Total height = (content height) + (padding x 2) + (border x 2) + (margin varies*)
+
+Margin variation:  vertical margin value is honored only for the element with the largest margin value.  Element with the smaller margin value sees it collapse to zero.  
+
+2. Float, Clear and Overflow
+
+The only elements that don't see their margins collapse are:
+a. floated elements
+b. absolutely positioned elements
+c. in-line block elements
+d. elements with overflow property set to anything other than visible:  they do not collapse margins with their children
+e. cleared elements:  they do not collapse their top margin with the parent block's bottom margin
+
+3. Nested elements
+
+as d. and e. above.
+
+*/
+
+#boxmodel {
+    background-color: blueviolet;
+    width: 900px;
+    height: auto;
+    margin: 20px 0;
+    overflow: hidden;
+    padding: 10px;
+    display:   
+}
+
+.boxy {
+    background-color: brown;
+    width: 50px;
+    height: 30px;
+    /* float: right; */
+    margin: 10px;
+    display: inline-block;   
+}
+
+/* HTML and CSS:  Build / Style + Build / Style + ... + Build / Style, like legos
+
+Do one container
+Do big blocks with div
+Subdivide big blocks
+Keep subdividing until you get to the specific elements
+Style as you build
+
+Keep an eye on the blocks by drawing an outline.  This can be done in the default section of CSS:           */
+
+* { 
+    outline: 1px dotted red;
+}
+

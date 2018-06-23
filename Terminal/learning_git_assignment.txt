@@ -1,0 +1,77 @@
+
+C:\Users\Jose Briz\Desktop>cd gittest
+
+C:\Users\Jose Briz\Desktop\gittest>git init
+Initialized empty Git repository in C:/Users/Jose Briz/Desktop/gittest/.git/
+
+C:\Users\Jose Briz\Desktop\gittest>copy NUL index.html
+        1 file(s) copied.
+
+C:\Users\Jose Briz\Desktop\gittest>copy NUL styles.css
+        1 file(s) copied.
+
+C:\Users\Jose Briz\Desktop\gittest>copy NUL aboutMe.txt
+        1 file(s) copied.
+
+C:\Users\Jose Briz\Desktop\gittest>git add
+Nothing specified, nothing added.
+Maybe you wanted to say 'git add .'?
+
+C:\Users\Jose Briz\Desktop\gittest>git add .
+
+C:\Users\Jose Briz\Desktop\gittest>git commit -m "initialization of git with three files: index.html, sytles.css, aboutM
+e.txt"
+[master (root-commit) 8cceb88] initialization of git with three files: index.html, sytles.css, aboutMe.txt
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 aboutMe.txt
+ create mode 100644 index.html
+ create mode 100644 styles.css
+
+C:\Users\Jose Briz\Desktop\gittest>start aboutMe.txt
+
+C:\Users\Jose Briz\Desktop\gittest>git add .
+
+C:\Users\Jose Briz\Desktop\gittest>git commit -m "updated aboutMe.txt"
+[master bfa0cf0] updated aboutMe.txt
+ 1 file changed, 1 insertion(+)
+
+C:\Users\Jose Briz\Desktop\gittest>start aboutMe.txt
+
+C:\Users\Jose Briz\Desktop\gittest>git add .
+
+C:\Users\Jose Briz\Desktop\gittest>git commit -m "added favorite movie in the aboutMe.txt file"
+[master 26eee30] added favorite movie in the aboutMe.txt file
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+C:\Users\Jose Briz\Desktop\gittest>git log
+commit 26eee30d1fb485c613bd9e39e8003cd3af8daf2a (HEAD -> master)
+Author: Jose Briz <brizjosem@gmail.com>
+Date:   Fri Jun 8 08:11:40 2018 -0500
+
+    added favorite movie in the aboutMe.txt file
+
+commit bfa0cf0edb26d7e17163e52cb745b7fcd894bc31
+Author: Jose Briz <brizjosem@gmail.com>
+Date:   Fri Jun 8 08:09:47 2018 -0500
+
+    updated aboutMe.txt
+
+commit 8cceb88081e1948274ac8bddddc410fd4fe2e40e
+Author: Jose Briz <brizjosem@gmail.com>
+Date:   Fri Jun 8 08:08:17 2018 -0500
+
+    initialization of git with three files: index.html, sytles.css, aboutMe.txt
+
+C:\Users\Jose Briz\Desktop\gittest>git revert HEAD
+[master 000c335] "undo add favorite movie in the aboutMe.txt file"
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+C:\Users\Jose Briz\Desktop\gittest>start aboutMe.txt
+
+C:\Users\Jose Briz\Desktop\gittest>git add .
+
+C:\Users\Jose Briz\Desktop\gittest>git commit -m "add favorite book to aboutMe.txt file"
+[master a00d981] add favorite book to aboutMe.txt file
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+C:\Users\Jose Briz\Desktop\gittest>
