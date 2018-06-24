@@ -1,4 +1,4 @@
-http://pokeapi.co/api/v2/
+http://pokeapi.co/api/v2/pokemon/413
 
 api/v2/pokemon-form/{id or name}
 {
