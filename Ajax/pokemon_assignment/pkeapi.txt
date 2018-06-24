@@ -1,0 +1,22 @@
+http://pokeapi.co/api/v2/
+
+api/v2/pokemon-form/{id or name}
+{
+    "id": 413,
+    "name": "wormadam-plant",
+    "order": 503,
+    "form_order": 1,
+    "is_default": true,
+    "is_battle_only": false,
+    "is_mega": false,
+    "form_name": "plant",
+    "pokemon": {
+        "name": "wormadam-plant",
+        "url": "http://pokeapi.co/api/v2/pokemon/413/"
+    },
+    "sprites": {
+        "back_default": "http://pokeapi.co/media/sprites/pokemon/back/413.png",
+        "back_shiny": "http://pokeapi.co/media/sprites/pokemon/back/shiny/413.png",
+        "front_default": "http://pokeapi.co/media/sprites/pokemon/413.png",
+        "front_shiny": "http://pokeapi.co/media/sprites/pokemon/shiny/413.png"
+    },
