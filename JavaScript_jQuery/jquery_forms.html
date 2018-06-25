@@ -14,7 +14,7 @@
             $('form').submit(function(){
                 alert('submitting form!');
                 console.log($(this).serialize());   //see meaning of serialize below
-                return false;   //return false; used here to prevent submit to take to another page.
+                return false;   //return false; used here to prevent submit to take to another page.  in this example, it prevents from taking action and going to 'process.php' (see html form below)
             })
 
 //.submit can also be the event handler to do the hard sumbit:  click + function.submit
@@ -42,6 +42,8 @@
         Email<input type='text' name='email'>
         <input type='submit' value='submit'>
     </form>
+
+<!-- action='process.php' makes the information in the form available to process.php page upon submission -->
 
     <button class='btn'>Click here to use .submit differently</button>
 </body>

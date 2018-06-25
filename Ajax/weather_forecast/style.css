@@ -1,3 +1,35 @@
-.city {
-    width: 20rem;
+input[name="city"] {
+    width: 25rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1em;
+}
+
+.wea_report {
+    padding: 3rem;
+    display: inline-block;
+}
+
+h1 {
+    font-size: 1.5em;
+}
+h2 {
+    font-size: 0.8em;
+}
+h1, h2{
+    display: inline;
+}
+
+li {
+    /* list-style: none; */
+    display: inline-block;
+}
+
+input[type="submit"] {
+    font-family: monospace;
+    font-size: 0.8em;
 }
