@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="jquery refresher, let's use .on() and $(this)!">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery practice</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('body').on('click', 'h1', function(){
+                console.log($(this).attr("anything"));  //would only work with Hello World because it has an "anything" attribute
+                console.log($(this).attr("class"));  //this is an attribute that's defined for all of the h1s, so will be logged
+                var info = $(this).attr("class");    //storing the retrieved info in a variable helps us use it in the html later
+                $('#special').append('<h1>'+info+'</h1>');
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1 class="1" anything="eh">Hello World</h1>
+    <h1 class="2" everything="meh">Hello Dojo</h1>
+    <h1 class="3" nothing="duh">Hello Mojo</h1>
+    <div id="special"></div>
+    <!-- one can store any kind of information within the html tags as above. -->
+    <!-- these can be retrieved with jquery as seen above -->
+</body>
+</html>
