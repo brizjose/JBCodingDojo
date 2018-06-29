@@ -1,12 +1,11 @@
 $(document).ready(function(){
-    for(var i = 0; i <5; i++){
 
-        $('.container').on('click','img',function(response){
+        $('.container').on('click','img',function(){
             var which = $(this).attr('alt');
-            $.get('https://anapioficeandfire.com/api/houses');
-            console.log(response);
-        })
+            $.get('https://anapioficeandfire.com/api/houses/', function(response){
+                console.log(response);
 
+            }, 'json');
+        });
 
-    }
 })
