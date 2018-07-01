@@ -70,5 +70,51 @@ print meal
 #menu = vegetables + fruits[2]   #this does not work because fruits[2] not a string according to the error, but we can use it to get inside the list and retrieve the string on index [2].  This is because it cannot do list operation between list and a single item.  For that, there are other methds.... see below...
 change = fruits[2]
 print change
+
+# List built-in methods
+# append()
+diet = []
 diet = vegetables.append('more lettuce')
-print diet                                     #getting print of 'none' after append.  let's see.........
+print diet                                     
+
+var = [1,2,3,4,5]
+var.append(99)
+print var
+
+var.append('only')
+print var
+
+print vegetables
+vegetables.append('only')
+print vegetables
+
+#extend()  -- adds values of a second sequence to a given sequence
+cars = ['volvo', 'mercedes']
+vehicles = ['motorcycle', 'tricycle']
+print cars.extend(['motorcycle', 'tricycle'])
+
+#pop()
+
+#index()
+
+# List built-in functions
+
+#len(sequence)
+my_list = [1, "zen", True]
+print len(my_list)
+
+#enumerate(sequence)
+#loop over a list and have an automatic counter:
+food = ['milk', 'apple', 'broccoli', 'ice cream']
+for counter, value in enumerate(food,1):
+    print counter
+
+food = ['milk', 'rice', 'popcorn', 'tomato']
+counter_list = list(enumerate(food,1))
+print (counter_list)
+
+#map(function, sequence)
+
+#min(sequence)
+
+#sorted(sequence)
