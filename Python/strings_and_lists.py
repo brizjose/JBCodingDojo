@@ -12,7 +12,14 @@ print x[-1]
 y = [x[0], x[-1]]
 print y
 
-x = [19,2,54,-2,7,12,98,32,10,-3,6]
-x.sort()
-print x
-
+items = [19,2,54,-2,7,12,98,32,10,-3,6]
+items.sort()
+print items
+half_1 = slice(0,len(items)/2)
+half_2 = slice(len(items)/2,len(items))
+first_half = items[half_1]
+second_half = items[half_2]
+print(first_half)
+print(second_half)
+second_half.insert(0,first_half)
+print second_half
