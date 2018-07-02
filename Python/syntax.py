@@ -27,8 +27,8 @@ numli = "this 1254"
 print numli.isalnum()
 
 #string.join(list)  returns a string that is all strings within our set concatenated
-string = "my name is mud"
-list = ['grass', 'banjo', 'truck']
+string = "mojo"
+list = ['grass', 'banjo', 'truck', 'manure']
 print string.join(list)
 list = [1,2,3]
 print string.join(str(list))   #str() converting int to str so it can concatenate with the string
@@ -108,7 +108,9 @@ print mix_list                          #prints None
 print my_list                           #prints the extended and appended their_list in my_list
 print my_list.pop()                     #prints the extracted last element, which is the object last                                            appended
 print my_list.pop(1)                    #popped the index=1 element from the list!
-print string.index('a')          
+
+print string
+print string.index('o')          
 
 
 #CONDITIONAL EXPRESSIONS:  IF
