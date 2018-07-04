@@ -6,14 +6,14 @@ def odd_even(n):
             print "Number is "+ str(i) +". This is an even number."
         else:
             print "Number is "+ str(i) +". This is an odd number."
-# odd_even(21)
+odd_even(21)  #will print up to 20 instead of 2000 to save space
 
 # MULTIPLY
 
 def multiply(a,x):
     for val in a:
         new_list.append(val*x)
-    # print new_list
+    print new_list
     return new_list
 
 # HACKER CHALLENGE

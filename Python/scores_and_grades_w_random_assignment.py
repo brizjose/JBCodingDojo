@@ -1,21 +1,17 @@
 import random
-grade = random.randint(60,100)
-# print grade
-output = ""
-output = "Score: "+str(grade)
+score = random.randint(60,100)
 
-grade_grid = {
-    xrange(60,69) : "D",
-    xrange(70,79) : "C",
-    xrange(80,89) : "B",
-    xrange(90,100) : "A"
-}
+grade_grid = {}
+for i in range (60,69):
+    grade_grid[i] = "D"
+for i in range (70,79):
+    grade_grid[i] = "C"
+for i in range (80,89):
+    grade_grid[i] = "B"
+for i in range (90,100):
+    grade_grid[i] = "A"
 
-letter = ""
-for grade in grade_grid:
-    print grade
-    if grade in grade_grid:
-        letter = grade_grid[grade]
-        print letter
-
-print output
+def grade_gen(grade):
+    return grade_grid[grade]
+    
+print "Your score: {}".format(score)+"; your grade is {}".format(grade_gen(score)) 
