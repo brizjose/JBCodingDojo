@@ -4,6 +4,10 @@ for count in range(0, 3):
 for letter in "kurtzweil":
     print letter
 
+string = 'kurtzweil'
+for index in range (0,len(string)):
+    print index
+
 x = 3
 y = x
 while y > 0:

@@ -1,3 +1,42 @@
+#DICTIONARIES
+
+#Recap:  lists are [a,b,c]    tuples are (a,b,c)
+
+#dictionaries are { "key":"value", "key":"value" }
+#keys must be unique
+
+#creating dictionaries:
+
+#a) literal notation:
+weekend = {"Sun": "Sunday", "Sat": "Saturday"}
+
+#b) create an empty dictionary then add values:
+capitals = {} 
+capitals["svk"] = "Bratislava"
+capitals["deu"] = "Berlin"
+capitals["dnk"] = "Copenhagen"
+
+#accessing values:
+
+print weekend["Sun"]
+print capitals["svk"]
+
+#FOR LOOPS accessing values with for loops
+
+#to print all keys
+for data in capitals:
+     print data
+#another way to print all keys
+for key in capitals.iterkeys():
+     print key
+#to print the values
+for val in capitals.itervalues():
+     print val
+#to print all keys and values
+for key,data in capitals.iteritems():
+     print key, " = ", data
+
+#practice...
 name = {"sw":"Sara Wong", "mp":"Martin Puryear"}
 for key, value in name:
     print key, value
@@ -19,7 +58,7 @@ my_people = [
 ]
 
 for i in my_people:
-    #print i
+    print i
     if i['food'] == 'asian':
         print i['name']
         
