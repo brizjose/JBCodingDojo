@@ -19,11 +19,15 @@ def multiply(a,x):
 # HACKER CHALLENGE
 
 def layered_multiples(arr):
-    hack_list = []
+    layered_list = []
     for n in new_list:
-        # print i
-        hack_list.append("1"*n)
-    print hack_list
+        hack_list = []
+        counter = 0
+        while counter < n:
+            hack_list.append(1)
+            counter = counter + 1
+        layered_list.append(hack_list)    
+    print layered_list
 
 new_list = []
 layered_multiples(multiply([2,4,5],3))
