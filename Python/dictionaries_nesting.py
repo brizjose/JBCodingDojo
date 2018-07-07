@@ -18,8 +18,11 @@ context = {
 # for data in context.itervalues():
 #   print data
 
-# for data in context.iteritems():
-#   print data
+for data in context.iteritems():
+  print data
+
+for data in context.items():
+  print data
 
 #ITERATE elements with a for loop
 for key, data in context.items():
