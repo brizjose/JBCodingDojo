@@ -4,14 +4,10 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 @app.route('/result', methods=['POST'])
-def show_posted():
+def display():
     name = request.form['name']
     location = request.form['locations']
     language = request.form['languages']
     comment = request.form['comment']
-    print name
-    print location
-    print language
-    print comment
-    return render_template("result.html")
+    return render_template("result.html", name = name, location = location, language = language, comment = comment)
 app.run(debug=True)
