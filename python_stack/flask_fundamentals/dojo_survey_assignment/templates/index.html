@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="flask template assignment will take information from a form">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dojo Survey</title>
+</head>
+<body>
+    {% block content %}
+    <div class="container">
+        <form action='/result' method='POST'>
+            Your Name: <input type='text' name='name'>
+            Dojo Location: <select name='locations'>
+                <option value='San Jose'>San Jose</option>
+                <option value='Seattle'>Seattle</option>
+                <option value='Los Angeles'>Los Angeles</option>
+                <option value='Dallas'>Dallas</option>
+                <option value='Tysons Corner'>Tysons Corner</option>
+                <option value='Chicago'>Chicago</option>
+                <option value='Tulsa'>Tulsa</option>
+                <option value='East Bay'>East Bay</option>
+                <option value='Online'>Online</option>
+            </select>
+            Favorite Language: <select name='languages'>
+                <option value='Javascript'>Javascript</option>
+                <option value='Python'>Python</option>
+                <option value='Ruby'>Ruby</option>
+                <option value='Mean'>Mean</option>
+                <option value='Java'>Java</option>
+                <option value='C#'>C#</option>
+            </select>
+            <h3>Comment (Optional)</h3>
+            <textarea name="comment" rows="4" cols="50"></textarea>
+        </form>
+    </div>
+    {% endblock %}
+</body>
+</html>
