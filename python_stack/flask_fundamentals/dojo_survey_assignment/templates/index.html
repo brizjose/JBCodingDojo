@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="flask template assignment will take information from a form">
+    <meta name="description" content="survey assignment will make use of form to capture client input, assign inputs to variables, have flask route to another page upon submission and that page will display the inputs from previous page as outputs in the html">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dojo Survey</title>
+    <title>Survey</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/survey_style.css') }}">
 </head>
 <body>
-    <div class="container">
+    <div class='container'>
         <form action='/result' method='POST'>
             Your Name: <input type='text' name='name'>
             Dojo Location: <select name='locations'> 
@@ -35,6 +35,5 @@
             <textarea name="comment" rows="4" cols="50"></textarea>
             <input type="submit" value="Submit">
         </form>
-    </div>
 </body>
 </html>
