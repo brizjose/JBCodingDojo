@@ -5,6 +5,7 @@ def index():
     return render_template("index.html")
 @app.route('/result', methods=['POST'])
 def display():
+    print request.form
     name = request.form['name']
     location = request.form['locations']
     language = request.form['languages']
