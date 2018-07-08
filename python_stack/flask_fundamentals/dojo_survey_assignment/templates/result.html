@@ -6,9 +6,17 @@
     <meta name="description" content="flask template assignment will take information from a form">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Submitted Information</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/survey_style.css') }}">
 </head>
 <body>
-    
+    <h1>Submitted Info</h1>
+    <p>Name:</p>
+    <p>{{ name }}</p>
+    <p>Dojo Location:</p>
+    <p>{{ locations }}</p>
+    <p>Favorite Language:</p>
+    <p>{{ languages }}</p>
+    <p>Comment:</p>
+    <p>{{ comment }}</p>
 </body>
 </html>
