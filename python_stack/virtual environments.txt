@@ -40,3 +40,9 @@ While in the parent directory to our virtual environments (myEnvironments), acti
 The (flaskEnv) indicates that your virtualenv is now active. If we install any dependencies they will install into our local flaskEnv folder:
 
 (flaskEnv) $ pip install flask
+
+6. deactivate
+
+go back to normal environment;
+
+$ deactivate
