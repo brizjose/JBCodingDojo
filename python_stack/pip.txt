@@ -1,0 +1,19 @@
+pip
+
+While working as a developer, you'll find yourself wanting to use some functionality that is not included in your language's standard library.
+However, as a language grows and is used for more purposes, developers build their own tools and package them for use by others. 
+These are known as third party modules. Pip is the package manager we use in Python to install these modules. 
+Installing third party modules is very simple, because pip does a great job at knowing which version of that package we need to match our Python version. 
+
+1. install
+
+$ pip install {{name_of_module}} <= NOTE: substitute [name_of_module] with the module you are installing!
+#example:
+$ pip install Flask
+
+2. uninstall
+
+$ pip uninstall {{name_of_module}} <= NOTE: substitute {{name_of_module}} with the module you are removing!
+#example:
+$ pip uninstall Flask
+

@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+    border: 2rem solid black;
+}
+
+
+
+h1 {
+    color: blue;
+}
+
