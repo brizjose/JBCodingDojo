@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="this template interacts with flask command and will be summoned by the route handler function when a user/username is provided">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- this is what's called a template.  A template is an html file that is interpreted by flask and rendered to client. -->
+    <h1>Your username is {{username}}</h1>
+    <!-- whatever value is assigned to variable username, print it -->
+    <!-- flask uses templating engine called Jinja2 to parse through the files looking for {{}}, replace variables with real values, and send complete HTML file back to the client -->
+    <!-- curly brackets are way we bring python code to the HTML -->
+</body>
+</html>

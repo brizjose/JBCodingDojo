@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="this template interacts with flask and populates curly brackets with Jinja2 that brings Python code to HTML for rendering">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>My First Template</title>
+    </head>
+    <body>
+        <h1>My first flask template with embedded python</h1>
+        <p>Phrase: {{phrase}}</p>
+        <p>Times: {{times}}</p>
+        <!-- embedd a for loop with curly brackets and percent... see that it needs to end as well... -->
+        {% for x in range (0,times) %}
+        <!-- since we passed the value 5 of variable times, we can use that to set the for loop.  Also, since we passed a value in the variable phrase, we can output it too -->
+            <p>{{ phrase }}</p>
+            <!-- can also embedd if statements -->
+            {% if x % 2 == 0 %}
+                <p>this is even</p>
+            {% else %}
+            <p>this is odd</p>
+            {% endif %}
+        {% endfor %}
+    </body>
+</html>
