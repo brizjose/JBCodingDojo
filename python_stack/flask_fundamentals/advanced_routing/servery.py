@@ -5,6 +5,6 @@ def show_username_profile(username, id):
     print username
     print id
     return render_template("users.html")
-
+app.run(debug=True)
 #can pass as many variables as needed in the URL as long as they do so as parameters to the route handler function
 
