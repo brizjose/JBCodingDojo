@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<h1 class="earth">Ninja Turtles!</h1>
+
+
+<form action="/" method="GET">
+    <select name="turtles">
+        <option name="Choose One" value="none">Choose One</option>
+        <option name="Leonardo" value="blue">Leonardo</option>
+        <option name="Michelangelo" value="orange">Michelangelo</option>
+        <option name="Raphael" value="red">Raphael</option>
+        <option name="Donatello" value="purple">Donatello</option>
+    </select>
+</form>
+
+{% endblock %}

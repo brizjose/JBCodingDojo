@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 1px dotted red;
+}
+
+h1 {
+    text-align: center;
+}
+
+.air {
+    color: blue;
+}
+.fire {
+    color: red;
+}
+.earth {
+    color: green;
+}
