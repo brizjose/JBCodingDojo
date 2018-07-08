@@ -11,8 +11,8 @@
 <body>
     <div class='container'>
         <form action='/result' method='POST'>
-            Your Name: <input type='text' name='name'>
-            Dojo Location: <select name='locations'> 
+            Your Name: <input type='text' name='name' class='namefld'><br>
+            Dojo Location: <select name='locations' class='locations'>
                 <option value='San Jose'>San Jose</option>
                 <option value='Seattle'>Seattle</option>
                 <option value='Los Angeles'>Los Angeles</option>
@@ -22,17 +22,17 @@
                 <option value='Tulsa'>Tulsa</option>
                 <option value='East Bay'>East Bay</option>
                 <option value='Online'>Online</option>
-            </select>
-            Favorite Language: <select name='languages'>
+            </select><br>
+            Favorite Language: <select name='languages' class='languages'>
                 <option value='Javascript'>Javascript</option>
                 <option value='Python'>Python</option>
                 <option value='Ruby'>Ruby</option>
                 <option value='Mean'>Mean</option>
                 <option value='Java'>Java</option>
                 <option value='C#'>C#</option>
-            </select>
-            <h3>Comment (Optional)</h3>
-            <textarea name="comment" rows="4" cols="50"></textarea>
+            </select><br>
+            <p>Comment (Optional)</p>
+            <textarea name="comment" rows="4"></textarea><br>
             <input type="submit" value="Submit">
         </form>
 </body>

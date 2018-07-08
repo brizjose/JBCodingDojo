@@ -1,17 +1,51 @@
 * {
     margin: 0;
     padding: 0;
+    /* outline: 1px dotted red; */
 }
 
 .container {
-    width: 90%;
-    margin: auto;
-    border: 2rem solid black;
+    width: 450px;
+    margin: 10px auto;
+    padding: 20px;
+    outline: 1px solid black;
 }
 
+table {
+    outline: 1px solid black;
+}
 
+form {
+    line-height: 30px;
+}
+
+form .namefld {
+    width: 250px;
+    margin-left: 60px;
+}
+
+form .locations {
+    width: 254px;
+    margin-left: 40.5px;
+}
+
+form textarea {
+    width: 395px;
+}
+
+form .languages {
+    width: 254px;
+    margin-left: 13px;
+}
 
 h1 {
-    color: blue;
+    font-size: 1.25em;
 }
 
+.input {
+    width: 150px;
+}
+
+.result {
+    width: 300px;
+}

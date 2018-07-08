@@ -9,14 +9,27 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style_survey.css') }}">
 </head>
 <body>
-    <h1>Submitted Info</h1>
-    <p>Name:</p>
-    <p>{{ name }}</p>
-    <p>Dojo Location:</p>
-    <p>{{ location }}</p>
-    <p>Favorite Language:</p>
-    <p>{{ language }}</p>
-    <p>Comment:</p>
-    <p>{{ comment }}</p>
+    <div class='container'>
+        <h1>Submitted Info</h1>
+        <table>
+            <tr>
+                <td class="input">Name:</td>
+                <td class="result">{{ name }}</td>
+            </tr>
+            <tr>
+                <td class="input">Dojo Location:</td>
+                <td class="result">{{ location }}</td>
+            </tr>
+            <tr>
+                <td class="input">Favorite Language:</td>
+                <td class="result">{{ language }}</td>
+            </tr>
+            <tr>
+                <td class="input">Comment:</td>
+                <td class="result">{{ comment }}</td>
+            </tr>
+        </table>
+        <button type="button">Go Back</button>    
+    </div>
 </body>
 </html>
