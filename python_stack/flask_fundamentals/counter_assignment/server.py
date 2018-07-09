@@ -8,8 +8,11 @@ def index():
         session["count"] += 1
     else:
         session["count"] = 1
-    
-    return render_template("index.html", count=session['count'])
+    if session["count"] > 1:
+        image = 'friendly.png'
+    else:
+        image = 'scary.jpg'
+    return render_template("index.html", count=session['count'], image=image)
 
 @app.route("/clear")
 def clearSession():
