@@ -1,4 +1,4 @@
-from flask import Flask, session, render_template, redirect
+from flask import Flask, session, render_template, request,redirect
 app = Flask(__name__)
 app.secret_key = "crypticdecript"  #we create a secret key to encrypt data and provide some security
 
@@ -8,10 +8,14 @@ def index():
         session["count"] += 1
     else:
         session["count"] = 1
+    # if session["count"] > 1:
+    #     image = 'friendly.png'
+    # else:
+    #     image = 'scary.jpg'
     if session["count"] > 1:
-        image = 'friendly.png'
+        image = "{{url_for('static',filename='friendly.png')}}"
     else:
-        image = 'scary.jpg'
+        image = "{{url_for('static',filename='scary.jpg')}}"
     return render_template("index.html", count=session['count'], image=image)
 
 @app.route("/clear")
