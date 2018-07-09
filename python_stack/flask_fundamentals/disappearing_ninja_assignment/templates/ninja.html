@@ -3,8 +3,9 @@
 {% block content %}
 
 <h1 class="earth">Ninja Turtles!</h1>
-
-
+{% for name in ninjas %}
+<p>{{ session['name'] }}</p>
+{% endfor %}
 <form action="/" method="GET">
     <select name="turtles">
         <option name="Choose One" value="none">Choose One</option>
