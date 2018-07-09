@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   
+    <!-- this loop will display each turtle on n h3 -->
+    {% for turtle in turtles %}
+        {% if turtle['type'] == 'turtle' %}
+            <h3>{{ turtle['name'] }} - {{ turtle['color'] }}</h3>
+        {% endif %}
+    {% endfor %}
+    
+    <!-- this displays as list -->
+    <p>{{ turtles }}</p>    
+
+    <!-- templating ^ what we did above ^ and in the server.py is great for sending and displaying data. -->
+
+    <!-- for getting data, interacting with the user, we use forms -->
+    <!-- action attribute = route where the data is going to be sent -->
+    <!-- method is either GET or POST -->
+
+    <!-- <form action="/action_turtle" method="POST">
+        <input type="text" name="name">
+        <input type="text" name="color">
+        <input type="submit">
+    </form> -->
+
+    <form action="/action_turtle" method="POST">
+        <select name="tmnt" onchange="this.form.submit()">
+            <option name="Choose" value="none">Choose one</option>
+            <option name="Leonardo" value="blue">Leonardo</option>
+            <option name="Michelangelo" value="orange">Michelangelo</option>
+            <option name="Raphael" value="red">Raphael</option>
+            <option name="Donatello" value="purple">Donatello</option>
+        </select>
+
+    </form>
+
+</body>
+</html>
