@@ -1,6 +1,6 @@
 from flask import Flask, session, render_template, request,redirect
 app = Flask(__name__)
-app.secret_key = "crypticdecript"  #we create a secret key to encrypt data and provide some security
+app.secret_key = "crypticdecript"  
 
 @app.route("/")
 def index():
@@ -8,15 +8,11 @@ def index():
         session["count"] += 1
     else:
         session["count"] = 1
-    # if session["count"] > 1:
-    #     image = 'friendly.png'
-    # else:
-    #     image = 'scary.jpg'
     if session["count"] > 1:
-        image = "url_for('static',filename='img/friendly.png'"
+        image = "friendly.png"
     else:
-        image = "url_for('static',filename='img/scary.jpg'"
-    return render_template("index.html", count=session['count'], image=image)
+        image = "scary.jpg"
+    return render_template("counter.html", count=session['count'], image=image)
 
 @app.route("/clear")
 def clearSession():

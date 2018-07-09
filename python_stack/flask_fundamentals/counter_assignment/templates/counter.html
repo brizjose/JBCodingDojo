@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<h1>I see you!</h1>
+
+<h3 class="counter" alt-attr="{{ count }}">You have visited this site {{ count }} times!</h3>
+
+<img src="static/img/{{ image }}" alt="howdy">
+
+<form action="/clear" method="GET">
+    <button type="submit">No you don't</button>
+</form>
+
+{% endblock %}

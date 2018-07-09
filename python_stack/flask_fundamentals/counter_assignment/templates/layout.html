@@ -9,11 +9,8 @@
     <script type="text/javascript" src="{{ url_for('static',filename='js/magic.js') }}"></script>
 </head>
 <body>
-    <div id="fromjquery"></div> 
-    <h1>I see you!</h1>
-    <h3 class="counter" alt-attr="{{ count }}">You have visited this site {{ count }} times!</h3>
-    <form action="/clear" method="GET">
-        <button type="submit">No you don't</button>
-    </form>
+
+    {% block body %}{% endblock %}
+   
 </body>
 </html>
