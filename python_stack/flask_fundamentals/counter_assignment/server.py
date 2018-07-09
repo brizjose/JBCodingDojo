@@ -13,9 +13,9 @@ def index():
     # else:
     #     image = 'scary.jpg'
     if session["count"] > 1:
-        image = "{{url_for('static',filename='friendly.png')}}"
+        image = "url_for('static',filename='img/friendly.png'"
     else:
-        image = "{{url_for('static',filename='scary.jpg')}}"
+        image = "url_for('static',filename='img/scary.jpg'"
     return render_template("index.html", count=session['count'], image=image)
 
 @app.route("/clear")

@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static',filename='js/magic.js') }}"></script>
 </head>
 <body>
-    <div>{{ image }}</div>
+    <div id="fromjquery"></div> 
     <h1>I see you!</h1>
-    <h3>You have visited this site {{ count }} times!</h3>
+    <h3 class="counter" alt-attr="{{ count }}">You have visited this site {{ count }} times!</h3>
     <form action="/clear" method="GET">
         <button type="submit">No you don't</button>
     </form>
