@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>{% if 'user' in session %}
+        {{ session['user']['first_name'] }}
+        {% endif %} 
+        Guess what I'm using Flask!</h2>
+    <h3>Number of people in our list: {{ session['counter'] }}</h3>
+    
+        <!-- create a variable inside the template using with <name_of_variable> -->
+        <!-- the use the get_flashed_messages() method to set that as value of the declared variable -->
+        <!-- in this case, declared variable is called 'messages' -->
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+            <p style="color: red">{{ message }}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <form action="/user" method="POST">
+        <input type="hidden" name="counter" value="{{session['counter']}}">
+        <input type="text" name="fname" placeholder="First Name">
+        <input type="text" name="lname" placeholder="Last Name">
+        <input type="text" name="email" placeholder="youremail@address.com">
+        <button type="submit" name="form_submit">Submit</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Id</th>
+                <th>Show</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if 'users' in session %}
+            {% for user in session['users'] %}
+            <tr>
+                <td>{{user['first_name']}}</td>
+                <td>{{user['last_name']}}</td>
+                <td>{{user['email']}}</td>
+                <td>{{user['id']}}</td>
+                <td><a href="/user/{{user['id']}}">Show</td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+    <a href="/clear">Clear Session</a>
+</body>
+</html>

@@ -41,7 +41,17 @@ The (flaskEnv) indicates that your virtualenv is now active. If we install any d
 
 (flaskEnv) $ pip install flask
 
-6. deactivate
+6. we get out of the myEnvironments folder
+
+cd ..
+
+7. we navigate into the folder where our project sits
+
+cd OjeksO\Ejksl
+
+8.  we work!
+
+9. deactivate
 
 go back to normal environment;
 
