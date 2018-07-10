@@ -5,46 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <!-- bootstrap styling -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- custom styling -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
 </head>
 <body>
     <div class="container">
-        <div class="score">
-            <h3>Your Gold:</h3>
-            <h3>{{ earnings }}</h3>
+        <div class="score row">
+            <h5 class="col-md-2">Your Gold:</h5>
+            <h5 class="col-md-1">{{ session['earnings'] }}</h5>
         </div>
-        <div class="jobs">
-            <div class="job">
-                <h4>Farm</h4>
-                <h5>(earns 10 - 20 golds)</h5>
-                <form action="/earn" name="activity" value="Farm" method="POST">
-                    <input type="submit" value="Find Gold!">
+        <div class="jobs row">
+            <div class="job col-md-2">
+                <h4 class="text-center">Farm</h4>
+                <h6 class="text-center">(earns 10 - 20 golds)</h6>
+                <form class="text-center" action="/earn" method="POST">
+                    <button type="submit" name="activity" value="Farm">Find Gold!</button>
                 </form>
             </div><!-- end of job -->
-            <div class="job">
-                <h4>Cave</h4>
-                <h5>(earns 5 - 10 golds)</h5>
-                <form action="/earn" name="activity" value="Cave" method="POST">
-                    <input type="submit" value="Find Gold!">
+            <div class="job col-md-2">
+                <h4 class="text-center">Cave</h4>
+                <h6 class="text-center">(earns 5 - 10 golds)</h6>
+                <form class="text-center" action="/earn" method="POST">
+                    <button type="submit" name="activity" value="Cave">Find Gold!</button>
                 </form>
             </div><!-- end of job -->
-            <div class="job">
-                <h4>House</h4>
-                <h5>(earns 2 - 5 golds)</h5>
-                <form action="/earn" name="activity" value="House" method="POST">
-                    <input type="submit" value="Find Gold!">
+            <div class="job col-md-2">
+                <h4 class="text-center">House</h4>
+                <h6 class="text-center">(earns 2 - 5 golds)</h6>
+                <form class="text-center" action="/earn" method="POST">
+                    <button type="submit" name="activity" value="House">Find Gold!</button>
                 </form>
             </div><!-- end of job -->
-            <div class="job">
-                <h4>Casino</h4>
-                <h5>(earns/takes 0 - 50 golds)</h5>
-                <form action="/earn" name="activity" value="Casino" method="POST">
-                    <input type="submit" value="Find Gold!">
+            <div class="job col-md-2">
+                <h4 class="text-center">Casino</h4>
+                <h6 class="text-center">(earns/takes 0 - 50 golds)</h6>
+                <form class="text-center"action="/earn" method="POST">
+                    <button type="submit" name="activity" value="Casino">Find Gold!</button>
                 </form>
             </div><!-- end of job -->
         </div><!-- end of jobs -->
-        <div class="history">
-            <h5>Activities</h5>
-            <textarea rows="6" columns="300"></textarea>
+        <div class="history row">
+            <h6 class="col-md-8">Activities</h6>
+            <textarea class="col-md-8">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </textarea>
         </div>
     </div><!-- end of container -->
 </body>

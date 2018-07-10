@@ -1,0 +1,22 @@
+.score .col-md-1 {
+    outline: 1px solid black;
+}
+
+.job {
+    outline: 1px solid black;
+}
+
+.job h6 {
+    font-size: 0.7em;
+}
+
+.history h6{
+    margin-left: 2em;
+}
+
+textarea {
+    height: 10em;
+    padding: 0;
+    font-size: 0.5em;
+    line-height: 0.6em;
+}
