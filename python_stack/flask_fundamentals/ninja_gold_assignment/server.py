@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, request,redirect
+from flask import Flask, render_template, session, request, redirect
 import random
 app = Flask(__name__)
 app.secret_key = "earnmoneyninja"
@@ -10,17 +10,22 @@ def index():
 @app.route("/earn", methods=['POST'])
 def earn():
     session['earnings'] = 0
-    session['activity'] = request.form["activity"]
-    today = request.form['activity']
-    if today == "Farm":
+    session['activity'] = []
+    if request.form['activity'] == "Farm":
         earns = random.randint(10,21)
-    elif today == "Cave":
+        session['activity'].append("Farm")
+    elif request.form['activity'] == "Cave":
         earns = random.randint(5,11)
-    elif today == "House":
+        session['activity'].append("Cave")
+    elif request.form['activity'] == "House":
         earns = random.randint(2,6)
-    elif today == "Casino":
+        session['activity'].append("House")
+    elif request.form['activity'] == "Casino":
         earns = random.randint(-50,51)
+        session['activity'].append("Casino")
     else:
         earns = 0
     session['earnings'] += earns
     return redirect('/')    
+
+app.run(debug=True)
