@@ -32,4 +32,9 @@ def earn():
     session['messages'].append(message)
     return render_template("index.html", earnings=session['earnings'], messages=session['messages'], earns=earns)    
 
+@app.route("/clear")
+def clearSession():
+    session.clear()
+    return redirect("/")
+
 app.run(debug=True)
