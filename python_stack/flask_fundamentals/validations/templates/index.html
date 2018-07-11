@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Basic Validation Template</title>
+</head>
+<body>
+    <!-- the function "get_flashed_messages()" let's us access and render flash messages -->
+    <!-- with <variable_name> creates the variable that will hold the messages -->
+    <h1>Enter a Valid (any) Name!</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form action="name" method="POST">
+        Name: <input type="text" name="name">
+        <input type="submit" value="Submit">
+    </form>
+    {% with alerts = get_flashed_messages() %}
+        {% if messages %}
+            {% for alert in messages %}
+                <p>{{ alert }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <h1>Enter a Valid Email!</h1>
+    <form action="email" method="POST">
+        Email : <input type="text" name="email">
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
