@@ -1,0 +1,40 @@
+1.
+E0602:Undefined variable 'SQLAlchemy'
+
+Cause:  commented out the following line
+
+from flask_sqlalchemy import SQLAlchemy
+
+2.
+E0602:Undefined variable 'text'
+
+Cause:  commented out the following line
+
+from sqlalchemy.sql import text
+
+which affects the following function:
+
+def query_db(self, query, data=None):
+        result = self.db.session.execute(text(query), data)
+
+3.
+E0602:Undefined variable 'db'
+
+Cause:  mistype a variable name
+
+def __init__(self, app, d):
+        config = {
+                'host': 'localhost',
+                'database': db, # we got db as an argument
+                'user': 'root',
+                'password': 'root',
+                'port': '3306' # change the port to match the port your SQL server is running on
+        }
+
+4. 
+E0001:invalid syntax (<string>, line 29)
+
+Cause:  mistyped if statement
+
+elf query[0:6].lower() == 'insert':
+
