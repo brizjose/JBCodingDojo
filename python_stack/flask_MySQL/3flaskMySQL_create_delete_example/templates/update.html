@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Update</title>
+</head>
+<body>
+    {% for user in user %}
+    <h2>Update Email and Password for {{user['first_name']}} {{user['last_name']}}</h2>
+    <form action="/users/user_update/{{user.id}}" method="post">
+        New Email: <input type="text" name="email">
+        New Password: <input type="text" name="pword">
+        <input type="submit">
+    </form>
+    {% endfor %}    
+</body>
+</html>

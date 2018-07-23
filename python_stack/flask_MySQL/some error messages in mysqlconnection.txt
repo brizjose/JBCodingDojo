@@ -38,3 +38,43 @@ Cause:  mistyped if statement
 
 elf query[0:6].lower() == 'insert':
 
+5.
+sqlalchemy.exc.StatementError
+StatementError: (sqlalchemy.exc.InvalidRequestError) 
+A value is required for bind parameter 'specific_id' [SQL: u'SELECT * FROM users WHERE user.id = %s;'] 
+[parameters: [{}]] (Background on this error at: http://sqlalche.me/e/cd3x)
+
+Cause:  the query and data dictionaries have to be created, see that syntax complies with MySQL Workbench standards
+
+6. sqlalchemy.exc.OperationalError
+OperationalError: (_mysql_exceptions.OperationalError) 
+(1054, "Unknown column 'user.id' in 'where clause'") [SQL: u'SELECT * FROM users WHERE user.id = %s;'] 
+[parameters: (u'1',)] (Background on this error at: http://sqlalche.me/e/e3q8) 
+
+Cause:  the table is called 'users' and not 'user', so correct syntax to read 'users.id'
+
+7.
+sqlalchemy.exc.ProgrammingError
+ProgrammingError: (_mysql_exceptions.ProgrammingError) (1064, "You have an error in your SQL syntax; 
+check the manual that corresponds to your MySQL server version for the right syntax to use near 
+'UDATE users SET users.email = 'jacksonfive@jacksonfive.com', users.password = 'm' at line 1") 
+[SQL: u'UDATE users SET users.email = %s, users.password = %s'] 
+[parameters: (u'jacksonfive@jacksonfive.com', u'michaelrocks')] (Background on this error at: http://sqlalche.me/e/f405)
+
+Cause:  syntax error inside the query, check syntax and retry
+
+8.
+werkzeug.exceptions.BadRequestKeyError
+BadRequestKeyError: 400 Bad Request: KeyError: 'user_id'
+
+Cause:  the data on the html is not passing through the handler function; be sure that the syntax matches all the way 
+from the html to the link arguments and variables in side the function
+
+9.
+Method Not Allowed
+The method is not allowed for the requested URL.
+
+Cause:  no method specified on Flask route, and posting from form, so need to specify whether POST or GET.
+
+
+

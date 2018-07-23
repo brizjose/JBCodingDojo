@@ -1,4 +1,4 @@
-1. select records
+ 1. select records
 
 SELECT <column> FROM <table>
 WHERE <condition>
