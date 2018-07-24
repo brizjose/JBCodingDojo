@@ -76,5 +76,38 @@ The method is not allowed for the requested URL.
 
 Cause:  no method specified on Flask route, and posting from form, so need to specify whether POST or GET.
 
+10.
+Not Found
+The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
 
+Cause:  the route not found anywhere on flask.  check syntax of html <form action='#####'> and flask routes, and correct where necessary.
+
+11.
+sqlalchemy.exc.OperationalError
+OperationalError: (_mysql_exceptions.OperationalError) 
+(1049, "Unknown database 'email_validations'") 
+(Background on this error at: http://sqlalche.me/e/e3q8)
+
+Cause:  the database with that name does not exist in MySQL.  Check if it does and its correct name.
+
+12.
+UnboundLocalError
+UnboundLocalError: local variable 'email' referenced before assignment
+
+Cause:  python reads from top to bottom.  make sure you declare variables before making use of them.
+
+13.
+TypeError
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+
+Cause:  no return statement in the function.  make sure to return something at end of handler function
+
+14.
+ValueError
+ValueError: too many values to unpack
+
+Cause: got this message when trying to implement flask flash categories
+Fix: include the following inside the get_flashed_messages() function:
+
+ {% with messages = get_flashed_messages(with_categories=true) %}
 
