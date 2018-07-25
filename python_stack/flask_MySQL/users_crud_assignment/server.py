@@ -10,6 +10,11 @@ print mysql.query_db("SELECT * FROM users")
 def index():
     users = mysql.query_db("SELECT * FROM users")
     return render_template('index.html', all_users = users)
+
+@app.route("/create")
+def create():
+    return render_template("create.html")
+
 @app.route("/add_users", methods=["POST"])
 def add_users():
     first_name = request.form["first_name"]
@@ -25,6 +30,7 @@ def add_users():
     }
     result = mysql.query_db(query,data)
     return redirect('/')
+
 @app.route("/users/<user_id>")
 def show(user_id):
     query = "SELECT * FROM users.users WHERE id = :specific_id"
@@ -33,6 +39,7 @@ def show(user_id):
     }
     users = mysql.query_db(query,data)
     return render_template("show.html", users=users[0])
+
 @app.route("/users/edit/<user_id>")
 def edit(user_id):
     query = "SELECT * FROM users.users WHERE id = :specific_id"
@@ -41,6 +48,7 @@ def edit(user_id):
     }
     users = mysql.query_db(query,data)
     return render_template("edit.html", users=users[0])
+
 @app.route("/update_users/<user_id>", methods=["POST"])
 def udate(user_id):
     first_name = request.form["first_name"]
@@ -57,4 +65,22 @@ def udate(user_id):
     }
     users = mysql.query_db(query,data)
     return redirect("/users/{}".format(user_id))
+
+@app.route('/users/delete/<user_id>')
+def delete_request(user_id):
+    query = "SELECT * FROM users WHERE users.id = :specific_id;"
+    data = { 'specific_id': user_id }
+    user = mysql.query_db(query,data)
+    return render_template('confirm.html', user=user)
+
+# create a route to a function that deletes the users...
+@app.route('/users/delete_now/<user_id>')
+def delete_user(user_id):
+    query = "DELETE FROM users WHERE users.id = :specified_id"
+    data = {
+            'specified_id':user_id
+            }
+    mysql.query_db(query,data)
+    return redirect('/')
+
 app.run(debug=True)
