@@ -92,19 +92,11 @@ def login():
                 flash("Please check credentials") 
         else:
             flash("Email does not exist")
-    return redirect('/')
-                #check database for user
+    return redirect('/welcome')
 
-                    #if user
-                        #check password
-                            #if password match
-                                #log them in
-                            #else 
-                                #error message
-                    #else
-                        #error message
-            #else
-                #error message
-
+@app.route('/welcome')
+def welcome():
+    user = mysql.query_db("SELECT * FROM users WHERE id = {}".format(session['user_id']))[0]
+    return render_template("welcome.html", user=user)
 
 app.run(debug=True)
