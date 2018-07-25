@@ -9,6 +9,7 @@ mysql = MySQLConnector(app,'the_wall')
 @app.route('/')
 def index():
     return render_template("index.html")
+
 #REGISTRATION
 @app.route('/register', methods=['POST'])
 def register():    
@@ -93,11 +94,11 @@ def login():
         #if user does not exist        
         else:
             flash("Email does not exist")        
-    return redirect('/welcome')
+    return redirect('/wall')
 
 @app.route('/welcome')
 def welcome():
     user = mysql.query_db("SELECT * FROM users WHERE id = {}".format(session['user_id']))[0]
-    return render_template("welcome.html", user=user)
+    return render_template("wall.html", user=user)
 
 app.run(debug=True)
