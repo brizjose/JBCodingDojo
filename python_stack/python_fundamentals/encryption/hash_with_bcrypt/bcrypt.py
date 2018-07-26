@@ -1,18 +1,18 @@
 from flask import Flask, render_template, request, redirect, session, flash
 from mysqlconnection import MySQLConnector
-import md5
+#import bcrypt
+from flask.ext.bcrypt import Bcrypt
+
 import re
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 app = Flask(__name__)
+#create the bcrypt object
+bcrypt = Bcrypt(app)
 app.secret_key = "regisvalid1234"
-mysql = MySQLConnector(app,'message_wall_assignment')
-
+mysql = MySQLConnector(app,'the_wall')
 @app.route('/')
 def index():
-    if "user_id" in session:
-        return redirect('/welcome')
-    else:
-        return render_template("index.html")
+    return render_template("index.html")
 
 #REGISTRATION
 @app.route('/register', methods=['POST'])
@@ -47,7 +47,7 @@ def register():
         'fname':request.form['fname'],
         'lname':request.form['lname'],
         'email':request.form['email'],
-        'pword':md5.new(request.form['pword']).hexdigest()
+        'pword':bcrypt.generate_password_hash(request.form['pword'])
     }   
     #store it to db
     mysql.query_db(query,data)
@@ -88,12 +88,13 @@ def login():
         #if user exists, db will return a dictionary with the information
         if len(users) > 0:
             user = users[0]
-            password = md5.new(request.form['pword']).hexdigest()
+            password = request.form['pword']
+            bcrypt.check_password_hash(users[0]['password'], password)
             #validate password by comparing with input with that in the db
             if password == users[0]['password']:
                 session['user_id'] = user['id']
-                #flash("Succesful login, user id:{}".format(session['user_id']))
-                return redirect('/welcome')
+                flash("Succesful login, user id:{}".format(session['user_id']))
+                return render_template('wall.html')
             else:
                 flash("Please check credentials") 
         #if user does not exist        
@@ -103,45 +104,7 @@ def login():
 
 @app.route('/welcome')
 def welcome():
-    query = "SELECT * FROM users WHERE id = :logged_id"
-    data = {
-        'logged_id':session['user_id']
-    }
-    session['logged_user'] = mysql.query_db(query,data)[0]['first_name']
-    message_query = "SELECT CONCAT_WS(' ', users.first_name, users.last_name) AS Posted_by, users.id AS Posted_by_id, messages.message AS Message, messages.id AS Message_id, messages.updated_at AS Date_and_Time FROM users JOIN messages ON users.id = messages.user_id;"
-    messages = mysql.query_db(message_query)
-    return render_template("wall.html", logged_user=session['logged_user'], all_messages=messages)
-
-@app.route('/messages', methods=['POST'])
-def post_message():
-    if "user_id" not in session:
-        return redirect('/')
-    query = "INSERT INTO `messages` (`message`, `user_id`, `created_at`, `updated_at`) VALUES (:message, :user, now(), now());"
-    data = {
-        'message':request.form['message'],
-        'user':session['user_id']
-    }
-    message = mysql.query_db(query,data)
-    return redirect('/welcome')
-
-@app.route('/comment/<message_id>', methods=['POST'])
-def post_comment(message_id):
-    if "user_id" not in session:
-        return redirect('/')
-    query = "INSERT INTO `comments` (`comment`, `user_id`, `message_id`, `created_at`, `updated_at`) VALUES (:comment, :user, :message, now(), now());"
-    data = {
-        'comment':request.form['comment'],
-        'user':session['user_id'],
-        'message':message_id
-    }
-    comment = mysql.query_db(query,data)
-    return render_template('wall.html', comment=comment, logged_user=session['logged_user'])
-
-#LOGOUT
-@app.route('/logout', methods=['POST'])
-def logout():
-    session.clear()
-    return redirect('/')
-
+    user = mysql.query_db("SELECT * FROM users WHERE id = {}".format(session['user_id']))[0]
+    return render_template("wall.html", user=user)
 
 app.run(debug=True)
