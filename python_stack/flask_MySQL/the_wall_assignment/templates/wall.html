@@ -28,10 +28,10 @@
                         <button type="button" class="btn btn-link">Delete Message</button>
                     </form>
                     {% endif %} 
-                        {% for comment in message %}
+                        {% for comment in all_comments %}
                             <ul>
-                            {% if message.commented_message == message.message_id: %}
-                                <li class="comment">{{ message['comment'] }} -commented by {{ message['commentator'] }} on {{ message['comment_date'] }}</li>
+                            {% if comment.commented_message == message.message_id %}
+                                <li class="comment">{{ comment.comment }} -commented by {{ comment.commentator }} on {{ comment.comment_date }}</li>
                             {% endif %}
                             </ul>
                         {% endfor %}

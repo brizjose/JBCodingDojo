@@ -108,9 +108,11 @@ def welcome():
         'logged_id':session['user_id']
     }
     session['logged_user'] = mysql.query_db(query,data)[0]['first_name']
-    message_query = "SELECT m.id AS message_id, m.message AS message, CONCAT_WS(' ',u.first_name, u.last_name) AS posted_by, u.id AS posted_by_id, DATE_FORMAT(m.updated_at, '%M %d %Y') AS message_date, c.comment AS comment, CONCAT_WS(' ', cm.first_name, cm.last_name) as commentator, c.message_id AS commented_message, DATE_FORMAT(c.updated_at, '%M %d %Y') AS comment_date FROM messages m LEFT JOIN comments c ON c.message_id = m.id JOIN users u ON m.user_id = u.id Left JOIN users cm ON c.user_id = cm.id ORDER BY m.updated_at;"
+    message_query = "SELECT m.id AS message_id, m.message AS message, CONCAT_WS(' ',u.first_name, u.last_name) AS posted_by, u.id AS posted_by_id, DATE_FORMAT(m.updated_at, '%M %d %Y') AS message_date FROM messages m JOIN users u ON m.user_id = u.id  ORDER BY m.updated_at;"
+    comment_query = "SELECT c.comment AS comment, CONCAT_WS(' ', cm.first_name, cm.last_name) as commentator, c.message_id AS commented_message, DATE_FORMAT(c.updated_at, '%M %d %Y') AS comment_date FROM comments c Left JOIN users cm ON c.user_id = cm.id ORDER BY c.message_id;"
     messages = mysql.query_db(message_query)
-    return render_template("wall.html", logged_user=session['logged_user'], all_messages=messages)
+    comments = mysql.query_db(comment_query)
+    return render_template("wall.html", logged_user=session['logged_user'], all_messages=messages, all_comments=comments)
 
 @app.route('/messages', methods=['POST'])
 def post_message():
