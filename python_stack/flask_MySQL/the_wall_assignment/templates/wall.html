@@ -13,24 +13,28 @@
         <form action="/logout" method="post">
             <button type="button" class="btn btn-dark">Logout</button>
         </form>
-        <h3>Welcome {{ logged_user }}!</h3>
+        <h2>Welcome {{ logged_user }}!</h2>
         <div class="row">
-            <h4>Post a fun message on the wall...</h4>
+            <h3>Post a fun message on the wall...</h3>
             <form action="/messages" method="post">
             <textarea name="message" cols="120" rows="3"></textarea>
             <input type="submit" class="btn btn-primary">
             </form>
             {% for message in all_messages %}
                 <div class="message">
-                    <p>{{ message.message }} -posted by {{ message.posted_by }} on {{ message.message_date }}</p>
+                    <h4>{{ message.message }} -posted by {{ message.posted_by }} on {{ message.message_date }}</h4>
                     {% if message.posted_by_id == session['user_id'] %}
                     <form action="/delete/{{message.message_id}}" method="post">
                         <button type="button" class="btn btn-link">Delete Message</button>
                     </form>
                     {% endif %} 
-                    {% if message.commented_message == message.message_id: %}
-                        <p class="comment">{{ message.comment }} -commented by {{ message.commentator }} on {{ message.comment_date }}</p>
-                    {% endif %}
+                        {% for comment in message %}
+                            <ul>
+                            {% if message.commented_message == message.message_id: %}
+                                <li class="comment">{{ message['comment'] }} -commented by {{ message['commentator'] }} on {{ message['comment_date'] }}</li>
+                            {% endif %}
+                            </ul>
+                        {% endfor %}
                 </div>    
                 <form action="/comment/{{message.message_id}}" method="post">
                     <textarea name="comment" cols="100" rows="1"></textarea>
