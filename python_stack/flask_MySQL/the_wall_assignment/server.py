@@ -108,7 +108,7 @@ def welcome():
         'logged_id':session['user_id']
     }
     session['logged_user'] = mysql.query_db(query,data)[0]['first_name']
-    message_query = "SELECT CONCAT_WS(' ', users.first_name, users.last_name) AS Posted_by, users.id AS Posted_by_id, messages.message AS Message, messages.id AS Message_id, messages.updated_at AS Date_and_Time FROM users JOIN messages ON users.id = messages.user_id;"
+    message_query = "SELECT m.id AS message_id, m.message AS message, CONCAT_WS(' ',u.first_name, u.last_name) AS posted_by, u.id AS posted_by_id, DATE_FORMAT(m.updated_at, '%M %d %Y') AS message_date, c.comment AS comment, CONCAT_WS(' ', cm.first_name, cm.last_name) as commentator, c.message_id AS commented_message, DATE_FORMAT(c.updated_at, '%M %d %Y') AS comment_date FROM messages m LEFT JOIN comments c ON c.message_id = m.id JOIN users u ON m.user_id = u.id Left JOIN users cm ON c.user_id = cm.id ORDER BY m.updated_at;"
     messages = mysql.query_db(message_query)
     return render_template("wall.html", logged_user=session['logged_user'], all_messages=messages)
 
@@ -121,7 +121,7 @@ def post_message():
         'message':request.form['message'],
         'user':session['user_id']
     }
-    message = mysql.query_db(query,data)
+    mysql.query_db(query,data)
     return redirect('/welcome')
 
 @app.route('/comment/<message_id>', methods=['POST'])
@@ -134,8 +134,17 @@ def post_comment(message_id):
         'user':session['user_id'],
         'message':message_id
     }
-    comment = mysql.query_db(query,data)
-    return render_template('wall.html', comment=comment, logged_user=session['logged_user'])
+    mysql.query_db(query,data)
+    return redirect('/welcome')
+
+@app.route('/delete/<message_id>', methods=['POST'])
+def delete_user(message_id):
+    query = "DELETE FROM messages WHERE id = :specified_id"
+    data = {
+            'specified_id':message_id
+            }
+    mysql.query_db(query,data)
+    return redirect('/welcome')
 
 #LOGOUT
 @app.route('/logout', methods=['POST'])
