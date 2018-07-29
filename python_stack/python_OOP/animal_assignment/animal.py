@@ -12,6 +12,6 @@ class Animal(object):
         print self.health
         return self
     
-animal1 = Animal("Boon")
+#animal1 = Animal("Boon")
 
-animal1.walk().walk().walk().run().run().displayHealth()
+#animal1.walk().walk().walk().run().run().displayHealth()

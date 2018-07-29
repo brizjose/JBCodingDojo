@@ -10,10 +10,11 @@ class Dragon(Animal):
     def displayHealth(self):
         print "I am a Dragon"
         super(Dragon, self).displayHealth()
+        return self
         
 
     
 
 dragon1 = Dragon("Albathorth")
 
-dragon1.fly().displayHealth()
+dragon1.fly().displayHealth().fly().displayHealth()
