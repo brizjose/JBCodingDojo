@@ -14,6 +14,6 @@ print user1.logged
 
 #notice logged was inherited, the name and email parameters are passed through __init__, self is still implicit
 
-user2 = User()
+#       user2 = User()
 
 #we cannot do this anymore because __init__ is expecting the name and email parameters

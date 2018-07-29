@@ -1,0 +1,30 @@
+OOP - Object Oriented Programming
+
+Create blueprints for the elements, each with things they have and things they do...
+
+Each blueprint is a CLASS
+what they have is called ATTRIBUTES
+what they can do is called METHODS
+
+Each object created using the blueprint is called an INSTANCE
+
+each INSTANCE = OBJECT
+with INSTANCE ATTRIBUTES and INSTANCE METHODS
+
+METHODS and ATTRIBUTES can be PRIVATE, and they become unavailable to the INSTANCES
+only available if they are PUBLIC
+
+CONSTRUCTOR is a method that creates OBJECTs
+DESTRUCTUOR is a method that is run when an OBJECT is erased from memory
+
+OBJECTs can generate other versions of itself or upgrade with additional attributes and methods from the base OBJECT
+with upgraded objects, the CLASS can INHERIT all PUBLIC attributes from the parent, plus have their own. 
+apart from PUBLIC and PRIVATE methods, there are PROTECTED methods that do get inherited but remain hidden from public
+
+OOP (Object Oriented Programming) is something that has revolutionized the way programming is done today. 
+If used correctly, it can save you loads of time. 
+It will also help you to avoid repeating code that solves the same simple problem, making code maintenance easy. 
+
+Understanding object-oriented programming principles is the key to making your code more organized and modular.
+
+OOP is used in web development as a way of producing many copies of similar objects.
