@@ -1,25 +1,28 @@
 class MathDojo(object):
     def __init__(self):
-        self.result = 0
+        self.output = 0
+
     def show_list(self):
         print self.__dict__
         print len(self.list)
+
     def add(self, *numbers):
         self.list = list(numbers)
         for i in range(len(self.list)):
-            self.result += self.list[i]
+            self.output += self.list[i]
         return self
+
     def subtract(self, *numbers):
         self.list = list(numbers)
         for i in range(len(self.list)):
-            self.result -= self.list[i]
-            print self.result
+            self.output -= self.list[i]
         return self
-    def show_result(self):
-        print self.result
+
+    def result(self):
+        print self.output
         return self
 
 md = MathDojo()
 
-md.subtract(100).add(200).add(2).add(2).show_result()
+md.add(2).add(2,5).subtract(3,2).result()
 
