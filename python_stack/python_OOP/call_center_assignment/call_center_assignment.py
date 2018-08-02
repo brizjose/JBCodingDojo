@@ -1,3 +1,5 @@
+import datetime
+
 class Call(object):
     def __init__(self, id, name, number, time, reason):
         self.id = id
@@ -8,9 +10,9 @@ class Call(object):
     def display(self):
         print self.__dict__
 
-call1 = Call(1, "Bob", "786-590-2234", "1:15", "broken leg")
-call2 = Call(2, "Debbie", "520-624-8857", "1:16", "stolen car")
-call3 = Call(3, "Chuck", "504-333-5026", "1:19", "lost cat")
+call1 = Call(1, "Bob", "786-590-2234", datetime.datetime(2018,8,1,1,22), "broken leg")
+call2 = Call(2, "Debbie", "520-624-8857", datetime.datetime(2018,8,1,1,25), "stolen car")
+call3 = Call(3, "Chuck", "504-333-5026", datetime.datetime(2018,8,1,1,27), "lost cat")
 
 call_list = []
 
@@ -40,10 +42,13 @@ class CallCenter(object):
         self.calls.pop(0)
         self.queue = len(self.calls)
         return self
+    def delete_by_phone_number(self, phone_number):
+        pass
+
 
 cc1 = CallCenter(call_list)
 
-call4 = Call(4, "Pedro", "305-888-3300", "2:30", "insomnia")
-call5 = Call(5, "Kiki", "713-220-3789", "2:36", "internet challenge")
+call4 = Call(4, "Pedro", "305-888-3300", datetime.datetime(2018,8,1,1,31), "insomnia")
+call5 = Call(5, "Kiki", "713-220-3789", datetime.datetime(2018,8,1,1,28), "internet challenge")
 
 cc1.info().add(call4).info().delete().add(call5).info().delete().info()
