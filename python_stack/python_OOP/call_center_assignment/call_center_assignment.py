@@ -18,5 +18,32 @@ call_list.append(call1)
 call_list.append(call2)
 call_list.append(call3)
 
-for i, call in range(len(call_list)):
-    print call[i]
+
+class CallCenter(object):
+    def __init__(self, call_list):
+        self.calls = call_list
+        #print type(self.calls)
+        self.queue = len(self.calls)
+        #print self.queue
+    def info(self):
+        print "Queue is {} calls long".format(self.queue)
+        print "Call list details:"
+        #print self.calls
+        for i, call in enumerate(self.calls):
+            print "Call ID: {} Name: {} Number: {} Reason: {}".format(call.id, call.name, call.number, call.reason)
+        return self
+    def add(self, new_call):
+        self.calls.append(new_call)
+        self.queue = len(self.calls)
+        return self
+    def delete(self):
+        self.calls.pop(0)
+        self.queue = len(self.calls)
+        return self
+
+cc1 = CallCenter(call_list)
+
+call4 = Call(4, "Pedro", "305-888-3300", "2:30", "insomnia")
+call5 = Call(5, "Kiki", "713-220-3789", "2:36", "internet challenge")
+
+cc1.info().add(call4).info().delete().add(call5).info().delete().info()
