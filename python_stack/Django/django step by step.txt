@@ -1,0 +1,126 @@
+1.
+pip list
+
+to see all programs installed in current directory or environment
+
+2.
+virtual environment
+
+create a ve if using different version of installed programs
+
+MAC:
+> virtualenv djangoEnv
+> source djangoEnv/bin/activate
+(djangoEnv)>pip install Django==1.10
+
+Windows:
+> python -m virtualenv djangoEnv
+> call djangoEnv/Scripts/activate
+(djangoEnv)>pip install django
+
+
+3.
+creating a django project:
+
+	1.Navigate to a location where you want to create your project (e.g. either your desktop folder or your user folder)
+
+> django-admin startproject main
+		
+	This is going to create the main project for us, from which we’re going to have to do a few small set-up things before we can really get going
+
+	2.Navigate into the main directory that you just created. At this point you could run "python manage.py runserver" and take a look at what your development server delivers to the browser.
+	
+> cd main
+  # Make a new apps directory
+> mkdir apps
+  # Navigate into apps
+> cd apps
+
+	3. Next you'll create an __init__.py file. This lets the Python interpreter know that this folder is present and may be accessed.
+
+  # Bash: (Mac, Linux)
+ > touch __init__.py
+  # PCs: (Command Prompt)
+ > nul> __init__.py
+  # Powershell:  
+ > New-Item -Path . -Name __init__.py -ItemType "file"
+
+	4. Notice that when you started a project a manage.py file was automatically created. That file can be called using one of several commands to request a specific operation. 
+	Let's do that from within the apps directory to start a new app.
+
+> python ../manage.py startapp first_app
+	
+	5. By running python ../manage.py startapp first_app you've created a new app. In your apps folder – let's make sure we can use our new app. 
+	We have to do a couple more things before we can get started.
+
+	In settings.py (this file lives inside the main directory. The main directory is alongside apps and manage.py) we are going to have to add our application to the project. 
+	That means adding apps.first_app to our INSTALLED_APPS list:
+
+	  # Inside main/settings.py
+  INSTALLED_APPS = [
+      'django.contrib.admin',
+      'django.contrib.auth',
+      'django.contrib.contenttypes',
+      'django.contrib.sessions',
+      'django.contrib.messages',
+      'django.contrib.staticfiles',
+  ]
+  # BECOMES:
+   INSTALLED_APPS = [
+       'apps.first_app', ### added this line!
+       'django.contrib.admin',
+       'django.contrib.auth',
+       'django.contrib.contenttypes',
+       'django.contrib.sessions',
+       'django.contrib.messages',
+       'django.contrib.staticfiles',
+   ]
+
+	6. Go to your main folder and run python manage.py runserver from the terminal. Then proceed to localhost:8000. 
+	You should see a simple page congratulating you on a Django-powered page. Stop the server now (ctrl-C) before moving on to the next step.
+
+> python manage.py runserver
+
+	7. To make sure we're sending the right routes to our first app, we'll set up our main project's urls to make requests to our app's routing file. 
+	This file, urls.py, will be inside of our directory 'apps/first_app'.
+
+	Now open main/urls.py in your text editor. We're going to modify this document in order to use routes from our first_app:
+	Modify that file, so it looks like this:
+
+from django.conf.urls import url, include 	# Notice we added include
+from django.contrib import admin
+
+urlpatterns = [
+    url(r'^', include('apps.first_app.urls')) 	# And now we use the include function to pull in our first_app.urls...
+]
+
+	8. Our app's urls file doesn't exist yet. Let's make it. From the command line:
+
+> cd apps/first_app
+> touch urls.py
+
+	9. Open urls.py in your text editor. Add the code below:
+
+	apps/first_app/urls.py
+
+from django.conf.urls import url
+from . import views           		# This line is new!
+  
+urlpatterns = [
+    url(r'^$', views.index)     	# This line has changed!
+]
+
+	10. Let’s build our first views function, index, inside of views:
+
+	apps/first_app/views.py
+
+from django.shortcuts import render, HttpResponse, redirect
+  
+  # the index function is called when root is visited
+def index(request):
+  response = "Hello, I am your first request!"
+  return HttpResponse(response)
+
+
+
+
