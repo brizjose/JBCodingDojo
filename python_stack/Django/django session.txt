@@ -1,0 +1,35 @@
+Session
+
+Session in Django gets saved even if we leave the browser
+
+1. 
+run the following commands in the directory withere manage.py resides, this makes session available:
+
+  # Need to be in same directory as manage.py file
+  > python manage.py makemigrations
+  > python manage.py migrate
+
+2.
+request.session is a key:value dictionary;  the capture from forms occurs in the views.py with some methods with example syntax:
+
+request.session['name'] = request.POST['name']
+request.session['counter'] = 100
+
+3.
+in the html file, these are accessible as dictionaries:
+
+{{ request.session.name }}
+
+4.
+some useful methods:
+
+request.session['key']  ---retrieve (get) the value stored in ['key']
+
+request.session['key'] - 'value'  ---set the value that will be stored by ['key']
+
+del request.session['key']  ---deletes a session key if it exists, throws a keyError if it does not.  Use along with 'try' and 'except' since it's better to ask for forgiveness than permission
+
+'key' in request.session  ---returns a boolean of whether a key is in session or not
+
+{{ request.session.name }}  ---use dot notation (.) to access request.session keys from templates since square brackets [] aren't allowed there
+
