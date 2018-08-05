@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Survey Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container">
+        <form class="jumbotron" action="process" method="post">
+          {% csrf_token %}
+            <div class="form-group">
+              <label for="NameInput">Your Name</label>
+              <input type="text" class="form-control" id="NameInput" name="name" placeholder="Full Name">
+            </div>
+            <div class="form-group">
+              <label for="SelectLocation">Dojo Location:</label>
+              <select class="form-control" id="SelectLocation" name="location">
+                <option>Silicon Valley, CA</option>
+                <option>Seattle, WA</option>
+                <option>Los Angeles, CA</option>
+                <option>Dallas, TX</option>
+                <option>Chicago, IL</option>
+                <option>Tulsa, OK</option>
+                <option>Tysons Corner, VA</option>
+                <option>East Bay, CA</option>
+                <option>Online</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="SelectLocation">Favorite Language:</label>
+              <select class="form-control" id="SelectLocation" name="language">
+                <option>.NET/C#</option>
+                <option>Ruby on Rails</option>
+                <option>Python</option>
+                <option>Mean</option>
+                <option>Java</option>
+                <option>iOS Swift</option>
+                <option>HTML/CSS/JS</option>
+              </select>
+            </div>
+           <div class="form-group">
+              <label for="Comment">Comment (Optional)</label>
+              <textarea class="form-control" id="Comment" name="comment" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+          </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4">Hello, coder!</h1>
+            <p class="lead">This is a simple survey, help us learn more about you.</p>
+            <hr class="my-4">
+            <p>Click below to start survey.</p>
+            <a class="btn btn-primary btn-lg" href="start" role="button">
+                {% csrf_token %}
+                Start survey</a>
+          </div>
+    </div>
+</body>
+</html>
