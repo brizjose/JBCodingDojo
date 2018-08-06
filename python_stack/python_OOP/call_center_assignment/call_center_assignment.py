@@ -34,6 +34,12 @@ class CallCenter(object):
         for i, call in enumerate(self.calls):
             print "Call ID: {} Name: {} Number: {} Reason: {}".format(call.id, call.name, call.number, call.reason)
         return self
+    def sort(self):
+        for i in range(0,self.queue):
+            for j in range(0,self.queue - 1 - i):
+                if self.calls[j].time > self.calls[j+1].time:
+                    self.calls[j], self.calls[j+1] = self.calls[j+1], self.calls[j]
+        return self
     def add(self, new_call):
         self.calls.append(new_call)
         self.queue = len(self.calls)
@@ -51,4 +57,4 @@ cc1 = CallCenter(call_list)
 call4 = Call(4, "Pedro", "305-888-3300", datetime.datetime(2018,8,1,1,31), "insomnia")
 call5 = Call(5, "Kiki", "713-220-3789", datetime.datetime(2018,8,1,1,28), "internet challenge")
 
-cc1.info().add(call4).info().delete().add(call5).info().delete().info()
+cc1.info().add(call4).info().delete().add(call5).sort().info().delete().info()

@@ -1,18 +1,9 @@
-def bubble_sort(arr):
-    switch = 0
-    count = 0
-    while count <= switch:
-        for i in range(0,len(arr)-1):
-            print "pre = "+str(switch)
-            if arr[i] > arr[i+1]:
-                arr[i], arr[i+1] = arr[i+1], arr[i]
-                switch += 1
-                print "post = "+str(switch)
-            else:
-                print arr
-                return arr
-        count += 1
-        print "C"+str(count)
+def bubble(arr):
+    for i in range(0,len(arr)):
+        for j in range(0,len(arr)-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
     print arr
-bubble_sort([4,3,2,1])
+bubble([6,5,4,3,2,1])
+
     
