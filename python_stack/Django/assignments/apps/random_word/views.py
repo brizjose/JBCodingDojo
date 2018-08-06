@@ -6,12 +6,12 @@ import random
 import string
 
 # Create your views here.
-counter = 1
+counter = 0
 def index(request):
     request.session['random_word'] = ''.join([random.choice(string.ascii_letters + string.digits) for n in xrange(14)])  
     print request.session['random_word']
     if 'counter' not in request.session:
-        request.session['counter'] = 1
+        request.session['counter'] = 0
     request.session['counter'] += 1
     print request.session['counter']
     context = {1:{'random_word' : request.session['random_word']}, 2:{'counter' : request.session['counter']}}
@@ -23,5 +23,6 @@ def generate(request):
 
 def reset(request):
     if request.method == 'GET':
-        request.session['counter'] = 0
+        for key in request.session.keys():
+            del request.session[key]
     return redirect('/random_word')

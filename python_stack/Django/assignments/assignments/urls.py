@@ -21,5 +21,6 @@ urlpatterns = [
     url(r'^', include('apps.time_display.urls')),
     url(r'^', include('apps.random_word.urls')),
     url(r'^', include('apps.survey.urls')),
+    url(r'^', include('apps.session_words.urls')),
     url(r'^admin/', admin.site.urls),
 ]

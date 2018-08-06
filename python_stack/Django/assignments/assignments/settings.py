@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'apps.time_display',
     'apps.random_word',
     'apps.survey',
+    'apps.session_words',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

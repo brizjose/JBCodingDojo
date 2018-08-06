@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Session Words</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'session_words/css/session_words.css' %}" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container mt-5">
+    <div class="row">
+        <form class="col" action="add_word">
+            {% csrf_token %}
+            <h4>Add a new word</h4>
+            <div class="form-group">
+                <input type="text" class="form-control" name="word" placeholder="any word">
+            </div>
+            <h4>Choose a color</h4>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="red" name="color" value="red">
+                <label class="form-check-label" for="red">
+                    Red
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="green" name="color" value="green">
+                <label class="form-check-label" for="green">
+                    Green
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="blue" name="color" value="blue">
+                <label class="form-check-label" for="blue">
+                    Blue
+                </label>
+            </div>
+            <h4 class="mt-3">Make a decision</h4>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="fonts" name="fonts" id="fonts">
+                <label class="form-check-label" for="fonts">
+                    show in BIG fonts!
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Add to Session</button>
+        </form>
+        <div class="col border-left border-dark">
+            <button type="submit" class="btn btn-danger d-block ml-auto">Clear Session</button>
+        </div>
+    </div>
+</div>    
+</body>
+</html>
