@@ -4,12 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Hello Django</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    {% load static %}
 </head>
 <body>
     <h1>Hello Django</h1>
-    <form action="new">
-        
+    <hr>
+    <h3>All Students</h3>
+    <ul>
+        {% for student in users %}
+            <li>{{ student }}</li>
+        {% endfor %}
+    </ul>
+    <hr>
+    <h3>Create Students Here</h3>
+    <form action="new" method="post">{% csrf_token %}
+        <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" name="fname">
+        </div>  
+        <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" name="lname">
+        </div>  
+        <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" name="dob">
+        </div>  
+        <input type="submit" value="Add User">    
     </form>
+    <hr>
+    <h3>Create Class Of Here</h3>
+    <form action="grad" method="post">{% csrf_token %}
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" name="title">
+            </div>  
+            <div class="form-group">
+                <label for="gyear">Grad Year</label>
+                <input type="date" name="gyear">
+            </div>  
+            <input type="submit" value="Add Class Of">    
+        </form>
 </body>
 </html>
