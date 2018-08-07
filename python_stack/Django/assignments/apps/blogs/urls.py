@@ -9,5 +9,5 @@ urlpatterns = [
     # url(r'^update/(?P<blog>\d+)$', views.udpate),    
     url(r'^delete/(?P<blog>\d+)$', views.destroy),
     url(r'^create$', views.create),    
-    url(r'^(?P<blog>\d+)/$', views.blog),
+    url(r'^(?P<blog>\d+)$', views.blog),
 ]

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <title>Online Store</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container">
+        <h1>Dojo Store</h1>
+        <div class="row">
+            <h3 class="col-3">Item</h3>
+            <h3 class="col-2">Price</h3>
+            <h3 class="col-5">Actions</h3>
+        </div>
+        {% for item in merch %}
+            <div class="row">
+                <p class="col-3">{{ item.name }}</p>
+                <p class="col-2">${{ item.price }}</p>
+                <div class="col-5 form-group">
+                    <form action="buy/{{ item.id }}" method="POST">
+                        {% csrf_token %}
+                        Qty (1 - 99):
+                        <input type="number" name="qty" min="1" max="99" step="1">
+                        <input type="submit" value="Buy">
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
