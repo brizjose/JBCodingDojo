@@ -12,8 +12,8 @@
 </head>
 <body>
 <div class="container mt-5">
-    <div class="row">
-        <form class="col" action="add_word">
+    <ul class="row">
+        <form class="col" action="add_word" method="post">
             {% csrf_token %}
             <h4>Add a new word</h4>
             <div class="form-group">
@@ -40,7 +40,7 @@
             </div>
             <h4 class="mt-3">Make a decision</h4>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="fonts" name="fonts" id="fonts">
+                <input class="form-check-input" type="checkbox" value="big" name="font" id="fonts">
                 <label class="form-check-label" for="fonts">
                     show in BIG fonts!
                 </label>
@@ -48,8 +48,19 @@
             <button type="submit" class="btn btn-primary mt-3">Add to Session</button>
         </form>
         <div class="col border-left border-dark">
-            <button type="submit" class="btn btn-danger d-block ml-auto">Clear Session</button>
+            <form action="reset" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">
+                    Clear Session
+                </button>
+            </form>
         </div>
+        <h2>{{ message }}</h2>
+        <ul>
+            {% for word in request.session.words %}
+            <li class="{{word.class}} {{ word.size }}">{{ word.word }}</li><p> - posted {{ word.date }} at {{ word.time }}</p>
+            {% endfor %}
+        </ul>
     </div>
 </div>    
 </body>

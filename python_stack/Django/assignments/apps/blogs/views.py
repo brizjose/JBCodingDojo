@@ -8,14 +8,26 @@ from django.utils.crypto import get_random_string
 from models import *
 
 def index(request):
-    bloggers = {
-        1 : {"blogger" : "Joe Doe" , "theme" : "conspiracy theories"},
-        2 : {"blogger" : "Ta Da" , "theme" : "aliens and meteor strikes"}
-    }
-    return render(request, "blogs/index.html", bloggers)
+    return render(request, 'blogs/index.html', { "blogs": Blog.objects.all() })
 
 def new(request): 
-    return HttpResponse("placeholder to display a new form to create a new blog")  
+    return render(request, 'blogs/new.html')  
+
+def show(request, id): 
+    return render(request, 'blogs/show.html', { "blog": Blog.objects.get(id = id) })  
+
+def update(request, id):
+	if len(errors):
+		for tag, error in errors.iteritems():
+			messages.error(request, error, extra_tags = tag)
+		return redirect('blogs/edit/'+id)
+	else:
+		blog = Blog.objects.get(id = id)
+		blog.name = request.POST['name']
+		blog.desc = request.POST['desc']
+		blog.save()
+		return redirect('/blogs')
+    # return redirect('../show/'+id) 
 
 def create(request):
 	if request.method == "POST":
@@ -31,9 +43,6 @@ def create(request):
 
 def blog(request, blog):
     return HttpResponse("placeholder to display blog number " + blog)
-
-def edit(request, blog):
-    return HttpResponse("placeholder to edit blog number " + blog)
 
 def destroy(request, blog):
     return redirect('/blogs')

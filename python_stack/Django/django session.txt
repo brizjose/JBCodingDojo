@@ -3,7 +3,7 @@ Session
 Session in Django gets saved even if we leave the browser
 
 1. 
-run the following commands in the directory withere manage.py resides, this makes session available:
+run the following commands in the directory where manage.py resides, this makes session available:
 
   # Need to be in same directory as manage.py file
   > python manage.py makemigrations
@@ -33,3 +33,5 @@ del request.session['key']  ---deletes a session key if it exists, throws a keyE
 
 {{ request.session.name }}  ---use dot notation (.) to access request.session keys from templates since square brackets [] aren't allowed there
 
+for key in request.session.keys():
+	del request.session[key]   ---delete all session keys when more than one 

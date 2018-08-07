@@ -9,7 +9,7 @@
 <body>
     <p>Random Word (attempt # {{ 2.counter }})</p>
     <p>{{ 1.random_word }}</p>
-    <form action='/random_word/generate' name='generate' method='POST'>
+    <form action='generate' name='generate' method='POST'>
         {% csrf_token %}
         <input type='submit' value='Generate'>
     </form>

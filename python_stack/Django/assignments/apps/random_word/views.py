@@ -8,12 +8,12 @@ import string
 # Create your views here.
 counter = 0
 def index(request):
-    request.session['random_word'] = ''.join([random.choice(string.ascii_letters + string.digits) for n in xrange(14)])  
-    print request.session['random_word']
+    request.session['random_word'] = ''.join([random.choice(string.ascii_letters + string.digits) for n in range(14)])  
+    # print request.session['random_word']
     if 'counter' not in request.session:
         request.session['counter'] = 0
     request.session['counter'] += 1
-    print request.session['counter']
+    # print request.session['counter']
     context = {1:{'random_word' : request.session['random_word']}, 2:{'counter' : request.session['counter']}}
     return render(request, "random_word/index.html", context)
 
