@@ -8,5 +8,3 @@ urlpatterns = [
     url(r'^thanks$', views.thanks),     	
     url(r'^reset$', views.reset)     	
 ]
-
-# url(r'^(?P<blog>\d+)$', views.blog),
