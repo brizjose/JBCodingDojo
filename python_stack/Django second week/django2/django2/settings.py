@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.user_login',
+    'apps.dojo_ninjas',
 ]
 
 MIDDLEWARE = [
