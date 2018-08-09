@@ -1,0 +1,97 @@
+Foreign Key relationships
+
+Class Author has many names and Book has many names as well.  
+
+One Author can write many books, so notice the author attribute in Book model and how it establishes the one to many relationship.
+
+Many publishers can publish many books and books can have many publishers, so a many to many relationship makes sense.  The many to many model field can be in any of the two related models, so choose the one where it makes more sense to have it.  
+
+See examples below:
+
+class Author(models.Model):
+  name = models.CharField(max_length=255)
+  created_at = models.DateTimeField(auto_now_add=True)
+  updated_at = models.DateTimeField(auto_now=True)
+class Book(models.Model):
+  title = models.CharField(max_length=255)
+  author = models.ForeignKey(Author, related_name="books")
+  created_at = models.DateTimeField(auto_now_add=True)
+  updated_at = models.DateTimeField(auto_now=True)
+class Publisher(models.Model):
+  name = models.CharField(max_length=255)
+  books = models.ManyToManyField(Book, related_name="publishers")
+  created_at = models.DateTimeField(auto_now_add=True)
+  updated_at = models.DateTimeField(auto_now=True)
+
+To create a book, the attribute values are passed on with a create function that can work in two or one line:
+
+def create():
+	this_author = Author.objects.get(id=2)
+	this_book = Book.objects.create(title="Little Women", author=this_author)
+#or only one line:
+	this_book = Book.objects.create(title="Little Women", author=Author.objects.get(id=2))
+
+Retrieving data:
+
+then you can look for the book's author:
+
+	this_book.author.name
+
+Using filter() to retrieve data:
+
+	this_author = Author.objects.get(id=2)
+	books = Book.objects.filter(author=this_author)
+# one-line version:
+	books = Book.objects.filter(author=Author.objects.get(id=2))
+
+Search by a field in the related object using double underscore:
+
+	books = Book.objects.filter(author__name="Louise May Alcott")
+	books = Book.objects.filter(author__name__startswith="Lou")
+
+Reverse lookups:
+
+you can retrieve data by related_name field, this is called reverse lookup and uses the method .all()
+
+	this_author.books.all():  --- will look for this_author in the related_name field of all Book models and make a list of them
+
+Many to many add()
+
+this_book = Book.objects.get(id=4)
+this_publisher = Publisher.objects.get(id=2)
+this_publisher.books.add(this_book)
+
+or, because they are symmetrical:
+
+this_book.publishers.add(this_publisher)
+
+To retrieve:
+
+this_book.publisher.all()  -- all publishers of this book
+this_publisher.book.all()  -- all books by this publisher
+
+Templating:
+
+views.py can render an html by making a dictionary named, example, context:
+
+book_project/apps/books/views.py
+
+def index(request):
+  context = {"authors": Author.objects.all()}
+  return render(request, "books/index.html", context)
+
+book_project/apps/books/templates/books/index.html
+
+<h1>Author List</h1>
+<ul>
+  {% for author in authors %}
+    <li>{{author.name}}
+      <ul>
+        {% for book in author.books.all %}
+          <li><em>{{book.title}}</em></li>
+        {% endfor %}
+      </ul>
+    </li>
+  {% endfor %}
+</ul>
+

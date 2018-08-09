@@ -1,0 +1,128 @@
+Django ORM
+
+Objects are created in models.py then imported to views.py
+
+  # Inside models.py
+  from __future__ import unicode_literals
+  from django.db import models
+  # Create your models here.
+
+  class Blog(models.Model):
+      name = models.CharField(max_length=255)
+      desc = models.TextField()
+      created_at = models.DateTimeField(auto_now_add = True)
+      updated_at = models.DateTimeField(auto_now = True)
+      def__repr__(self):
+	return "<Blog object: {} {}>".format(self.name, self.desc)
+  class Comment(models.Model):
+      comment = models.CharField(max_length=255)
+      created_at = models.DateTimeField(auto_now_add = True)
+      updated_at = models.DateTimeField(auto_now = True)
+	# Notice the association made with ForeignKey for a one-to-many relationship
+      	# There can be many comments to one blog
+      blog = models.ForeignKey(Blog, related_name = "comments")
+      
+  class Admin(models.Model):
+      first_name = models.CharField(max_length=255)
+      last_name = models.CharField(max_length=255)
+      email = models.CharField(max_length=255)
+      # Following is an example of a many to many relationship
+      # Notice blogs is plural as well as its related_anme admins
+      blogs = models.ManyToManyField(Blog, related_name = "admins")
+      created_at = models.DateTimeField(auto_now_add = True)
+      updated_at = models.DateTimeField(auto_now = True)
+      def__repr__(self):
+	return "<Admin: {} {}>".format(self.first_name, self.last_name)
+
+Note:  the def__repr__(self):  method is helpful as this is the info about the object that will get printed on queries, instead of the <objea;sldkj>. 
+
+
+Column Types:
+
+	models.CharField -- has a required parameter max_length
+	models.TextField -- has no maximum length
+	models.IntegerField
+	models.BooleanField
+	models.DateTimeField -- can take parameter to auto populate it upon creation of record:  auto_now_add=True which is useful for created_at
+				-- can take one that auto updates any time the object is modified:  auto_now=True which is useful for updated_at
+	models.ForeignKey  -- these go in the "many" side, just like in SQL -- models.ForeignKey(Blog, related_name="comments")
+	models.ManyToManyField -- use in the many side that makes more sense -- models.ManyToManyField(Blog, related_name="admins")
+	models.OneToOneField
+
+Migrations
+
+Necessary when database are set up and every time they are updated:
+
+	>python manage.py makemigrations  	--- stages the changes
+	>python manage.py migrate		--- applies the changes
+
+Database
+
+during production, Django uses SQLite
+for deployment, better switch to MySQL
+
+The Django ORM queries will be the same no matter which database is used
+
+Python Shell
+
+-python shell helps navigate objects
+
+	>python manage.py shell
+
+-import one or many models
+
+	>from apps.{{app_name}}.models import *   ---- or replace * with specific models you want to work with, example Author, Book, Publisher
+
+
+ORM Commands
+
+1. Creating a new record:
+	
+	Blog.objects.create(name="Coding Dojo", desc="cool lectures")
+
+2. Alternative way of creating a new record
+
+	b = Blog(name="Coding Dojo", desc="cool lectures")
+	b.name = "Coding Dojo"
+	b.desc = "cool lectures"
+	b.save()
+
+3. Retrieve
+
+	Blog.objects.get(id=#)
+	Blog.objects.first()
+	Blog.objects.last()
+	Blog.objects.all()
+	Blog.objects.count()
+	Blog.objects.filter(name="Fred")
+	Blog.objects.exclude(name="Bambi")
+	Blog.objects.order_by("created_at")
+	Blog.objects.order_by("-created_at")  -- revereses the order
+	Blog.objects.raw(SELECT * FROM {{ app name }}_{{ class or table name }})  -- use raw SQL queries
+	Blog.objects.first().comments.all()    ---get all comments from first blog
+	Blog.objects.get(id=14).comments.first()   ---get the first comment of blog # 14
+	Comment.objects.get(id=15).blog.name   ---get blog name where comment id#15 was posted
+	Admin.objects.filter(first_name__startswith="S")   ---filters objects with first_name that starts with "S"
+	Admin.objects.exclude(first_name__contains="E")   ---excludes objects where first_name contains "E"
+	Admin.objects.filter(age__gt=80)    ---filters objects with age greater than 80
+
+4.  Combining and assigning:   it can get complicated.   if too complicated, best to use raw queries
+	
+	admin = Admin.objects.filter(last_name__contains="o").exclude(first_name__contains="o")
+	admin = Admin.objects.filter(age__lt=70)|Admin.objects.filter(first_name__startswith="S")
+
+	
+5. Update
+	
+	b = Blog.objects.first()
+	b.name = "JinjaExpert"
+	b.save()
+
+6. Delete record
+
+	b = Blog.objects.get(id=3)
+	b.delete()
+
+7. Set a relationship
+
+	Comment.objects.create(blog = Blog.objects.get(id=15), comment = "test")   ---creates new comment pointing to Blog id # 15	
