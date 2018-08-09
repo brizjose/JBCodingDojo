@@ -40,7 +40,7 @@ Note:  the def__repr__(self):  method is helpful as this is the info about the o
 Column Types:
 
 	models.CharField -- has a required parameter max_length
-	models.TextField -- has no maximum length
+	models.TextField -- has no maximum length, can be set as blank=True
 	models.IntegerField
 	models.BooleanField
 	models.DateTimeField -- can take parameter to auto populate it upon creation of record:  auto_now_add=True which is useful for created_at
@@ -105,6 +105,7 @@ ORM Commands
 	Admin.objects.filter(first_name__startswith="S")   ---filters objects with first_name that starts with "S"
 	Admin.objects.exclude(first_name__contains="E")   ---excludes objects where first_name contains "E"
 	Admin.objects.filter(age__gt=80)    ---filters objects with age greater than 80
+	Author.objects.filter(email__contains="ruby")    ---gets all authors with an email containing word "ruby"
 
 4.  Combining and assigning:   it can get complicated.   if too complicated, best to use raw queries
 	
