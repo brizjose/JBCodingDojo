@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'apps.user_login',
     'apps.dojo_ninjas',
     'apps.book_authors',
+    'apps.validations',
 ]
 
 MIDDLEWARE = [
