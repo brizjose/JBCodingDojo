@@ -7,35 +7,48 @@ Objects are created in models.py then imported to views.py
   from django.db import models
   # Create your models here.
 
+  class User(models.Model):
+      username = models.CharField(max_length=255)
+      password = models.CharField(max_length=255)
+      created_at = models.DateTimeField(auto_now_add = True)
+      updated_at = models.DateTimeField(auto_now = True)
+      def__repr__(self):
+	return "<User object: {}>".format(self.username)
+
   class Blog(models.Model):
       name = models.CharField(max_length=255)
       desc = models.TextField()
+      user = models.ForeignKey(User)
       created_at = models.DateTimeField(auto_now_add = True)
       updated_at = models.DateTimeField(auto_now = True)
       def__repr__(self):
 	return "<Blog object: {} {}>".format(self.name, self.desc)
+
   class Comment(models.Model):
       comment = models.CharField(max_length=255)
       created_at = models.DateTimeField(auto_now_add = True)
       updated_at = models.DateTimeField(auto_now = True)
-	# Notice the association made with ForeignKey for a one-to-many relationship
-      	# There can be many comments to one blog
-      blog = models.ForeignKey(Blog, related_name = "comments")
+      blog = models.ForeignKey(Blog, related_name = "comments")		---one to many relationship
       
   class Admin(models.Model):
       first_name = models.CharField(max_length=255)
       last_name = models.CharField(max_length=255)
       email = models.CharField(max_length=255)
-      # Following is an example of a many to many relationship
-      # Notice blogs is plural as well as its related_anme admins
-      blogs = models.ManyToManyField(Blog, related_name = "admins")
+      blogs = models.ManyToManyField(Blog, related_name = "admins")	---many to many relationship
       created_at = models.DateTimeField(auto_now_add = True)
       updated_at = models.DateTimeField(auto_now = True)
       def__repr__(self):
 	return "<Admin: {} {}>".format(self.first_name, self.last_name)
 
+  class AdminInBlog(models.Model)					---many to many relationship table
+      user = models.ForeignKey(User)
+      blog = models.ForeignKey(Blog)
+
 Note:  the def__repr__(self):  method is helpful as this is the info about the object that will get printed on queries, instead of the <objea;sldkj>. 
 
+Related_name:
+
+	used to do reverse queries
 
 Column Types:
 
@@ -73,12 +86,24 @@ Python Shell
 
 	>from apps.{{app_name}}.models import *   ---- or replace * with specific models you want to work with, example Author, Book, Publisher
 
+Methods
+
+Some methods will run through the manager, some methods will run from the object model itself.  
+For example:
+	
+	Blog.objects.create() 	runs through the manager
+	
+	Blob.name = "Bob"
+	Blob.save()		runs through the object model	
+
 
 ORM Commands
 
 1. Creating a new record:
 	
-	Blog.objects.create(name="Coding Dojo", desc="cool lectures")
+	Blog.objects.create(name="Coding Dojo", desc="cool lectures", user=...)    note that user requires a user instance because it's a foreignkey
+
+	Blog.objects.create(name="Coding Dojo", desc="cool lectures", user=User.objects.get(id=#))
 
 2. Alternative way of creating a new record
 
@@ -88,13 +113,13 @@ ORM Commands
 	b.save()
 
 3. Retrieve
-
-	Blog.objects.get(id=#)
+	Blog.objects.all()		---retrieves all objects as a list	
+	Blog.objects.all()[0]   	---retrieves the first object 
+	Blog.objects.get(id=#)		---retrives an object, example, if id=4 does not exist, returns an error DoesNotExist
+	Blog.objects.filter(id=#)  	---retrieves a list, example, if id=4 does not exist, returns an empty list []
 	Blog.objects.first()
 	Blog.objects.last()
-	Blog.objects.all()
 	Blog.objects.count()
-	Blog.objects.filter(name="Fred")
 	Blog.objects.exclude(name="Bambi")
 	Blog.objects.order_by("created_at")
 	Blog.objects.order_by("-created_at")  -- revereses the order
@@ -126,4 +151,37 @@ ORM Commands
 
 7. Set a relationship
 
-	Comment.objects.create(blog = Blog.objects.get(id=15), comment = "test")   ---creates new comment pointing to Blog id # 15	
+	One to one:	
+	
+	Blog.objects.create(title="my first blog", desc="pour my ideas here", user=User.objects.get(id="3"))   ---creates one to one
+	
+	Retrieving with one to one:
+		
+	Blog.objects.get(id=1).title		---gets the blog title
+	Blog.objects.get(id=1).user_id		---gets the user id
+	Blog.objects.get(id=1).user		---gets the user object itself
+
+	One to many:
+
+	Comment.objects.create(comment = "test", blog = Blog.objects.get(id=15))   ---creates new comment pointing to Blog id # 15	
+
+	query to find the blog's name:
+	
+	Comment.objects.get(id=1).blog.name	---query returns comment ID one, then we can find the name of the blog it is in
+	Comment.objects.all()[0].blog.name     ---query returns all comments, then we can get the name of the blog where the 1st comment is
+
+	query with the related name:
+
+	Blog.objects.get(id=1).comments.all()	---returns a list of all comments in blog id one 
+
+	Many to many:
+
+	AdminInBlog.objects.create(user=User.objects.get(id=2), blog=Blog.objects.get(id=3))  ---creates admin in blog relationship
+
+	what user is admin of a blog?
+	
+	AdminInBlog.objects.filter(blog=Blog.objects.get(id=3))		---gets the list of users that are admins of blog id 3
+	AdminInBlog.objects.filter(blog=Blog.objects.get(id=3))[0].user.username    ---gets the username of the first admin
+	AdminInBlog.objects.filter(blog=Blog.objects.get(id=3))[1].user.username    ---gets the username of the first admin
+	
+
