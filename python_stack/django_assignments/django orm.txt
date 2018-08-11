@@ -93,8 +93,8 @@ For example:
 	
 	Blog.objects.create() 	runs through the manager
 	
-	Blob.name = "Bob"
-	Blob.save()		runs through the object model	
+	Blog.name = "Bob"
+	Blog.save()		runs through the object model	
 
 
 ORM Commands

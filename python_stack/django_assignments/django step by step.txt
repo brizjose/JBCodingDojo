@@ -104,10 +104,10 @@ urlpatterns = [
 	apps/first_app/urls.py
 
 from django.conf.urls import url
-from . import views           		# This line is new!
+from . import views           	
   
 urlpatterns = [
-    url(r'^$', views.index)     	# This line has changed!
+    url(r'^$', views.index)     
 ]
 
 	10. Let’s build our first views function, index, inside of views:

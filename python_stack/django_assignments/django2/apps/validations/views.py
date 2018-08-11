@@ -6,6 +6,9 @@ from .models import Blog
 
 # Create your views here.
 
+def index(request):
+    return HttpResponse('working on validations')
+
 def update(request):
     errors = Blog.objects.basic_validator(request.POST)
     if len(errors):
