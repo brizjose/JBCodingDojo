@@ -67,7 +67,8 @@ def editing(request, id):
   # if request.POST['password'] == []:
   #   error
   # else:
-  user.password=request.POST['password']
+  user.password = request.POST['password']
+  user.updated_at = datetime.now()
   user.save()
   for key in request.session.keys():
     del request.session[key]

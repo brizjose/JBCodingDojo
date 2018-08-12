@@ -16,6 +16,7 @@
                 <th>Full Name</th>
                 <th>Email</th>
                 <th>Created_at</th>
+                <th>Updated_at</th>
                 <th>Actions</th>
             </tr>
             {% for user in users %}
@@ -24,6 +25,7 @@
                 <th>{{user.first_name}} {{user.last_name}}</th>
                 <th>{{user.email}}</th>
                 <th>{{user.created_at}}</th>
+                <th>{{user.updated_at}}</th>
                 <th>
                     <form>{%csrf_token%}
                         <a class="show" href="users/{{user.id}}" method="post">Show</a>

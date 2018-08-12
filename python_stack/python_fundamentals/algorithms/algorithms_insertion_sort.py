@@ -1,15 +1,14 @@
 def insertion(arr):
     for i in range(0,len(arr)):
+        # print "i loop :",arr[i]
         num = arr[i]
-        print num
-        for j in range(i-1,len(arr),-1):
+        for j in range(i-1,-1,-1):
+            # print "j loop :",arr[j]
             ber = arr[j]
-            print ber
-            if arr[j]>num:
-                arr[j+1]=arr[j]
-            else:
-                arr[j+1]=num
-            print arr
-insertion([65,54,43,23])
+            if num < ber:
+                arr[i] = arr[j]
+                arr[j] = num
+        print arr
+insertion([3,2,1,0])
 
 
