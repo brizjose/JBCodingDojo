@@ -4,41 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login and Registration</title>
+    <title>Register</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'user_dashboard/css/style.css' %}">
 </head>
 <body>
-    <div class="container">
-        <div class="row justify-content-end">
+    <div class="container p-3">
+        <div class="row">
             <div class="col">
                 <ul class="messages mt-5 mb-0">
-                    {% for log_message in messages %}
+                    {% for message in messages %}
                     <li 
-                    {% if log_message.tags == "error" %} 
+                    {% if message.tags == "error" %} 
                         class="text-white bg-warning"
-                    {% elif log_message.tags == "success" %}
+                    {% elif message.tags == "success" %}
                         class="text-white bg-success" 
-                    {% endif %}>{{ log_message }}
+                    {% endif %}>{{ message }}
                     </li>
+                    {% if message.tags == "success" %}
+                    <a href="/login"><button type="button" action="/login" method="get" class="btn btn-outline-light btn-sm">Go To Login</button></a>
+                    {% endif %}   
                     {% endfor %}
                 </ul>
             </div>
             <div class="col-sm-4">
-                <h3>Existing Users</h3>
-                <form action="/login" method="post">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <input type="text" name="uname" class="form-control" placeholder="Username">
-                        <input type="password" name="pword" class="form-control" placeholder="Password">
-                        <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-4">
                 <h3>New Users</h3>
-                <form action="/register" method="post">
+                <form action="/register_process" method="post">
                     {% csrf_token %}
                     <div class="form-group">
                         <input type="text" name="fname" class="form-control" placeholder="First Name">
@@ -46,7 +38,7 @@
                         <input type="email" name="email" class="form-control" placeholder="Email">
                         <input type="text" name="uname" class="form-control" placeholder="Username">
                         <input type="password" name="pword" class="form-control" placeholder="Password">
-                        <button type="submit" class="btn btn-primary btn-block">Submit registration</button>
+                        <button type="submit" class="btn btn-dark btn-block">Submit registration</button>
                     </div>
                 </form>
             </div>

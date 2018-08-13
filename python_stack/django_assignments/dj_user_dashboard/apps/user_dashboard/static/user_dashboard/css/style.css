@@ -1,0 +1,32 @@
+.container {
+    background-color: #CF7220;
+}
+h1 {
+    color: #7220CF;
+}
+
+h3 {
+    color: #731277;
+}
+
+h4 {
+    color: #4D064F;
+}
+
+p {
+    color: #1F0220;
+}
+
+button {
+    opacity: 0.7;
+}
+
+input[type=text], input[type=password], input[type=email] {
+    background-color: #C5C281;
+}
+
+li {
+    list-style: none;
+    padding: 0.3rem;
+    border-radius: 0.02rem;
+}

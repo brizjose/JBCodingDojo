@@ -3,8 +3,8 @@ from __future__ import unicode_literals
 from django.shortcuts import render, HttpResponse, redirect
 import bcrypt
 from django.contrib import messages
-
 from .models import *
+
 # Registration:
     # make dict with request.POST data and save it to database
     # validate that:
