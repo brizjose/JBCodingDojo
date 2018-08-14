@@ -20,7 +20,7 @@ def users(request):
   return render(request, "users/users.html", context)
 
 def new(request):
-  return render(request, "users/new.html")
+  return render(request, "users/register.html")
 
 def process(request):
   User.objects.create(

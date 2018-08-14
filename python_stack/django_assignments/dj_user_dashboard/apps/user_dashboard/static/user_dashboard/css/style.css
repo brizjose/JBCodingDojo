@@ -5,7 +5,7 @@ h1 {
     color: #7220CF;
 }
 
-h3 {
+h3, th, a>p {
     color: #731277;
 }
 
@@ -13,7 +13,7 @@ h4 {
     color: #4D064F;
 }
 
-p {
+p, td {
     color: #1F0220;
 }
 
@@ -28,5 +28,24 @@ input[type=text], input[type=password], input[type=email] {
 li {
     list-style: none;
     padding: 0.3rem;
-    border-radius: 0.02rem;
+}
+
+a.delete, a.edit, a.update {
+    color: #C5C281;
+    background-color: #731277;
+}
+
+a.show {
+    color: #731277;
+}
+
+a>p {
+    margin-top: 1em;
+    display: inline-block;
+    padding: 0.3em 0.6em;
+    background-color: #C5C281;
+}
+
+.btn-sm {
+    margin: 1rem;
 }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Information</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'user_dashboard/css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h3>User Information</h3>
+        <p>Full Name: {{user.fname}} {{user.lname}}</p>
+        <p>Email: {{user.email}}</p>
+        <p>Username: {{user.uname}}</p>
+        <p>Created: {{user.created_at}}</p>
+        <p>Updated: {{user.updated_at}}</p>
+        <form>{%csrf_token%}
+            <a class="update" href="/users/{{user.id}}/edit" method="post">Update</a>
+            <a class="delete" href="/users/{{user.id}}/delete" method="post">Delete</a>
+        </form>
+        <div class="d-flex justify-content-end">
+            <a href="/"><button type="button" action="/" method="get" class="btn btn-outline-light btn-sm px-3">Back to main page</button></a>
+        </div>
+    </div>
+</body>
+</html>
