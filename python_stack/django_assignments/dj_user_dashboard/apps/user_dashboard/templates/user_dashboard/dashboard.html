@@ -11,7 +11,12 @@
 </head>
 <body>
     <div class="container">
-        <!-- <p>Logged in as: {{ request.session.logged_user.fname }}</p> -->
+        {% if 'logged_user' in request.session %}
+        <div class="row d-flex justify-content-end px-3">
+            <p>Logged in as {{ request.session.user }}</p>
+            <a href="/logout" class="logout">Log Out</a>
+        </div>
+        {% endif %}
         <h1>Users Dashboard</h1>
         <table class="table">
             <thead>
@@ -19,9 +24,14 @@
                     <th scope="col">id</th>
                     <th scope="col">Full Name</th>
                     <th scope="col">Email</th>
+                    {% if request.session.user_profile == 'admin' %}
+                    <th scope="col">User Profile</th>
+                    {% endif %}
                     <th scope="col">Created_at</th>
                     <th scope="col">Updated_at</th>
+                    {% if request.session.user_profile == 'admin' %}
                     <th scope="col">Actions</th>
+                    {% endif %}
                 </tr>    
             </thead>
             <tbody>
@@ -30,22 +40,28 @@
                     <th scope="row">{{user.id}}</th>
                     <td><a class="show" href="/users/{{user.id}}" method="post">{{user.fname}} {{user.lname}}</a></td>
                     <td>{{user.email}}</td>
+                    {% if request.session.user_profile == 'admin' %}
+                    <td>{{user.user_profile}}</td>
+                    {% endif %}
                     <td>{{user.created_at}}</td>
                     <td>{{user.updated_at}}</td>
+                    {% if request.session.user_profile == 'admin' %}
                     <td>
-                        <form>{%csrf_token%}
-                            <a class="edit" href="/users/{{user.id}}/edit" method="post">Edit</a>
-                            <a class="delete" href="/users/{{user.id}}/delete" method="post">Delete</a>
+                        <form method="POST">{% csrf_token %}
+                            <button type="submit" formaction="/users/{{user.id}}/edit">Edit</button>
+                            <button type="submit" formaction="/users/{{user.id}}/delete">Delete</button>
                         </form>
                     </td>
+                    {% endif %}
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-        <a href="/users/new"><button type="button" action="/login" method="get" class="btn btn-outline-light btn-sm px-3">Add a user</button></a>
-        <div class="d-flex justify-content-end">
-            <a href="/"><button type="button" action="/" method="get" class="btn btn-outline-light btn-sm px-3">Back to main page</button></a>
-        </div>
+        {% if request.session.user_profile == 'admin' %}
+        <form method="POST">{% csrf_token %}
+            <button type="submit" class="submit_message" formaction="/users/add">Add a user</button>
+        </form>
+        {% endif %}
     </div>
 </body>
 </html>

@@ -11,18 +11,68 @@
 </head>
 <body>
     <div class="container">
-        <h3>User Information</h3>
-        <p>Full Name: {{user.fname}} {{user.lname}}</p>
-        <p>Email: {{user.email}}</p>
-        <p>Username: {{user.uname}}</p>
-        <p>Created: {{user.created_at}}</p>
-        <p>Updated: {{user.updated_at}}</p>
-        <form>{%csrf_token%}
-            <a class="update" href="/users/{{user.id}}/edit" method="post">Update</a>
-            <a class="delete" href="/users/{{user.id}}/delete" method="post">Delete</a>
-        </form>
+        <h3>{{ user.fname }} {{ user.lname }} id # {{ user.id }}</h3>
+        <h6>Member since {{ user.created_at|date:"SHORT_DATE_FORMAT" }}</h6>
+        <div class="row dashboard">
+            <div class="col-3 user_dash p-3">
+                <p>Email: {{ user.email }}</p>
+                <p>Username: {{ user.uname }}</p>
+                <p>Updated: {{ user.updated_at|date:"SHORT_DATE_FORMAT" }}</p>
+                <form method="POST">{%csrf_token%}
+                    <button type="submit" formaction="/users/{{user.id}}/edit", formmethod="POST">Update</button>
+                    <button type="submit" formaction="/users/{{user.id}}/delete", formmethod="POST">Delete</button>
+                </form>
+            </div> 
+        </div>
+        <div class="row wall">
+            <div class="col px-3">
+                <form action="/message/{{ user.id }}" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="message">Write a message to {{ user.fname }}</label>
+                        <textarea class="form-control" id="message" name="message" rows="3"></textarea>
+                        <button class="submit_message" type="submit">Submit Message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row wall">
+            <div class="col mx-3">
+                {% if messages %}
+                {% for message in messages %}
+                <div class="d-flex justify-content-between">
+                    <p class="author_name">{{ message.author }} wrote</p>
+                    <p class="author_time">on {{ message.date }}</p>
+                </div>
+                <div class="wall_message">
+                    <p>{{ message.content }}</p>
+                </div>
+                <div class="col">
+                    {% if message.comments %}
+                    {% for comment in message.comments %}
+                    <div class="d-flex justify-content-between">
+                        <p class="author_name">{{ comment.author }} wrote</p>
+                        <p class="author_time">on {{ comment.date }}</p>
+                    </div>
+                    <div class="wall_comment">
+                        <p>{{ comment.content }}</p>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+                <form action="/comment/{{ user.id }}/{{ message.id }}" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group d-flex justify-content-end mx-3">
+                        <textarea class="form-control form-control-sm" id="comment" name="comment" rows="1"></textarea>
+                        <button type="submit" class="submit_comment">Comment</button>
+                    </div>
+                </form>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
         <div class="d-flex justify-content-end">
-            <a href="/"><button type="button" action="/" method="get" class="btn btn-outline-light btn-sm px-3">Back to main page</button></a>
+            <a href="/users/dashboard"><button type="button" method="get" class="btn btn-outline-light btn-sm px-3">Back to dashboard</button></a>
         </div>
     </div>
 </body>

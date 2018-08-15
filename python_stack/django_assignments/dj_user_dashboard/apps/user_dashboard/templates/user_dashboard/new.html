@@ -30,7 +30,7 @@
             </div>
             <div class="col-sm-4">
                 <h3>New Users</h3>
-                <form action="/register_process" method="post">
+                <form action="/add_process" method="post">
                     {% csrf_token %}
                     <div class="form-group">
                         <input type="text" name="fname" class="form-control" placeholder="First Name">
@@ -43,13 +43,13 @@
                             <input type="radio" name="admin" value="Yes">Yes<br> 
                             <input type="radio" name="admin" value="No" checked>No<br> 
                         </form> 
-                        <button type="submit" class="btn btn-dark btn-block">Submit registration</button>
+                        <button type="submit" class="btn btn-dark btn-block">Submit new</button>
                     </div>
                 </form>
             </div>
         </div>
         <div class="d-flex justify-content-end">
-            <a href="/"><button type="button" action="/" method="get" class="btn btn-outline-light btn-sm px-3">Back to main page</button></a>
+            <a href="/users/dashboard"><button type="button" method="get" class="btn btn-outline-light btn-sm px-3">Back to dashboard</button></a>
         </div>
     </div>
 </body>

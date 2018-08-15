@@ -71,7 +71,7 @@ class UserManager(models.Manager):
         if not EMAIL_REGEX.match(email):
             errors.append("Please use a valid email address")
         if len(uname) < 8:
-            errors.append("Please enter a username, at least 8 characters expected")
+            errors.append("Please enter a valid username, at least 8 characters expected")
         return errors
 
     def PasswordValidator(self, id, pword, pword_confirm):
@@ -86,20 +86,39 @@ class UserManager(models.Manager):
             errors.append("Passwords do not match")    
         return errors
 
-    # def EditUser(self, id, fname, lname, email):
-        
+    # def TimeConverter(self, right_now, message_time):
+    #     self.days_since = (right_now - message_time).days 
+    #     self.hours_since = self.days_since/24
+    #     self.minutes_since = self.days_since/(24*60)
+    #     if self.days_since >= 1:
+    #         time_since = str(self.days_since) + " days ago" 
+    #     if self.hours_since >= 1:
+    #         time_since = str(self.hours_since) + " hours ago" 
+    #     else:
+    #         time_since = str(self.minutes_since) + " minutes ago"
+    #     return time_since
+
 class User(models.Model):
     fname = models.CharField(max_length=255)
     lname = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
     uname = models.CharField(max_length=255)
     pword = models.CharField(max_length=255)
-    created_at = models.DateTimeField(default=datetime.now)
-    updated_at = models.DateTimeField(default=datetime.now)
-    # *************************
-    # Connect an instance of UserManager to our Blog model overwriting
+    user_profile = models.CharField(max_length=255)
+    created_at = models.DateTimeField(default=datetime.now())
+    updated_at = models.DateTimeField(default=datetime.now())
     objects = UserManager()
-    # *************************
     def __repr__(self):
         return "<{} {}>".format(self.fname, self.lname)
 
+class Message(models.Model):
+    user_to_id = models.ForeignKey(User, related_name="messages_received")
+    user_from_id = models.ForeignKey(User, related_name="messages_sent")
+    content = models.TextField(max_length=2000)
+    created_at = models.DateTimeField(default=datetime.now())
+
+class Comment(models.Model):
+    content = models.TextField(max_length=1000)
+    user = models.ForeignKey(User, related_name="comments")
+    message = models.ForeignKey(Message, related_name="comments")
+    created_at = models.DateTimeField(default=datetime.now())

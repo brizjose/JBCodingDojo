@@ -16,7 +16,10 @@
             <h3>This application uses the MVC framework.  Be sure to click all the links and try all the forms and to report any bugs, if any.</h3>
         </div>
         <div class="row announcement d-flex justify-content-center px-3">
-            <a href="/register"><button type="button" action="/register" method="get" class="btn btn-outline-light btn-lg mb-3 px-4">New User Registration</button></a> <a href="/login"><button type="button" action="/login" method="get" class="btn btn-outline-light btn-lg mb-3 px-4">Existing User Login</button></a>   
+            <form method="POST">{% csrf_token %}
+                <button type="submit" formaction="/register" class="btn btn-outline-light btn-lg mb-3 px-4">New User Registration</button>
+                <button type="submit" formaction="/login" class="btn btn-outline-light btn-lg mb-3 px-4">Existing User Login</button>
+            </form>
         </div>
         <div class="row announcement">
             <div class="col info">
