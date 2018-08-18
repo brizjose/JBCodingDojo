@@ -176,7 +176,16 @@ ORM Commands
 
 	Many to many:
 
+		If on a table:
+
 	AdminInBlog.objects.create(user=User.objects.get(id=2), blog=Blog.objects.get(id=3))  ---creates admin in blog relationship
+
+		If relationship has been defined on one line within the object:
+	
+	s1 = Student.objects.get(id=3)
+	c1 = Course.objects.get(id=6)
+	s1.students.add(c1)		---to create the relationship
+	s1.students.remove(c1)   	---to remove relationship
 
 	what user is admin of a blog?
 	

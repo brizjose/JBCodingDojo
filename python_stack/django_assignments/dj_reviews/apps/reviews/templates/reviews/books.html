@@ -1,0 +1,50 @@
+{% extends './layout.html' %}
+{% block title %}Book Page{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h5>"Hello, {{ request.session.user }}"</h5>
+        </div>
+        <div class="col d-flex justify-content-end">
+            <a href="{% url 'add' %}">Write a review</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h2>Recent Book Reviews:</h2>
+            <!-- make a list of three latest book reviews sorted in reverse chornological order -->
+            <!-- For each display: -->
+            <!-- Title -->
+            <!-- Star rating as stars -->
+            <!-- Reviewer's name as a link to the reviewer's page -->
+            <!-- The content of the review itself -->
+            <!-- Created at date only -->
+            <ul class="list-group">
+                {% for review in latest %}
+                <li class="list-group-item review">
+                    <a href="/books/{{ review.book.id }}"><p class="font-weight-bold">{{ review.book.title }}</p></a>
+                    <p class="font-italic">{{ review.content }}</p>
+                    <div class="d-flex align-items-center">
+                        <a href="/users/{{ review.user.id }}"><p>{{ review.user.first_name }} {{ review.user.last_name }}</p></a>
+                        <p> - {{ review.created_at|date }}</p>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div><!-- end of recent book reviews section -->
+        <div class="col">
+            <h2>Other Books Reviews:</h2>
+            <!-- make a scrolling textarea with links to other reviews -->
+            <!-- this is a list of book titles, each displaying as a link to the book page -->
+            <div class ="other_reviews border rounded h-50">
+                    {% for review in other %}
+                        <a href="/books/{{ review.book.id }}"><p class="font-weight-bold">{{ review.book.title }}</p></a>
+                    {% endfor %}
+            </div>
+        </div><!-- end of list of other book reviews -->
+    </div>
+</div>
+{% endblock %}
+

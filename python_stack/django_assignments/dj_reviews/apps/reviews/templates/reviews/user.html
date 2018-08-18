@@ -1,0 +1,36 @@
+{% extends './layout.html' %}
+{% block title %}User Information{% endblock %}
+{% block body %}
+<!-- user information with a count of the reviews-this uses annotate -->
+<!-- has links to reviews by the user, one by one-->
+<div class="container">
+    <div class="row">
+        <div class="col d-flex justify-content-end">
+            <a href="{% url 'add' %}">Write a review</a>
+            <a href="{% url 'books' %}">Home</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+            <p class="mb-0">Username: {{ user.username }}</p>
+            <p class="mb-0">Email: {{ user.email }}</p>
+            <p>Reviews: {{ user.review_count }}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h5>Reviews by {{ user.first_name }}:</h5>
+            <hr>
+            <ul>
+                {% for review in reviews %}
+                    <li class="review">
+                        <a href="/books/{{review.book.id}}"><p>{{ review.book.title }}</p></a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

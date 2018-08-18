@@ -1,0 +1,77 @@
+{% extends './layout.html' %}
+{% block title %}Book Reviews{% endblock %}
+{% block body %}
+<!-- displays a list of the three most recent reviews, each book title is a link to all of the book's reviews -->
+<!-- each reviewer name is a link to the user information page-->
+<!-- displays links to other book reviews-->
+<div class="container">
+    <div class="row">
+        <div class="col d-flex justify-content-end">
+            <a href="{% url 'add' %}">Write a review</a>
+            <a href="{% url 'books' %}">Home</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h2>{{ book.title }}</h2>
+            <h5><span class="font-weight-light">Author:</span> {{ book.author.first_name }} {{ book.author.last_name }}</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h3>Reviews:</h3>
+            <hr>
+            {% for review in reviews %}
+                <p class="mb-0">Rating: {{ review.rating }}</p>
+                <div class="d-flex align-items-center">
+                    <p class="mb-0"><a href="/users/{{ review.user.id }}" class="nested_link">{{ review.user.first_name }} {{ review.user.last_name }}</a> wrote: <span class="font-italic">{{ review.content }}</span></p>
+                </div>
+                <p class="mt-0">{{ review.created_at|date }}</p>
+                <hr>
+            {% endfor %}
+        </div>
+        <div class="col">
+            <h3>Add a review:</h3>
+            <form action="/books/{{ book.id }}/new_review" method="POST" class="form-group">{% csrf_token %} 
+                <div class="form-row">
+                    <div class="col-3">
+                        <label for="review" class="col-form-label">Review:</label>
+                    </div>
+                    <div class="col d-flex">
+                        <textarea class="flex-fill" name="review_content"></textarea>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-3">
+                        <label for="rating" class="col-form-label">Star Rating:</label>
+                    </div>
+                    <div class="col">
+                        <select name="rating">
+                            <option value="*">*</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary">Add Book Review</button>
+                </div>
+            </form>
+            <div class="col">
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li {% if message.tags == "error" %} class="text-white bg-warning" {% elif message.tags == "success" %} class="text-white bg-success" {% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

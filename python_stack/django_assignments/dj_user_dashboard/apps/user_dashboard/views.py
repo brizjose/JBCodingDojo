@@ -14,8 +14,8 @@ def index(request):
     return render(request, "user_dashboard/index.html")
 
 def login(request):
-    if request.method != 'POST':
-        return redirect('main')
+    # if request.method != 'POST':
+    #     return redirect('main')
     return render(request, "user_dashboard/login.html")
 
 def login_process(request):
@@ -37,8 +37,8 @@ def login_process(request):
     return redirect("/")
 
 def register(request):
-    if request.method != 'POST':
-        return redirect('main')
+    # if request.method != 'POST':
+    #     return redirect('main')
     return render(request, "user_dashboard/register.html")
 
 def register_process(request):
@@ -287,7 +287,7 @@ def message(request, id):
     message = request.POST['message']    
     message_to = User.objects.get(id=id)
     message_from = User.objects.get(id=request.session['logged_user'])
-    Message.objects.create(user_to_id=message_to, user_from_id=message_from, content=message)
+    Message.objects.create(user_to_id=message_to, user_from_id=message_from, content=message, created_at=datetime.now())
     return redirect('show', id)
 
 def comment(request, u_id, m_id):
@@ -298,5 +298,5 @@ def comment(request, u_id, m_id):
     comment = request.POST['comment']    
     comment_to = Message.objects.get(id=m_id)
     comment_from = User.objects.get(id=request.session['logged_user'])
-    Comment.objects.create(content=comment, user=comment_from, message=comment_to)
+    Comment.objects.create(content=comment, user=comment_from, message=comment_to, created_at=datetime.now())
     return redirect('show', u_id)
