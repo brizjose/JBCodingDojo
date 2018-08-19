@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Demo 1</title>
+    <!-- search:   'jquery cdn'   to get the latest link and paste here-->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <!-- go to   'getbootstrap.com'   to get latest link and paste here -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container">
+        <div class="col border">
+            <h1 class="m-3">Demo 1</h1>
+            <div class="d-flex justify-content-around">
+                <button id="json_btn" class="btn btn-primary">Fetch HttpResponse from user_login/all.json</button>
+                <button id="html_btn" class="btn btn-primary">Fetch HttpResponse from user_login/all.html</button>
+            </div>
+            <div id="html_btn" class="border m-3 p-1">Placeholder for Ajax content</div>
+        </div>
+    </div>
+
+    <script>
+    
+    $('#json_btn').click(function(){
+        console.log("json button has been clicked")
+    });
+    
+    $('#html_btn').click(function(){
+        console.log("html button has been clicked")
+    });
+
+    
+    </script>
+
+</body>
+</html>
