@@ -27,4 +27,4 @@ class MathDojo(object):
 
 md = MathDojo()
 
-md.add([1],3,4).add([3,5,7,8], [2,4.3,1.25]).subtract(2,[2,3],[1.1,2.3]).subtract((2,3)).result()
+md.add([1],3,4).add([3,5,7,8], [2,4.3,1.25]).subtract(2,(2,3),[1.1,2.3]).subtract((2,3)).result()
