@@ -1,0 +1,38 @@
+{% extends 'ajax_post/layout.html' %}
+{% block content %}
+
+<form id="new_note_form" action='/ajax_post/process' method='post'>{% csrf_token %}
+    <fieldset>
+        <legend>Add a Note:</legend>
+        <textarea id="note_content" rows="3" columns="10" name="content"></textarea>
+        <input id="submit_note" type='submit' value='Submit'>
+    </fieldset>
+</form>
+
+<div id="placeholder"></div>
+
+<!-- this was giving me a csrf token issue until I made sure that:
+1.  the form ID matched the form ID that I'm holding jquery unot on line # 1 of the script
+2.  the url matched the form's action
+3.  but the real fix came when the data matched the data that the form was sending upon request.POST.  Meaning, I actually grabbed the form's data, not the textarea data, as I was doing before!!! example, I was referencing data: "note_content", because I thought it had to point to the textarea content, when in fact it had to refer to what was actually submitted, which was the form, and wich contains the csrf token.  The textearea is child of the form , so the csrf token is above it!!! 
+--on this note, data can either be:
+    data: $(this).serialize()
+or  data: $('#content').parent().serialize() -->
+
+<script>
+
+    $('#new_note_form').submit(function(e){
+        e.preventDefault() 
+        $.ajax({
+            url: $(this).attr('action'),
+            method: 'post',
+            data: $('#content').parent().serialize(), 
+            success: function(serverResponse){
+                $('#placeholder').html(serverResponse)
+            }
+        })
+    });
+
+</script>
+
+{% endblock %}

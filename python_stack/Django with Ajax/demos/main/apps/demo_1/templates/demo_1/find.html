@@ -1,0 +1,33 @@
+{% extends 'demo_1/layout.html' %}
+
+{% block content %}
+
+<div class="col border">
+    <h1>Demo 2 Ajax Form</h1>
+    <form action="/demo_1/find" method="post">
+        {% csrf_token %}
+        Find all users whose first name starts with 
+        <input id="name_start" type="text" name="name_start" />
+    </form>
+    <div id="placeholder2" class="border m-3 p-1">Placeholder for Ajax content</div>
+</div>
+
+<script>
+
+$('#name_start').keyup(function(){
+    // console.log('working')
+    // console.log("parent's serialize() returned ", $(this).parent().serialize())
+    $.ajax({
+        url: '/demo_1/find_process',
+        method: 'post',
+        data: $(this).parent().serialize(),
+        success: function(serverResponse){
+            // console.log('success', serverResponse)
+            $('#placeholder2').html(serverResponse)
+        }
+    })
+}); 
+
+</script>
+
+{% endblock %}

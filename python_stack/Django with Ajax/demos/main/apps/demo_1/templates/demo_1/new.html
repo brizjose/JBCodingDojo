@@ -1,0 +1,35 @@
+{% extends 'demo_1/layout.html' %}
+
+{% block content %}
+
+<div class="col border">
+    <h1>Demo 3 Ajax Form Create New User</h1>
+    <form id="create_user_ajax_form" class="form-group" action="/demo_1/create_process" method="post">
+        {% csrf_token %}
+        First Name:<input class="form-control" type="text" name="first_name" />
+        Last Name:<input class="form-control" type="text" name="last_name" />
+        Email:<input class="form-control" type="text" name="email" />
+        Age:<input class="form-control" type="text" name="age" />
+        <input class="btn btn-primary" type="submit" value="Submit" />
+    </form>
+    <div id="placeholder3" class="border m-3 p-1">Placeholder for User create</div>
+</div>
+
+<script>
+
+$('#create_user_ajax_form').submit(function(e){
+    e.preventDefault()
+    $.ajax({
+        url: $(this).attr('action'),
+        method: 'post',
+        data: $(this).serialize(),
+        success: function(serverResponse){
+            console.log('success', serverResponse)
+            $('#placeholder3').html(serverResponse)
+        }
+    })
+}); 
+
+</script>
+
+{% endblock %}

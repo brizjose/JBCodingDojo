@@ -1,0 +1,11 @@
+{% extends 'ajax_post/layout.html' %}
+
+{% block content %}
+
+<div class="row">
+    {% for note in notes %}
+    <p class="notes col-3 border">{{ note.content }}</p>
+    {% endfor %}
+</div>
+
+{% endblock %}
