@@ -2,9 +2,9 @@
 
 {% block content %}
 
-{% for note in notes %}
-    <h5>{{ note.title }}</h5>
-    <p>{{ note.content }}</p>
-{% endfor %}
+    {% for note in notes %}
+        <h5>{{ note.title }}</h5>
+        <p>{{ note.content }}</p>
+    {% endfor %}
 
 {% endblock %}

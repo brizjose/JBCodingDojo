@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<script>
+    $(document).ready(function(){
+        $('#form_1').submit(function(){
+            console.log('form is being submitted');
+            console.log($(this).serialize());
+            return false
+        });
+        $('.btn').click(function(){
+            $('#form_1').submit(); 
+        })
+    });
+</script>
+
+<!-- 
+1.    
+return false
+what this does is preventing the form from going to the url specified in the action='#'
+this will allow ajax to append or write data into the html document while still in user's screen
+
+2.
+.submit() can be used in two ways:
+    
+    see above how different it is to write:
+
+    $('#form_1').submit(function(){return false});      used as listener
+
+from
+
+    $('.btn').click(function(){$('#form_1').submit();});       used to hard submit
+
+    in this example, both buttons do the same thing, however, one is part of the form and the other one is outside the form but is being tagged by jQuery and the submit function attached to it as a parameter of it's click() function.
+
+3.
+.serialize(), 
+what it does, is preps the form information to be handled by a computer by attaching the name to its input value.  useful, for example, to make an API.  
+-->
+
+<body>
+    <form id="form_1" action='url' method='post'>
+        First Name<input type='text' name='first_name'>
+        Last Name<input type='text' name='last_name'>
+        Email<input type='text' name='email'>
+        <input type='submit' value='submit'>
+    </form>
+    <button class="btn">Submit button</button>
+</body>
+</html>

@@ -23,9 +23,17 @@
 
 <script>
 
-    $('#notes').submit(function(){
+    $('#notes').submit(function(e){
+        e.preventDefault()
         console.log("the form was submitted")
-        
+        $.ajax({
+            url:$(this).attr('action'),
+            method:'post',
+            data: $(this).serialize(),
+            success: function(serverResponse){
+                $('#placeholder').html(serverResponse)
+            }
+        });
     });
 
 </script>

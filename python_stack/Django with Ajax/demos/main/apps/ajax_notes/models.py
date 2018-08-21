@@ -5,10 +5,25 @@ from django.db import models
 
 # Create your models here.
 
+class NoteManager(models.Manager):
+    def CreateNote(self, context):
+        messages = []
+        if context['title'] == "":
+            messages.append("Title cannot be blank, please insert title")
+        if context['content'] == "":
+            messages.append("Note content cannot be blank, please insert content")
+        if len(messages) == 0:
+            Note.objects.create(title=context['title'], content=['content'])
+            messages.append("note successfully created")    
+            return(True, messages)
+        else:
+            return(False, messages)
+
 class Note(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    objects = NoteManager()
 
 
