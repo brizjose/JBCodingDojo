@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'apps.demo_1',
     'apps.ajax_post',
+    'apps.ajax_notes',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

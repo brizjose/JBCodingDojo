@@ -1,0 +1,34 @@
+{% extends 'ajax_notes/layout.html' %}
+
+{% block content %}
+
+<h4>Notes:</h4>
+<hr>
+<div class="row">
+    <div class="col">
+        <h5>Add Note</h5>
+        <form id="notes" action="/ajax_notes/add_note" method="post">{% csrf_token %}
+            <fieldset class="d-flex">
+                <input type="text" id="note_title" name="title" placeholder="Title">
+                <textarea id="note_content" name="content" placeholder="Description..." cols="23"></textarea> 
+                <input type="submit" id="note_submit" value="Submit"> 
+            </fieldset>
+        </form>
+    </div>
+    <div class="col">
+        <h5>Here are the Notes</h5>
+        <div id="placeholder" class="d-flex"></div>
+    </div>
+</div>
+
+<script>
+
+    $('#notes').submit(function(){
+        console.log("the form was submitted")
+        
+    });
+
+</script>
+
+
+{% endblock %}

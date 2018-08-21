@@ -17,7 +17,7 @@
 3.  but the real fix came when the data matched the data that the form was sending upon request.POST.  Meaning, I actually grabbed the form's data, not the textarea data, as I was doing before!!! example, I was referencing data: "note_content", because I thought it had to point to the textarea content, when in fact it had to refer to what was actually submitted, which was the form, and wich contains the csrf token.  The textearea is child of the form , so the csrf token is above it!!! 
 --on this note, data can either be:
     data: $(this).serialize()
-or  data: $('#content').parent().serialize() -->
+or  data: $('#note_content').parent().serialize() -->
 
 <script>
 
@@ -26,7 +26,7 @@ or  data: $('#content').parent().serialize() -->
         $.ajax({
             url: $(this).attr('action'),
             method: 'post',
-            data: $('#content').parent().serialize(), 
+            data: $(this).serialize(), 
             success: function(serverResponse){
                 $('#placeholder').html(serverResponse)
             }
