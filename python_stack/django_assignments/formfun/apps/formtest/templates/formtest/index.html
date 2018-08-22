@@ -1,0 +1,18 @@
+{% extends 'formtest/layout.html' %}
+
+{% block content %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<form class="" action="{% url 'register' %}" method="post">
+    {% csrf_token %}
+        {{ regform.as_ul }}
+    <input type="submit" value="Register">
+</form>
+
+{% endblock %}
