@@ -2,15 +2,17 @@
 from __future__ import unicode_literals
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib import messages
-from .forms import RegistrationForm
+from .forms import RegistrationForm, LoginForm
 from .models import UserManager, User
 
 # Create your views here.
 
 def index(request):
-    form = RegistrationForm()
+    regform = RegistrationForm()
+    loginform = LoginForm()
     context = {
-        'regform':form
+        'regform':regform,
+        'loginform':loginform
     }
     return render(request, "formtest/index.html", context)
 
@@ -60,7 +62,7 @@ def login(request):
     if result[0]:
         request.session['logged_user'] = result[1]
         request.session['user'] = User.objects.get(id=request.session['logged_user']).first_name
-        return redirect('books')
+        return redirect('/')
     else:
         for message in result[1]:
             messages.error(request, message)

@@ -8,11 +8,18 @@
     {% endfor %}
 </ul>
 {% endif %}
-
+<h1>Register</h1>
 <form class="" action="{% url 'register' %}" method="post">
     {% csrf_token %}
         {{ regform.as_ul }}
     <input type="submit" value="Register">
 </form>
+<hr>
+<h1>Login</h1>
+<form class="" action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+            {{ loginform.as_ul }}
+        <input type="submit" value="Register">
+    </form>
 
 {% endblock %}
