@@ -4,21 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Book Review Layout</title>
+    <title>Dashboard</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'reviews/css/style.css' %}">
-    {% block head %}
-    {% endblock %}
-    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'login_reg/css/style.css' %}">
+    {% block head %}{% endblock %}
 </head>
 <body>
-    {% block body %}
     <div class="container">
-        
+        <div class="container">
+            <div class="row">
+            {% if 'logged_user' in request.session %}
+            <p>Welcome {{ request.session.user }}</p>
+            <a href="{% url 'logout' %}">Logout</a>
+            {% endif %}
+        </div>
+        {% block content %}{% endblock %}
     </div>
-    {% endblock %}
 </body>
 </html>
-
-

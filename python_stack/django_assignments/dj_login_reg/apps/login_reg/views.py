@@ -29,45 +29,51 @@ def index(request):
     return render(request, 'login_reg/index.html')
 
 def register(request):
-    fname = request.POST['fname']
-    lname = request.POST['lname']
-    email = request.POST['email']
-    uname = request.POST['uname']
-    pword = request.POST['pword']
-    errors = User.objects.validator(fname, lname, email, uname, pword)
-
-    if len(errors) == 0:
-        User.objects.create(
-            fname = fname,
-            lname = lname,
-            email = email,
-            uname = uname,
-            pword = bcrypt.hashpw(pword.encode(), bcrypt.gensalt())
-        )
-        messages.success(request, "User has been created")
+    if request.method != 'POST':
         return redirect('/')
     else:
-        for message in errors:
+        context = {
+            'first_name':request.POST['first_name'],
+            'last_name':request.POST['last_name'],
+            'email':request.POST['email'],
+            'username':request.POST['username'],
+            'password':request.POST['password'],
+            'confirm_password':request.POST['confirm_password']
+        }
+    
+    result = User.objects.RegistrationValidator(context)
+    
+    for message in result[1]:
+        if result[0] == True:
+            messages.success(request, message)
+        else:
             messages.error(request, message)
-        return redirect('/')
+    return redirect('/')
 
 def login(request):
-    #validation
-    uname = request.POST['uname']
-    pword = request.POST['pword']
-    result = User.objects.LoginValidator(uname, pword)
+    if request.method != 'POST':
+        return redirect('/')
+    username = request.POST['username']
+    password = request.POST['password']
+    result = User.objects.LoginValidator(username, password)
     if result[0]:
-        request.session['id'] = result[1]
+        request.session['logged_user'] = result[1]
+        request.session['user'] = User.objects.get(id=request.session['logged_user']).first_name
         return redirect('/dashboard')
     else:
         for message in result[1]:
             messages.error(request, message)
         return redirect('/')
+    return redirect("/")
+
+def logout(request):
+    for key in request.session.keys():
+        del request.session[key]
+    return redirect('/')
     
 def dashboard(request):
-    user = User.objects.get(id=request.session['id'])
     context = {
-        'logged_user':user
+        'logged_user':request.session['logged_user']
     }
     return render(request,"login_reg/dashboard.html",context)
 
