@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="use of static directory to house style.css and javascript files">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Static</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- notice css and js links is different when using flask, we use a url_for() function -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_static.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/java.js')}}"></script>
+</head> 
+<body>
+    <h1>Hello Baldi!</h1>
+    
+    <img src="{{ url_for('static', filename='img/Baldi.png')}}" alt="baldi">
+    
+    <audio controls>
+        <source src="{{ url_for('static', filename='audio/baldis_basics.mp3')}}" type="audio/mp3">
+    </audio>
+
+</body>
+</html>

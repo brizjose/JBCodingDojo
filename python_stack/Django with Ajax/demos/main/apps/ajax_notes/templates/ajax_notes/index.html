@@ -17,26 +17,14 @@
     </div>
     <div class="col">
         <h5>Here are the Notes</h5>
-        <div id="placeholder" class="d-flex"></div>
+        <div id="placeholder">
+            {% for note in notes %}
+            <h6 id="note_{{ note.id }}" method="post">{{note.title}}</h6>
+            <p id="note_{{ note.id }}_content">{{note.content}}</p>
+            {% endfor %}
+        </div>
     </div>
 </div>
-
-<script>
-
-    $('#notes').submit(function(e){
-        e.preventDefault()
-        console.log("the form was submitted")
-        $.ajax({
-            url:$(this).attr('action'),
-            method:'post',
-            data: $(this).serialize(),
-            success: function(serverResponse){
-                $('#placeholder').html(serverResponse)
-            }
-        });
-    });
-
-</script>
 
 
 {% endblock %}
