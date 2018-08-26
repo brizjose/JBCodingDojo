@@ -13,9 +13,9 @@ class NoteManager(models.Manager):
         if context['content'] == "":
             messages.append("Note content cannot be blank, please insert content")
         if len(messages) == 0:
-            Note.objects.create(title=context['title'], content=['content'])
-            messages.append("note successfully created")    
-            return(True, messages)
+            Note.objects.create(title=context['title'], content=context['content'])
+            new_note = Note.objects.last().id    
+            return(True, new_note)
         else:
             return(False, messages)
 

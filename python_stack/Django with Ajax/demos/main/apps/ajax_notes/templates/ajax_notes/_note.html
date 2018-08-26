@@ -1,0 +1,16 @@
+<div id='note_{{ id }}'>
+    <div id="post_{{id}}" data-id="{{ id }}">
+        <h6 method="post" data-id="{{id}}">{{title}}</h6>
+        <p class="content" data-id="{{id}}">{{content}}</p>
+    </div>
+    <a href="/ajax_notes/delete_note/{{ id }}" class="list-inline-item" data-id="{{id}}">Delete</a>
+    <div id="form_{{id}}" style="display:none">
+        <form action="/ajax_notes/create_note" method="post">{% csrf_token %}
+            <fieldset class="d-flex">
+                <input type="text" name="title" placeholder="{{title}}" data-id={{id}}>
+                <textarea name="content" placeholder="{{content}}" cols="23" data-id={{id}}></textarea> 
+                <input type="submit" value="Submit edit"> 
+            </fieldset>
+        </form>
+    </div>
+</div>

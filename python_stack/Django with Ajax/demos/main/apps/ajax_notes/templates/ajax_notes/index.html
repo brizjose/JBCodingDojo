@@ -5,26 +5,41 @@
 <h4>Notes:</h4>
 <hr>
 <div class="row">
-    <div class="col">
+    <div class="col-3">
         <h5>Add Note</h5>
-        <form id="notes" action="/ajax_notes/add_note" method="post">{% csrf_token %}
+        <form id="notes" action="/ajax_notes/create_note" method="post">{% csrf_token %}
             <fieldset class="d-flex">
                 <input type="text" id="note_title" name="title" placeholder="Title">
                 <textarea id="note_content" name="content" placeholder="Description..." cols="23"></textarea> 
                 <input type="submit" id="note_submit" value="Submit"> 
             </fieldset>
         </form>
+        <div class="errors"></div>
     </div>
     <div class="col">
         <h5>Here are the Notes</h5>
-        <div id="placeholder">
+        <div id="placeholder" class="col">
             {% for note in notes %}
-            <h6 id="note_{{ note.id }}" method="post">{{note.title}}</h6>
-            <p id="note_{{ note.id }}_content">{{note.content}}</p>
+            <div id='note_{{ note.id }}' class="border d-inline-flex p-2">
+                <div id="post_{{note.id}}" data-id="{{ note.id }}">
+                    <h6 method="post" data-id="{{note.id}}">{{note.title}}</h6>
+                    <p class="content" data-id="{{note.id}}">{{note.content}}</p>
+                    <p class="font-weight-light m-0 p-0" style="font-size: 0.5rem" data-id="{{note.id}}">{{note.updated_at|date}}</p>
+                </div>
+                <a href="/ajax_notes/delete_note/{{ note.id }}" class="list-inline-item" data-id="{{note.id}}">Delete</a>
+                <div id="form_{{note.id}}" style="display:none">
+                    <form action="/ajax_notes/edit_note/{{ note.id }}" method="post">{% csrf_token %}
+                        <fieldset class="d-flex">
+                            <input type="text" name="title" placeholder="{{note.title}}" data-id={{note.id}}>
+                            <textarea name="content" placeholder="{{note.content}}" cols="23" data-id={{note.id}}></textarea> 
+                            <input type="submit" value="Submit edit"> 
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
             {% endfor %}
         </div>
     </div>
 </div>
-
 
 {% endblock %}

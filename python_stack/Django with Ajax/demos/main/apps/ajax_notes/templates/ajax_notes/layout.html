@@ -16,18 +16,6 @@
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col">
-                {% if messages %}
-                <h3>If adding a note:</h3>
-                <ul class="messages">
-                    {% for message in messages %}
-                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            </div>
-        </div>
         {% block content %} {% endblock %}
     </div>
 </body>

@@ -9,33 +9,47 @@ from .models import Note
 
 def index(request):
     context ={
-        'notes':Note.objects.all().order_by('-id')
+        'notes':Note.objects.all().order_by('id')
     }
     return render(request, 'ajax_notes/index.html', context)
+    # if you wanted to return html, you could do the following, and it would return details of the first note, for example:
+    # return HttpResponse(context['notes'][0].__dict__.__str__())
 
-def add_note(request):
-    context ={
+def create_note(request):
+    print request.is_ajax()
+    # ^^^^^this above tells us if the request that is coming in is from the form submission or from the jQuery route!
+    # now we know the data written in the form is coming to here serialized via javascript
+    context = {
     'title' : request.POST['title'],
     'content' : request.POST['content']
     }
-    # result = Note.objects.CreateNote(context)
-    # context = {
-    #     'notes':Note.objects.all().order_by('-id')
-    # }
-    # for message in result[1]:
-    #     if result[0] == True:
-    #         messages.success(request, message)
-    #     else:
-    #         messages.error(request, message)
-    # return render(request, 'ajax_notes/all.html', context)    
+    result,note = Note.objects.CreateNote(context)
+    if result == True:
+        note = Note.objects.get(id=note)
+        note_id = note.id
+        title = note.title
+        content = note.content
+        context={'id':note_id,'title':title,'content':content}
+        return render(request, 'ajax_notes/_note.html', context)
+        # return HttpResponse(note.__dict__.__str__())
+    else:
+        print messages.error(request, note)
+        pass
 
-    post_data = serializers.serialize("json", context[0])
+def delete_note(request, id):
+    note = Note.objects.get(id=id)
+    note.delete()
+    return redirect('index')
 
-    return HttpResponse(post_data)
-
-def notes_all(request):
-    context = {
-        'notes':Note.objects.all()
-    }
-    return render (request, 'ajax_notes/all.html')
-
+def edit_note(request, id):
+    note = Note.objects.get(id=id)
+    if request.POST['title'] == "":
+        note.title = note.title
+    else:
+        note.title = request.POST['title']
+    if request.POST['content'] == "":
+        note.content = note.content
+    else:
+        note.content = request.POST['content']
+    note.save()
+    return redirect('index')
