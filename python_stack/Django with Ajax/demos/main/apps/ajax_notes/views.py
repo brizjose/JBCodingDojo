@@ -33,8 +33,9 @@ def create_note(request):
         return render(request, 'ajax_notes/_note.html', context)
         # return HttpResponse(note.__dict__.__str__())
     else:
-        print messages.error(request, note)
+        print note
         pass
+
 
 def delete_note(request, id):
     note = Note.objects.get(id=id)

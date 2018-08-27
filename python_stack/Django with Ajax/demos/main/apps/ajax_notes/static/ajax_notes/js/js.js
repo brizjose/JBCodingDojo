@@ -34,18 +34,6 @@ $(document).ready(function(){
         }
     })
     
-    // $("#form_"+id).keypress(function(event){
-    //     if(event.which == 13){
-    //         event.preventDefault()
-    //         var url=$(this).attr("action")
-    //         var id=$(this).attr("data-id")
-    //         var data=$(this).serialize()
-    //         $.post(url,id,data,function(viewsResponse){
-    //             $('#placeholder').append(viewsResponse)
-    //         }, "html")
-    //     }
-    // })
-
     $("#placeholder").on("click","a",function(event){
         event.preventDefault();
         var id = $(this).attr('data-id')
@@ -68,13 +56,8 @@ $(document).ready(function(){
                 var url=$(this).attr("action")
                 var data=$(this).serialize()
                 console.log(url, data)
-                // $.ajax(url,data,function(viewsResponse){
-                //     $("#post_"+id).html(viewsResponse)
-                // }, "html")
-            }
-        }
-    });
-
+            }}
+        });
     })
 });
 

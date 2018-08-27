@@ -6,7 +6,6 @@
 <hr>
 <div class="row">
     <div class="col-3">
-        <h5>Add Note</h5>
         <form id="notes" action="/ajax_notes/create_note" method="post">{% csrf_token %}
             <fieldset class="d-flex">
                 <input type="text" id="note_title" name="title" placeholder="Title">
