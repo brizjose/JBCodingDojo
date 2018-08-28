@@ -1,4 +1,4 @@
-"""main URL Configuration
+"""ajax_pagination URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
@@ -17,9 +17,6 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^basic_setup/', include('apps.basic_setup.urls')),
-    url(r'^demo_1/', include('apps.demo_1.urls')),
-    url(r'^ajax_post/', include('apps.ajax_post.urls')),
-    url(r'^ajax_notes/', include('apps.ajax_notes.urls')),
+    url(r'^', include('apps.pagination.urls')),
     url(r'^admin/', admin.site.urls),
 ]

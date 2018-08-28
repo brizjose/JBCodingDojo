@@ -1,0 +1,20 @@
+{% extends 'basic_setup/layout.html' %}
+{% block content %}
+<h1>Posts</h1>
+<div class="row">
+    <div class="col">
+        <form class="django_form" action="{% url 'posts' %}" method="post">
+            {% csrf_token %}
+                {{ post_form.as_p }}
+            <input type="submit" value="Add New Post">
+        </form>
+    </div>
+    <div class="col posts">
+        {% for post in posts %}
+        <h4>{{ post.title }}</h4>
+        <p>{{ post.content }}</p>
+        <small>{{ post.created_at|date }}</small>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

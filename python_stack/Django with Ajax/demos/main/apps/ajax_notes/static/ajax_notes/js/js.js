@@ -15,10 +15,13 @@ $(document).ready(function(){
         console.log($(this).serialize())
 
         // we store the url that matches the action="" in the form tag, so we can inject it in the .post() comand that follows; serialize() will convert posted data into json
-
         var url = $(this).attr("action")
         var data = $(this).serialize()
         $.post(url, data, function(viewsResponse){
+            var response = viewsResponse
+            if (typeof response != "json"){
+                console.log(typeof response)
+            }
             $("#placeholder").append(viewsResponse)
         }, "html")    
     });

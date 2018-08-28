@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib import messages
 from django.core import serializers
+import json
 from .models import Note
 
 # Create your views here.
@@ -33,9 +34,11 @@ def create_note(request):
         return render(request, 'ajax_notes/_note.html', context)
         # return HttpResponse(note.__dict__.__str__())
     else:
-        print note
-        pass
-
+        json_messages = json.dumps(note)
+        # print json_messages
+        # print note
+        # return HttpResponse(note)        
+        return HttpResponse(json_messages,content_type="application/json")
 
 def delete_note(request, id):
     note = Note.objects.get(id=id)
