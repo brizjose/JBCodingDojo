@@ -1,4 +1,4 @@
-arr = [76,65,4,32,21]
+arr = ['mike','baby','samuel','parachute']
 
 function insertionSort(arr) {
     for (var i = 0; i < arr.length; i++) {
