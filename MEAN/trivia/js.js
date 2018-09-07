@@ -1,11 +1,22 @@
 $(document).ready(function(){
+    var points = 0
+    var adder = 0
     $(this).on('click','a',function(e){
         e.preventDefault();
-        var category = $(this).attr('href')
-        console.log(category)
-        $.get('https://opentdb.com/api.php?amount=1&difficulty='+category,function(response){
-            console.log(response)
-            var category = response.results[0].category
+        var level = $(this).attr('data-id')
+        console.log("answer this "+level+" question")
+        if(level === 'hard'){
+            adder = 300
+        } else if(level === 'medium'){
+            adder = 200
+        } else {
+            adder = 100
+        }
+        // console.log(adder)        
+        // console.log("good luck! your point total is "+points)
+        $.get('https://opentdb.com/api.php?amount=1&difficulty='+level,function(response){
+            // console.log(response)
+            var cat = response.results[0].category
             var difficulty = response.results[0].difficulty
             var Q = response.results[0].question
             var A = []
@@ -22,37 +33,36 @@ $(document).ready(function(){
                 }
                 A[j + 1] = answer
             }
-            console.log(A)
+            // console.log(A) // this is the sorted answer list
             var html_body = `
-                            <h5>${category}</h5>
-                            <h6 class="text-capitalize">${difficulty}</h6>
-                            <h4>${Q}</h4>
-                            <ul id="answers"></ul>
+                            <div class="card p-3">
+                            <p class="m-3 border-round">Category: ${cat}</p>
+                            <h4 class="card-title">${Q}</h4>
+                            <ul id="answers" class="card-body"></ul>
+                            </div>
             `
             $('#placeholder').html(html_body)
-            setTimeout(function(){$('#answers').append('<li id="answer">'+A[0]+'</li>')}, 500);
-            setTimeout(function(){$('#answers').append('<li id="answer">'+A[1]+'</li>')}, 1000);
-            if (A.length > 2){
-                setTimeout(function(){$('#answers').append('<li id="answer">'+A[2]+'</li>')}, 1500);
-                setTimeout(function(){$('#answers').append('<li id="answer">'+A[3]+'</li>')}, 2000);
+            for(a in A){
+                $('#answers').append('<li data-id="'+A[a]+'"><h4>'+A[a]+'</h4></li>');
             }
         });
     });
-
-    // the below code is working:
-
-    // $('#placeholder').on("mouseover","li",function(){
-    //     $(this).css("color","orange")
-    // });    
-
-    // but this one is not, only if I tag the entire #placeholder
-    
-    $('#placeholder li').on({
-        mouseenter:function(){
-            $(this).css("color","orange");
-        },
-        mouseleave:function(){
+    $('#placeholder').on("mouseover","li",function(){
+        $(this).css("color","orange");
+        $(this).mouseleave(function(){
             $(this).css("color","black");
+        });
+    });    
+    $('#placeholder').on("click","li",function(){
+        var answer = $(this).attr('data-id')
+        var html_str = ""
+        if(answer == correct_answer){
+            points = points + adder
+            html_str += "<h4 class='mt-3 right'>Correctomundo!!! You made "+adder+" points!</h4>"
+        } else {
+            html_str += "<h4 class='d-block mt-3 wrong'>That is not the answer! The correct answer was: <span style='color:blue; font-weight:bold; font-style:italic'>"+correct_answer+"</span>."
         }
+        $('#placeholder').html(html_str);
+        $('#point_total').html(points);
     });
 });
