@@ -66,3 +66,4 @@ $(document).ready(function(){
         $('#point_total').html(points);
     });
 });
+
