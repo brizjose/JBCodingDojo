@@ -20,4 +20,5 @@ mohito.sayName();
 mohito.showStats();
 mohito.drinkSake();
 console.log(mohito)
+// console.log(mohito.health)
 
