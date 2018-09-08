@@ -1,7 +1,6 @@
 function Ninja(name,health){
     this.name = name;
     this.health = health;
-    var self = this;  // this is not working to open the private variables to the prototype functions
     var speed = 3;
     var strength = 3;
     var health = 100;
