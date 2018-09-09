@@ -1,25 +1,29 @@
 // set the stage by initializing a list of all suits and card names:
 const cardList = ['Ace',"Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Jack","Queen","King"];
 const suitList = ['Hearts','Diamonds','Spades','Clubs'];
+const cardWorth = ['a',2,3,4,5,6,7,8,9,10,10,10,10]
 
 class Card {
     constructor(suit, value) {
-
         // assign suit with validation
         this.suit = suit.charAt(0).toUpperCase() + suit.slice(1);
+        
         // if (!(this.suit in this.suitList)) {    //<==== don't understand why this does not work
         if (!(this.suit === "Hearts" || this.suit === "Diamonds" || this.suit === "Spades" || this.suit === "Clubs")) {
             throw "Choose a valid suit, example Hearts, Diamonds, Spades or Clubs"
-        }
+        };
         
         // assign value with validation
         if (!(value >=0 && value <=13)) {
             console.log('Please enter a numeric value and if you want and if you want an Ace, type 1; for Jack, type 11, for Queen, type 12, for King, type 13.')
         } else 
             this.value = value;
+        
         // assign name with a function
         this.name = this.cardName(value);
 
+        // assign worth with a function
+        this.worth = this.cardWorth(value);
     };
 
     // name card from its value        
@@ -30,6 +34,16 @@ class Card {
             };
         }; 
     };
+
+    // assign how much each card is worth based on its value
+    cardWorth(value) {
+        for (let [index,worth] of cardWorth.entries()) {
+            if(index + 1 === value) {
+                return worth
+            };
+        };
+    };
+
     // print card attributes to console
     showCard() {
         console.log(`${this.name} of ${this.suit}`);
@@ -40,7 +54,7 @@ class Deck {
     constructor() {
         this.cardDeck = []
         this.reset();
-    }
+    };
     reset() {
         for (let suit of suitList) {
             for (let value = 1; value < 14; value++) {
@@ -59,7 +73,6 @@ class Deck {
             this.cardDeck.splice(which,1);
         };
         this.cardDeck = shuffledDeck;
-        console.log(this.cardDeck[10])
         return this;
     };
     dealRandomCard() {
@@ -99,11 +112,11 @@ const deck1 = new Deck();
 deck1.shuffle().shuffle().shuffle();
 const player1 = new Player('Bob');
 console.log(player1);
-player1.buildHand(deck1,5);
+player1.buildHand(deck1,1);
 console.log(player1);
 player1.takeCard(deck1);
 console.log(player1);
-player1.dropCard(2);
+player1.dropCard(0);
 console.log(player1);
 
 
