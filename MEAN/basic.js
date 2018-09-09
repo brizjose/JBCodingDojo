@@ -49,38 +49,38 @@ for (var i = 0; i < myList.length; i++){
 // for in loop, not meant to be used to iterate over an array.  It is meant to iterate over the keys of an object
 // wrong way to use it....
 for (var thing in myList){
-    console.log('thing', thing)
+    console.log('for thing in myList =>', thing)
 }
 // right wawy to use it... with indexing
 for (var thing in myList){
-    console.log('thing', myList[thing] )
+    console.log('for thing in myList = myList[thing] =>', myList[thing] )
 }
 
 // for of loop
 // acts as the 'for in' loop with indexing like above
 for (var thing of myList){
-    console.log('thing', thing)
+    console.log('for thing of myList =>', thing)
 }
 
 // if you still want access to the index using the 'for of' loop,
 // works like python's enumerate
 for (var thing of myList.entries()){
-    console.log('thing', thing)
+    console.log('for thing of myList.entries() =>', thing)
 }
 
 // you can separate out index from content like so, but it gets clunky
 for (var thing of myList.entries()){
     var index = thing[0]
     var content = thing[1]
-    console.log(index, content)
+    console.log("separating out for thing of myList.entries() => "+index, content)
 }
 
 // there is a better way to go about it, called object destructuring
 for (var [index] of myList.entries()){
-    console.log('index', index)
+    console.log('for [index] of myList.entries() =>', index)
 }
 for (var [index, content] of myList.entries()){
-    console.log('animal', content)
+    console.log('for [index,content] of myList.entries() =>', content)
 }
 
 // objects
