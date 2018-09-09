@@ -7,10 +7,15 @@ class Card {
 
         // assign suit with validation
         this.suit = suit.charAt(0).toUpperCase() + suit.slice(1);
-        // if (!(this.suit in this.suitList)) {    <==== don't understand why this does not work
+        console.log((this.suit in suitList))    //<==== don't understand why this does not work
+        console.log(typeof this.suit+" - "+this.suit);
+        console.log(typeof suitList[2]+" - "+suitList[2]);
+        
         if (!(this.suit === "Hearts" || this.suit === "Diamonds" || this.suit === "Spades" || this.suit === "Clubs")) {
             throw "Choose a valid suit, example Hearts, Diamonds, Spades or Clubs"
         }
+
+
         
         // assign value with validation
         if (!(value >=0 && value <=13)) {
@@ -32,11 +37,11 @@ class Card {
     };
     // print card attributes to console
     showCard() {
-        console.log(`${this.name} of ${this.suit}`);
+        // console.log(`${this.name} of ${this.suit}`);
     };
 };
 
 const card1 = new Card("spades",4);
-const card2 = new Card("Hearts",6)
-card2.showCard();
 card1.showCard();
+// const card2 = new Card("Hearts",6)
+// card2.showCard();
