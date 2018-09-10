@@ -22,7 +22,7 @@ function namedFunction(item) {
 // we don't need the array and we don't need the function, all we need to do is build the infrastructure
 
 function map(array, callback) {
-    newArray = [];
+    let newArray = [];
     for (let element = 0; element < array.length; element++) {
         newArray.push(callback(array[element], element));
     };

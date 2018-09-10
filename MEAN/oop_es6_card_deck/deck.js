@@ -15,7 +15,7 @@ class Card {
         // assign value with validation
         if (!(value >=0 && value <=13)) {
             console.log('Please enter a numeric value and if you want and if you want an Ace, type 1; for Jack, type 11, for Queen, type 12, for King, type 13.')
-        } else 
+        } else  
             this.value = value;
         // assign name with a function
         this.name = this.cardName(value);
