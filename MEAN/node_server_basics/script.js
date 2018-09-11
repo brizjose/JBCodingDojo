@@ -35,7 +35,7 @@ $(document).ready(function(){
     // rayPainter();
     $('#captain').click(function(){
         const html_str = `
-                        <a href="reserve"><h3>N a b u c o d o n o s s o r</h3></a>
+                        <a href="seat/reserve"><h3>N a b u c o d o n o s s o r</h3></a>
                         <p>A starkpa  skashe  sldks | Elskglep   ejske  aum  stop  auuuum</p>
                         <p>Eke tomodato  akesh  sdumain tekleketi   adostomp  aum  stop  auummmm ||\\</p>
                         <p>Prata terke trestokko \| akalasdomus arigato gozaimaz</p>

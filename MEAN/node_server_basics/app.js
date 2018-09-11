@@ -21,7 +21,7 @@ var server = http.createServer(function (request, response){
             response.end();
         });
     }
-    else if(request.url === '/reserve') {
+    else if(request.url === '/seat/reserve') {
         fs.readFile('reserve.html', 'utf8', function (errors, contents){
             response.writeHead(200, {'Content-Type': 'text/html'});
             response.write(contents); 
@@ -29,7 +29,7 @@ var server = http.createServer(function (request, response){
         });
     }
     // for own .css files (not bootstrap on a cdn, this does not need configuartion)
-    else if(request.url === '/style.css') {  
+    else if(request.url === '/style.css' || request.url === '/seat/style.css') {   
         fs.readFile('style.css', 'utf8', function (errors, contents){
             response.writeHead(200, {'Content-Type': 'text/css'});
             response.write(contents); 
@@ -37,7 +37,7 @@ var server = http.createServer(function (request, response){
         });
     }
     // for own .js files (not jquery on a cdn)
-    else if(request.url === '/script.js') {  
+    else if(request.url === '/script.js' || request.url === '/seat/script.js') {  
         fs.readFile('script.js', 'utf8', function (errors, contents){
             response.writeHead(200, {'Content-Type': 'text/javascript'});
             response.write(contents); 
@@ -52,14 +52,14 @@ var server = http.createServer(function (request, response){
             response.end();
         });
     }
-    else if(request.url === '/seatmap.jpg') {  
+    else if(request.url === '/seat/seatmap.jpg') {  
         fs.readFile('seatmap.jpg', function (errors, contents){
             response.writeHead(200, {'Content-Type': 'image/jpg'});
             response.write(contents); 
             response.end();
         });
     }
-    else if(request.url === '/spaceship.png') {  
+    else if(request.url === '/spaceship.png' || request.url === '/seat/spaceship.png') {  
         fs.readFile('spaceship.png', function (errors, contents){
             response.writeHead(200, {'Content-Type': 'image/png'});
             response.write(contents); 
