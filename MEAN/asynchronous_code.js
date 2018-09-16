@@ -41,6 +41,7 @@
 function getThingsFromDB(query, callback) {
     setTimeout(function() {
         const data = ['thing 1','thing 2','thing 3','thing 4','thing 5'];
+        console.log(callback.toString())
         callback(data);
     }, 3000);
 };
@@ -49,6 +50,7 @@ function map(arr,callback) {
     results = []
     for (let i = 0; i < arr.length; i++) {
         const item = arr[i];
+        console.log(callback.toString())
         results.push(callback(item));
     }
     return results
