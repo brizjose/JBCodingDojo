@@ -1,0 +1,83 @@
+epic button game assignment
+
+1. create app folder
+
+2. npm init
+
+3. install required packages
+
+npm i -S express socket.io body-parser
+
+4. .gitignore
+node_modules/
+*.txt
+
+5. set up basic server
+
+const express = require('express');
+const path = require('path');
+const port = process.env.PORT || 8000;
+const app = express();
+
+app.use(express.static(path.join(__dirname, 'client')));
+
+6. make template directory
+
+client
+
+7. make template
+
+index.html
+
+add the following cdn links in header:
+-bootstrap
+-socket.io
+-jquery
+
+	when we bring the socket.io script into the template, it makes available the io variable, so we can do:
+
+var socket = io.connect();  inside the document.ready jquery function
+
+8. add socket to server.js (at bottom, where we invoke port)
+
+const server = app.listen(port, () => console.log(`listening on port ${port}`));
+
+const io = require('socket.io')(server);
+
+
+// const io is an event emitter, will listen for and send out event.
+// io.on is the method to listen to event.  connnection to server is 'connection'
+
+io.on('connection', socket => {
+  console.log('incoming socket connection);
+});
+
+9. add socket to html:
+inside the <script>, instantiate a socket.on with a tag name consistent with the event that is being listened to
+
+socket.on('numberUpdated', function(number) {
+  $('#number').text(number);
+});
+
+10. add event listener on html, which will contain an emitter because the server side that has a listener needs this emitter
+
+$('#button').click(function() {
+  socket.emit('buttonClicked')
+});
+
+11.  and an event emitted on server or client needs an event listener on the other side, which agrees on the tag
+
+	so, on server, to the socket we already have, add code inside the callback instructing what to do:
+
+io.on('connection', socket => {
+  let count = 0;
+  console.log('incoming socket connection');
+  socket.on('buttonClicked', function() {
+    io.emit('numberUpdated', ++count);
+  });
+});
+
+	difference between socket.emit and io.emit is that socket.emit is bilateral, so transmits only between user and server, whereas io.emit goes to all connected users.
+
+	had we used socket.emit inside the callback, the message would only come back where it came from.
+

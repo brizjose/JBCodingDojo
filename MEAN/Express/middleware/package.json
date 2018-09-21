@@ -1,0 +1,17 @@
+{
+  "name": "first_app",
+  "version": "1.0.0",
+  "description": "just an app to get started with Express",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jb",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "colors": "^1.3.2",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3"
+  }
+}
