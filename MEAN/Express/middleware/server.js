@@ -27,7 +27,7 @@ app
 // we'll build middleware in a module, inside server/middleware directory.  Modularizing the server is good practice!
 //middleware created in a module:
 
-.use(logger)
+  .use(logger)
 
 // creating middleware here
   .use((request,response,next) => {
