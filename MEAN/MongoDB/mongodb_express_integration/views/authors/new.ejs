@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Books and Authors</title>
+    <title>Create Author</title>
     <!-- bootstrap css cdn -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!-- own css file -->
@@ -26,7 +26,25 @@
                     <a href="/books">Book</a>
                 </li>
             </ul>
-        </nav>                           
+        </nav>
+        <main>
+            <fieldset>
+                <legend>Create Author</legend>
+                <form action="/authors" method="post">
+                    <div>
+                        <label for="">Name</label>
+                        <input type="text" name='name'>
+                    </div>
+                    <div>
+                        <label for="">Is alive?</label>
+                        <input type="radio" name='isAlive', value='true'> True
+                        <input type="radio" name='isAlive', value='false'> False
+                    </div>
+                    <button>Submit</button>
+                </form>
+            </fieldset>
+              
+        </main>                           
     </div>
 </body>
 </html>
