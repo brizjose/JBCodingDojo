@@ -78,8 +78,7 @@ app.post('/authors', function(request, response) {
         }) 
         .catch(error => {
             const errors = Object.keys(error.errors)
-                .map(key=>error.errors[key].messages)
-
+                .map(key=>error.errors[key].messages);
             response.render('authors/new', {errors});
         })
 });
@@ -110,8 +109,7 @@ app.post('/books', function(request, response) {
         })
         .catch(error => {
             const errors = Object.keys(error.errors)
-                .map(key=>error.errors[key].messages)
-
+                .map(key=>error.errors[key].messages);
             response.render('books/new', {errors});
         })
 })

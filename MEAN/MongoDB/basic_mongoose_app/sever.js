@@ -16,7 +16,7 @@ app
   .use(session({
     secret: 'yayuser',
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: flase,
     cookie: {secure:true}
   }))
   .use(flash())
@@ -44,6 +44,7 @@ app
     user.save()
       .then((saved) => {
         console.log(color.yellow(saved));
+        res.redirect('/');
       })
       .catch((error) => {
         // const errors = Object.keys(error.errors)
@@ -55,7 +56,6 @@ app
         }
         res.redirect('/');
       })
-    res.redirect('/');
   })
   .listen(port, () => {
     console.log(`listening on port ${port}`);
