@@ -41,12 +41,11 @@
                     <% for (const book of books) { %>
                     <tr>
                         <td><%= book.title%></td>
-                        <td><%= book.author.name%></td>
+                        <td><%= book.author ? book.author.name: 'Unknown'%></td>
                         <td><%= book.pages%></td>
                         <td><%= book.year%></td>
                         <td>future actions</td>
                     </tr>
-                    
                     <% } %>
                 </tbody>
             </table>

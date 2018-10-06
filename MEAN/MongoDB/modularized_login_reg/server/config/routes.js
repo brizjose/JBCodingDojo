@@ -1,6 +1,5 @@
 const user_controller = require('../controllers/users');
 
-
 //doing restful routing, with root route redirecting to '/users', which is the main page in a restful structure
 module.exports = function(app) {
     app.get('/', (request,response) => response.redirect('/users'));
@@ -31,8 +30,5 @@ module.exports = function(app) {
     //logout:
     //do the routing as with previous examples above
     app.post('/logout', (request,response) => {
-
     });
-
-    
 };
