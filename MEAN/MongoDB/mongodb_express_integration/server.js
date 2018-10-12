@@ -1,12 +1,12 @@
 const express = require('express');
-const bodyParser = require('body-parser');
+const body_parser = require('body-parser');
 const path = require('path');
 
 const port = process.env.PORT || 8000;
 const app = express();
 
 
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(body_parser.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname, 'static')));
 
 app.set('views', path.resolve('views'));
