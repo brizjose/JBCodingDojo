@@ -1,5 +1,5 @@
 {
-  "name": "public",
+  "name": "books",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -44,5 +44,7 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
     "typescript": "~2.9.2"
-  }
+  },
+  "main": "index.js",
+  "license": "MIT"
 }

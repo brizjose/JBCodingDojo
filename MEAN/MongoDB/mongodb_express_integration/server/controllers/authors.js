@@ -55,7 +55,7 @@ module.exports = {
             });
     },
     destroy(request, response) {
-        Athor.findbyIdAndRemove(request.params.id)
+        Athor.findByIdAndDelete(request.params.id)
             .then(author => response.redirect('/authors/index'))
             .catch(console.log);
     },
