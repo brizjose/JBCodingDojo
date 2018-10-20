@@ -1,4 +1,6 @@
 const Author = require('mongoose').model('Author');
+const Book = require('mongoose').model('Book');
+
 
 module.exports = {
     index(request, response) {
@@ -37,7 +39,7 @@ module.exports = {
             })
             .catch(console.log);
     },
-    craete(request, response) {
+    create(request, response) {
         console.log(request.body);
         const author = new Author(request.body);
 
@@ -53,6 +55,8 @@ module.exports = {
                     .map(key=>error.errors[key].messages);
                 response.render('authors/new', {errors});
             });
+            //this gets the errors from the validators.   
+            //once in angular, do response.status and change status and send back error array
     },
     destroy(request, response) {
         Athor.findByIdAndDelete(request.params.id)

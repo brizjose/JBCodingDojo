@@ -15,10 +15,10 @@ module.exports = {
 
     },
     edit(request, response) {
-        Author.find({})
-            .then(authors => {
-                console.log({authors});
-                response.render('books/new', {authors});
+        Book.find({})
+            .then(books => {
+                console.log({books});
+                response.render('books/new', {books});
             }) 
             .catch(console.log);
     },
@@ -28,7 +28,7 @@ module.exports = {
     update(request, response) {
 
     },
-    craete(request, response) {
+    create(request, response) {
         Book.create(request.body)
         .then(book => {
             console.log('created book', book);
@@ -48,6 +48,8 @@ module.exports = {
         });
     },
     destroy(request, response) {
-
+        Book.findByIdAndRemove(request.params.book_id)
+          .then()
+          .catch()
     },
 }; 

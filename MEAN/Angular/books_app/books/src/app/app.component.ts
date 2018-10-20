@@ -9,7 +9,7 @@ import { Book } from './models/book';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  book = new Book();
+  book = new Book();  // this is the book referenced in the html and to which [(ngForm)] is binding
   books: Book[] = [];
 
   onSubmit(event: Event, form: NgForm) {
