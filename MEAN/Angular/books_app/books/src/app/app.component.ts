@@ -1,7 +1,4 @@
-import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
-
-import { Book } from './models/book';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,20 +6,5 @@ import { Book } from './models/book';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  book = new Book();  // this is the book referenced in the html and to which [(ngForm)] is binding
-  books: Book[] = [];
 
-  onSubmit(event: Event, form: NgForm) {
-    event.preventDefault();
-    console.log('submitting form', this.book);
-
-    this.books.push(this.book);
-
-    // this line is necessary to break reference to the book being submitted.  now when form is reset (below), it resets an empty book
-    this.book = new Book();
-
-    console.log('books array', this.books);
-
-    form.reset();
-  }
 }

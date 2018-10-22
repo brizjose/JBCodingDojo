@@ -1,0 +1,47 @@
+<div class="row m-3 p-3 bg-light border rounded">
+  <div class="col">
+    <legend>Create Book</legend>
+    <form (submit)='onSubmit($event, form)' #form='ngForm'>
+      <div class="form-group">
+        <input type="text" class="form-control col-6" name="title" 
+        #title = "ngModel"
+        [(ngModel)]='book.title' 
+        required
+        minlength="2"
+        placeholder="Title">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control col-6" name="author"
+        #author = "ngModel" 
+        [(ngModel)]='book.author' 
+        required
+        minlength="3"
+        placeholder="Author">
+      </div>
+      <div class="form-group">
+        <input type="number" class="form-control col-6" name="year"
+        #year = "ngModel" 
+        [(ngModel)]='book.year'
+        min = 0
+        max = 2018
+        required
+        placeholder="Year">  
+      </div>
+      <div class="form-group">
+        <input type="number" class="form-control col-6" name="pages"
+        #pages = "ngModel" 
+        [(ngModel)]='book.pages'
+        min = 1
+        required
+        placeholder="Pages">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control col-6" name="publisher" 
+        [(ngModel)]='book.publisher'
+        placeholder="Publisher">
+      </div>
+      <button class="btn btn-outline-secondary" *ngIf='form.valid'>Submit</button>
+    </form>
+  </div>
+</div>
+  

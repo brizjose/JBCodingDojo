@@ -3,6 +3,7 @@ const Book = require('mongoose').model('Book');
 module.exports = {
     // get all of resource
     index(request, response) { 
+        console.log('got request for all books')
         Book.find({})
           .then(books => response.json(books))
           .catch(console.log);

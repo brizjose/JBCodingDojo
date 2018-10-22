@@ -1,0 +1,27 @@
+<div class="row m-3 p-3 bg-light border rounded">
+  <div class="col" *ngIf="book">
+    <form (submit)='editBook(book, editForm)' #editForm="ngForm">
+      <table class="table table-sm">
+        <tr>
+          <th scope="row">Title:</th>
+          <td><input type="text" class="form-control" name="title" [(ngModel)]="book.title"/></td>
+        </tr>
+        <tr>
+          <th scope="row">Author:</th>
+          <td><input type="text" class="form-control" name="author" [(ngModel)]="book.author"/></td>
+        </tr>
+        <tr>
+          <th scope="row">Year of Publication</th>
+          <td><input type="text" class="form-control" name="publication_year" [(ngModel)]="book.year"/></td>
+        </tr>
+        <tr>
+          <th scope="row">Actions:</th>
+          <td>
+            <button type="submit" class="btn btn-outline-secondary btn-sm">Update</button>
+            <button type="button" class="btn btn-outline-secondary btn-sm" (click)="deleteBook(book._id)">Delete</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>

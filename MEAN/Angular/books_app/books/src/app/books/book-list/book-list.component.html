@@ -1,0 +1,42 @@
+<app-book-new (createBook)="onCreate($event)"></app-book-new>
+
+
+<div class="m-3 p-3 bg-light border rounded">
+  <table class="table table-bordered rounded" *ngIf="books">
+    <thead>
+      <tr>
+        <th>
+          <input type="text" placeholder="Title" [(ngModel)]="filter.title">
+          <button *ngIf="filter.title" (click)='filter.title = null'>X</button>
+        </th>
+        <th>
+          <input type="text" placeholder="Author" [(ngModel)]="filter.author">
+          <button *ngIf="filter.author" (click)='filter.author = null'>X</button>
+        </th>
+        <th>
+          <input type="number" placeholder="Year" [(ngModel)]="filter.year">
+          <button *ngIf="filter.year" (click)='filter.year = null'>X</button>
+        </th>
+        <th>
+          <input type="text" placeholder="Publisher" [(ngModel)]="filter.publisher">
+          <button *ngIf="filter.publisher" (click)='filter.publisher = null'>X</button>
+        </th>
+        <th>
+          Actions
+          <button (click)="clearFilter()" *ngIf="filter.title || filter.author || filter.year || filter.publisher">X</button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books | search:filter" (click)="getBook(book)">
+        <td>{{book.title | titlecase}}</td>
+        <td>{{book.author | titlecase}}</td>
+        <td>{{book.year}}</td>
+        <td>{{book.publisher | titlecase}}</td>
+        <td><button class="btn btn-outline-secondary btn-sm">Update</button><button class="btn btn-outline-secondary btn-sm">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<app-book-detail [book]="selectedBook"></app-book-detail>

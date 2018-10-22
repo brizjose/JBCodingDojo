@@ -1,4 +1,4 @@
-const book_controller = require('../controllers/book.controller');
+const book_controller = require('../../controllers/book.controller');
 
 // we require express here and ask it to create a router
 const router = require('express').Router()
