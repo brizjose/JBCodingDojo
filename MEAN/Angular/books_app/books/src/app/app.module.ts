@@ -8,20 +8,27 @@ import { AppComponent } from './app.component';
 import { HttpService} from './http.service';
 
 import * as fromBooks from './books';
+
 import { SearchPipe } from './pipes/search.pipe';
+import { AppRoutingModule } from './app-routing.module';
+import { NavComponent } from './nav/nav.component';
+
+import { BookResolve } from './resolvers';
 
 @NgModule({
   declarations: [
     AppComponent,
     ...fromBooks.components,
-    SearchPipe
+    SearchPipe,
+    NavComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
-  providers: [HttpService],
+  providers: [HttpService, BookResolve],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

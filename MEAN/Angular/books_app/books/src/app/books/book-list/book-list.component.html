@@ -1,4 +1,4 @@
-<app-book-new (createBook)="onCreate($event)"></app-book-new>
+<!-- <app-book-new (createBook)="onCreate($event)"></app-book-new> -->
 
 
 <div class="m-3 p-3 bg-light border rounded">
@@ -28,15 +28,16 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let book of books | search:filter" (click)="getBook(book)">
+      <tr *ngFor="let book of books | search:filter" (click)="getBook(book)" [routerLink]='book._id'>
         <td>{{book.title | titlecase}}</td>
         <td>{{book.author | titlecase}}</td>
         <td>{{book.year}}</td>
         <td>{{book.publisher | titlecase}}</td>
-        <td><button class="btn btn-outline-secondary btn-sm">Update</button><button class="btn btn-outline-secondary btn-sm">Delete</button></td>
+        <td (click)="onEvent($event)">
+          <button class="btn btn-outline-secondary btn-sm" (click)="onDelete(book._id)">Delete</button></td>
       </tr>
     </tbody>
   </table>
 </div>
 
-<app-book-detail [book]="selectedBook"></app-book-detail>
+<!-- <app-book-detail [book]="selectedBook"></app-book-detail> -->

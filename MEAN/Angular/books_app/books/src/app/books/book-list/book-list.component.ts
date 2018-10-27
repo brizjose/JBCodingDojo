@@ -35,10 +35,25 @@ export class BookListComponent implements OnInit {
 
   onCreate(book: Book): void {
     this.books.push(book);
+    // another way of doing the above is with a reassignment, but it is more resource intensive
+    // this.books = [...this.books, book];
   }
 
   clearFilter(): void {
     this.filter = new Book();
+  }
+
+  onEvent(event: Event): void {
+    // this is a way to control the click event
+    event.stopPropagation();
+  }
+
+  onDelete(_id: number): void {
+    console.log('got request to delete book: ', _id);
+    this._httpService.deleteBook(_id)
+      .subscribe(data => {
+        this.books = this.books.filter(book => book._id !== data._id);
+      });
   }
 
 }

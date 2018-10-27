@@ -1,5 +1,5 @@
 <div class="row m-3 p-3 bg-light border rounded">
-  <div class="col" *ngIf="book">
+  <div class="col">
     <form (submit)='editBook(book, editForm)' #editForm="ngForm">
       <table class="table table-sm">
         <tr>
@@ -18,7 +18,6 @@
           <th scope="row">Actions:</th>
           <td>
             <button type="submit" class="btn btn-outline-secondary btn-sm">Update</button>
-            <button type="button" class="btn btn-outline-secondary btn-sm" (click)="deleteBook(book._id)">Delete</button>
           </td>
         </tr>
       </table>

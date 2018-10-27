@@ -35,4 +35,8 @@ export class HttpService {
     return this._http.delete<Book>(`./books/${_id}`);
   }
 
+  getBook(_id: string): Observable<Book> {
+    return this._http.get<Book>(`./books/${_id}`);
+  }
+
 }
