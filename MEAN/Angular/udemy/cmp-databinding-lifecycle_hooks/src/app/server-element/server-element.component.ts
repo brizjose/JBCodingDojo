@@ -39,6 +39,7 @@ export class ServerElementComponent implements OnInit,
     console.log('from onChanges we see...', changes);
   }
 
+  // does not give access to element contents that are being craeted because they do not exist on init.
   ngOnInit() {
     console.log('from ngOnInit');
   }
@@ -51,21 +52,25 @@ export class ServerElementComponent implements OnInit,
   ngAfterContentInit() {
     console.log('ngAfterContentInit');
   }
-  
+
   ngAfterContentChecked() {
     console.log('ngAfterContentChecked');
   }
 
+  // content init and view init are different.  a view can be projected even though it does not exist in the component; a content does exist
+  // @ContentChile gives access to this information, see an example in the project called cmp-databinding-projecting_content_into_components
+
+  // from this point, you can start checking DOM cntent with the methods because at this point, the values are rendered
   ngAfterViewInit() {
     console.log('ngAfterViewInit');
   }
- 
+
   ngAfterViewChecked() {
     console.log('ngAfterContentChecked');
   }
 
   ngOnDestroy() {
-    console.log('ngOnDestroy';)
+    console.log('ngOnDestroy');
   }
 
 

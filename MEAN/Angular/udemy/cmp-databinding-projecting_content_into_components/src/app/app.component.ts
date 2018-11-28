@@ -8,8 +8,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
   serverElements = [
     {type: 'server', name: 'Gyroton', content: 'full of stuff'},
-    {type: 'server', name: 'Tyropac', content: 'full of more stuff'},
-    {type: 'server', name: 'Borastok', content: 'full of old stuff'},
   ];
 
   onServerAdded(serverData: {name: string, content: string}) {

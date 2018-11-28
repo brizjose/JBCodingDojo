@@ -8,7 +8,7 @@
       <app-server-element 
         *ngFor="let serverElement of serverElements"
         [element]="serverElement">
-        <p>
+        <p #paragraph>
           <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
           <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
         </p>
@@ -19,3 +19,5 @@
 
 <!-- binding [element] that is an @Input() in a child component, app-server-element component, to each particular serverElement of the serverElements array in the app.component -->
 <!-- binding (createdServer) that is an @Output() of a child component, cockpit.component.  This triggers a method to which we pass the $event.  The $event is parsed easily thanks to the use of data structure {name:string, content:string} that is present in the event emitter as well as in the method parameters -->
+
+<!-- #paragraph is a hook that will be used by server-element.component to access the values emanating from here @ViewChild won't work there because it is not part of the tempalte, it is just being projected unto its <ng-content> section of its html.   therefore, the use of @ContentChild...   here we see the difference between ViewInit and ContentInit cycles. -->

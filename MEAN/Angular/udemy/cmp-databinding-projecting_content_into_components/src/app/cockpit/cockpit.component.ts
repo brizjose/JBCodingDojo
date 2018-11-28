@@ -9,6 +9,7 @@ export class CockpitComponent implements OnInit {
   @Output() createdServer = new EventEmitter<{name: string, content: string}>();
   @Output() createdBlueprint = new EventEmitter<{name: string, content: string}>();
 
+  // @ViewChild is used to get access to DOM elements
   @ViewChild('serverNameInput') serverNameInput: ElementRef;
   @ViewChild('serverContentInput') serverContentInput: ElementRef;
 
