@@ -1,34 +1,17 @@
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <p>Add new Servers or blueprints!</p>
-      <label>Server Name</label>
-      <input type="text" class="form-control" [(ngModel)]="newServerName">
-      <label>Server Content</label>
-      <input type="text" class="form-control" [(ngModel)]="newServerContent">
-      <br>
-      <button
-        class="btn btn-primary"
-        (click)="onAddServer()">Add Server</button>
-      <button
-        class="btn btn-primary"
-        (click)="onAddBlueprint()">Add Server Blueprint</button>
-    </div>
-  </div>
+  <app-cockpit 
+  (createdServer)="onServerAdded($event)"
+  (createdBlueprint)="onBlueprintAdded($event)"></app-cockpit>
   <hr>
   <div class="row">
     <div class="col-xs-12">
-      <div
-        class="panel panel-default"
-        *ngFor="let element of serverElements">
-        <div class="panel-heading">{{ element.name }}</div>
-        <div class="panel-body">
-          <p>
-            <strong *ngIf="element.type === 'server'" style="color: red">{{ element.content }}</strong>
-            <em *ngIf="element.type === 'blueprint'">{{ element.content }}</em>
-          </p>
-        </div>
-      </div>
+      <app-server-element 
+        *ngFor="let serverElement of serverElements"
+        [element]="serverElement">
+      </app-server-element>
     </div>
   </div>
 </div>
+
+<!-- binding [element] that is an @Input() in a child component, app-server-element component, to each particular serverElement of the serverElements array in the app.component -->
+<!-- binding (createdServer) that is an @Output() of a child component, cockpit.component.  This triggers a method to which we pass the $event.  The $event is parsed easily thanks to the use of data structure {name:string, content:string} that is present in the event emitter as well as in the method parameters -->
