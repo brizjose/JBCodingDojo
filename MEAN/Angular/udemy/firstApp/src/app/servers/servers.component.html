@@ -1,0 +1,33 @@
+
+
+<!-- (input) listener gets the input data and sends it to the onNameServer() function so we can grab the input -->
+<!-- the button has attribute binding to enable or disable it depending on a variable boolean value, it also listens for click that triggers the create function -->
+<hr>
+<h3>Binding, Styling, Templating</h3>
+<div class="row">
+    <label>Server Name</label>
+    <input
+        type="text"
+        class="form-control"
+        (input)="onNameServer($event)">
+    <button 
+        class="btn btn-primary" 
+        [disabled]="!allowNewServer" 
+        (click)="onServerCreate()">Add Server</button>
+
+<!-- structural directive shows the server name only if one has been created. the else statement is useful for inplementing the <ng-template> with #noServer seen below -->
+    <p>Allowing new servers: {{ allowNewServer }}</p>
+    <p *ngIf="serverCreated; else noServer">{{ serverName }} {{ serverCreationStatus }}</p>
+
+    <!-- structural directive bound to the previous one shows paragraph if nothing has been created.  there are two methods to do this -->
+    <ng-template #noServer>
+        <p>No server has been created</p>
+    </ng-template>
+    <!-- alternative way, and most widely used: -->
+    <p *ngIf="!serverCreated">No server has been created</p>
+</div>
+
+<!-- app-server component is displayed for every server that is created (added to the servers array) -->
+<!-- the styling is done by way of ngStyle and ngClass implemented in the server.component ts and html files -->
+<app-server *ngFor="let server of servers"></app-server>
+

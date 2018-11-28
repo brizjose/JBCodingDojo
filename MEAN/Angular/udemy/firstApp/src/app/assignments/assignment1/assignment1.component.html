@@ -1,0 +1,15 @@
+<!-- add an input field with two way binding and display the name being entered in a paragraph below -->
+<!-- show a disabled button that gets enabled when there is an input.  make this button reset the input when clicked -->
+<h3>Assignment 1: Four classes of data binding</h3>
+<div class="row">
+    <label>User</label>
+    <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="userName">
+    <p>{{ userName }}</p>
+    <button
+        class="btn btn-secondary"
+        [disabled]="userName.length === 0"
+        (click)="resetUser()">Reset User</button>
+</div>

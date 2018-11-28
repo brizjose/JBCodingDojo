@@ -1,0 +1,15 @@
+<!-- add button that says 'Display Details' -->
+<!-- add a paragraph with any content below the button -->
+<!-- toggle the paragraph view at the click of the button -->
+<!-- log all button clicks in an array and display them (timestamps or incrementing number) as they are created -->
+<!-- starting with the 5th item, style it differently with ngStyle and ngClass -->
+
+
+<!--  in this solution we use two lets in the *ngFor directive like so... this helps us track not only the value but the index and assign styling based on index -->
+<h3>Assignment 2: Using Built In Structural and Styling Directives</h3>
+<button (click)="toggleView()" (click)="countMore()">Toggle</button>
+<button (click)="resetCounter()">Reset</button>
+<p *ngIf="togglerPress">I will finish this course</p>
+<p *ngFor="let timestamp of timestamps; let i = index"
+    [ngStyle]="{color: i > 4 ? 'white' : 'black'}"
+    [ngClass]="{fivePlus: i > 4}">{{ timestamp | date: 'medium'}}</p>
