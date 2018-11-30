@@ -1,0 +1,12 @@
+.container {
+  margin-top: 30px;
+}
+
+.odd {
+  color: red;
+}
+
+.willFade {
+  background-color: red;
+  height: 50px;
+}
