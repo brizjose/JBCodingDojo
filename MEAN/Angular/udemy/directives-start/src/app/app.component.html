@@ -26,6 +26,24 @@
             {{even}}
           </li>
         </div>
+        <!-- our appUnlessStructural directive will show the even numbers when the built in ngIf would be only showing odds.... -->
+        <div *appUnlessStructural="!onlyOdd">
+            <li
+            class="list-group-item"
+            [ngClass]="{odd: even % 2 !== 0}"
+            [ngStyle]="{backgroundColor: even % 2 !== 0 ? 'yellow' : 'none'}"
+            *ngFor="let even of evens"
+            >
+            {{even}}
+          </li>
+        </div>
+        <!-- ngSwitch is used like this. notice use of brackets and *.  also, look for the value variable in the .ts file.  Used if using too many *ngIfs -->
+      <div [ngSwitch]="value">
+        <p *ngSwitchCase="5">value is 5</p>
+        <p *ngSwitchCase="10">value is 10</p>
+        <p *ngSwitchCase="100">value is 100</p>
+        <p *ngSwitchDefault>value is default</p>
+      </div>
       </ul>
       <ng-template [ngIf]="onlyOdd">
         <p appBasicHighlight>using basic highlight directive</p>
