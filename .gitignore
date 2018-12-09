@@ -3,4 +3,6 @@ Reference/
 less/
 riskulture/
 myEnvironments/
+node_modules/
+package-lock.json
 *.txt
