@@ -10,7 +10,8 @@ const shopRoutes = require('./routes/shop');
 app.use(bodyParser.urlencoded({extended: false}));
 
 // order matters with middleware; do more general routes last
-app.use(adminRoutes);
+// we can also set a common starting segment to paths to filter them even better, example, '/admin'
+app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
 // catch all route 
