@@ -1,0 +1,14 @@
+<%- include('includes/head.ejs') %>
+</head>
+<body>
+    <div class="list">
+        <% if (users.length > 0) { %>
+        <ul>
+            <% for (user of users) { %>
+            <li><%=user.name%></li>
+            <% } %>
+        </ul>
+        <% } %>
+    </div>
+</body>
+<%- include('includes/end.ejs') %>

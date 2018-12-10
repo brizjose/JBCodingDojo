@@ -4,6 +4,35 @@
     font-family: sans-serif;
 }
 
-body {
-    text-align: center;
+.list {
+    padding: 1rem;
+    margin: 1rem;
+}
+
+form {
+    padding: 1rem;
+    margin: 1rem;
+    border: 1px solid black;
+    border-radius: 0.2rem;
+    width: 20%;
+    margin: auto;
+}
+
+form h2 {
+    margin: 1rem 0;
+}
+
+form input {
+    border-radius: 0.2rem;
+    line-height: 2rem;
+}
+
+.btn-container {
+    text-align: end;
+}
+
+form button {
+    border-radius: 0.2rem;
+    padding: 0.1rem 0.3rem;
+    margin-top: 1rem;
 }
