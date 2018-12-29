@@ -1,16 +1,8 @@
-const mysql = require('mysql2');
+const Sequelize = require('sequelize');
 
-// we need to open and close the connections per query
-// that is not efficient, so a better way is to make a connection pool
-// to createPool pass an object with configurations
-
-const pool = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    database: 'node-complete',
-    password: 'root'
+const sequelize = new Sequelize('node-complete', 'root', 'root', {
+    dialect: 'mysql', 
+    host: 'localhost'
 });
 
-// we export the pool as a promise
-
-module.exports = pool.promise();
+module.exports = sequelize;
