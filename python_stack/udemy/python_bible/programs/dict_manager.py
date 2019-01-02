@@ -13,12 +13,16 @@ def welcome():
     selection = check_movie(movie)
     return selection
 
+def goodbye():
+    print("Goodbye!")
+    return(False)
+
 def check_movie(movie):
     if movie in films:
         return(True, movie)
     else:
         print("We don't have that film.")
-        return(False, movie)
+        goodbye()
 
 def check_age(age, movie):
     if age >= films[movie][0]:
@@ -26,7 +30,7 @@ def check_age(age, movie):
         return(True, movie)
     else:
         print("This is not a movie that's appropriate for your age")
-        return(False, movie)
+        goodbye()
 
 def check_tickets(movie):
     if films[movie][1] > 0:
@@ -35,7 +39,7 @@ def check_tickets(movie):
         return(True, movie)
     else:
         print("Sorry, that one sold out!")
-        return(False, movie)
+        goodbye()
 
 while True:
     selection = welcome()
@@ -45,4 +49,4 @@ while True:
         if appropriate[0]:
             availability = check_tickets(selection[1])
     else:
-        print("Good bye!")
+        goodbye()
