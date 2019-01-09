@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script>L_PREFER_CANVAS=false; L_NO_TOUCH=false; L_DISABLE_3D=false;</script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.3.4/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.3.4/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawcdn.githack.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+    <meta name="viewport" content="width=device-width,
+        initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>#map_ee3bc2e735fe4d10b0ca3af0f1b78e58 {
+        position: relative;
+        width: 50.0%;
+        height: 50.0%;
+        left: 0.0%;
+        top: 0.0%;
+        }
+    </style>
+</head>
+<body>    
+    
+    <div class="folium-map" id="map_ee3bc2e735fe4d10b0ca3af0f1b78e58" ></div>
+</body>
+<script>    
+    
+    
+        var bounds = null;
+    
+
+    var map_ee3bc2e735fe4d10b0ca3af0f1b78e58 = L.map(
+        'map_ee3bc2e735fe4d10b0ca3af0f1b78e58', {
+        center: [14.6261887, -90.5626019],
+        zoom: 2,
+        maxBounds: bounds,
+        layers: [],
+        worldCopyJump: false,
+        crs: L.CRS.EPSG3857,
+        zoomControl: true,
+        });
+
+    
+    
+    var tile_layer_a60e1e13b5db43cb8706ba0173c5002e = L.tileLayer(
+        'https://{s}.tiles.mapbox.com/v3/mapbox.world-bright/{z}/{x}/{y}.png',
+        {
+        "attribution": null,
+        "detectRetina": false,
+        "maxNativeZoom": 18,
+        "maxZoom": 18,
+        "minZoom": 0,
+        "noWrap": false,
+        "opacity": 1,
+        "subdomains": "abc",
+        "tms": false
+}).addTo(map_ee3bc2e735fe4d10b0ca3af0f1b78e58);
+    
+            var feature_group_2bbe6d36e00946c9b962f21d639e357a = L.featureGroup(
+                ).addTo(map_ee3bc2e735fe4d10b0ca3af0f1b78e58);
+        
+    
+        var marker_5f0801b6996d49c4b207c3202c6e0e70 = L.marker(
+            [44.97399, -93.2299172],
+            {
+                icon: new L.Icon.Default()
+                }
+            ).addTo(feature_group_2bbe6d36e00946c9b962f21d639e357a);
+        
+    
+
+                var icon_b689067480dd41dcb4bd893b5a30d81e = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'green',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_5f0801b6996d49c4b207c3202c6e0e70.setIcon(icon_b689067480dd41dcb4bd893b5a30d81e);
+            
+    
+            var popup_564fc69d9af449a9aa777dfa1ff71cfd = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_50d5ede23e5c4903a5f42e7be1cab64b = $(`<div id="html_50d5ede23e5c4903a5f42e7be1cab64b" style="width: 100.0%; height: 100.0%;">Born here in 1974</div>`)[0];
+                popup_564fc69d9af449a9aa777dfa1ff71cfd.setContent(html_50d5ede23e5c4903a5f42e7be1cab64b);
+            
+
+            marker_5f0801b6996d49c4b207c3202c6e0e70.bindPopup(popup_564fc69d9af449a9aa777dfa1ff71cfd)
+            ;
+
+            
+        
+    
+        var marker_10a081366bc04697aa327326742bca20 = L.marker(
+            [14.6357891, -90.5149832],
+            {
+                icon: new L.Icon.Default()
+                }
+            ).addTo(feature_group_2bbe6d36e00946c9b962f21d639e357a);
+        
+    
+
+                var icon_1fce9b24f7d54a1d9ed2adfe8a3e02d1 = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'green',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_10a081366bc04697aa327326742bca20.setIcon(icon_1fce9b24f7d54a1d9ed2adfe8a3e02d1);
+            
+    
+            var popup_a6987bc5e4da4cf9abb74485b12e3153 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_8e65d47288884d198185f27155e34103 = $(`<div id="html_8e65d47288884d198185f27155e34103" style="width: 100.0%; height: 100.0%;">Grew up here until  2006</div>`)[0];
+                popup_a6987bc5e4da4cf9abb74485b12e3153.setContent(html_8e65d47288884d198185f27155e34103);
+            
+
+            marker_10a081366bc04697aa327326742bca20.bindPopup(popup_a6987bc5e4da4cf9abb74485b12e3153)
+            ;
+
+            
+        
+    
+        var marker_77173f75eee549caaf840a2cc4891cb3 = L.marker(
+            [29.8168824, -95.681492],
+            {
+                icon: new L.Icon.Default()
+                }
+            ).addTo(feature_group_2bbe6d36e00946c9b962f21d639e357a);
+        
+    
+
+                var icon_b47428f0bc6a42d58f1e0f51967c9106 = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'green',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_77173f75eee549caaf840a2cc4891cb3.setIcon(icon_b47428f0bc6a42d58f1e0f51967c9106);
+            
+    
+            var popup_3393c4371d414971b605fc680c92ed3c = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_c0441c27abaf47fc890219ee4522ed9a = $(`<div id="html_c0441c27abaf47fc890219ee4522ed9a" style="width: 100.0%; height: 100.0%;">Lived here since between 2008 and 2017</div>`)[0];
+                popup_3393c4371d414971b605fc680c92ed3c.setContent(html_c0441c27abaf47fc890219ee4522ed9a);
+            
+
+            marker_77173f75eee549caaf840a2cc4891cb3.bindPopup(popup_3393c4371d414971b605fc680c92ed3c)
+            ;
+
+            
+        
+    
+        var marker_a9cb2c7440a14e179e30777b654442df = L.marker(
+            [25.6718497, -80.3820902],
+            {
+                icon: new L.Icon.Default()
+                }
+            ).addTo(feature_group_2bbe6d36e00946c9b962f21d639e357a);
+        
+    
+
+                var icon_78386371b3b14636ad2cd7dc4fd2e34d = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'green',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_a9cb2c7440a14e179e30777b654442df.setIcon(icon_78386371b3b14636ad2cd7dc4fd2e34d);
+            
+    
+            var popup_160317c9cd1e4c2ebe9af958e67d14d4 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_4d30712cf6c543958b3b3dd9ab2c703b = $(`<div id="html_4d30712cf6c543958b3b3dd9ab2c703b" style="width: 100.0%; height: 100.0%;">Lived here for a bit in 2017</div>`)[0];
+                popup_160317c9cd1e4c2ebe9af958e67d14d4.setContent(html_4d30712cf6c543958b3b3dd9ab2c703b);
+            
+
+            marker_a9cb2c7440a14e179e30777b654442df.bindPopup(popup_160317c9cd1e4c2ebe9af958e67d14d4)
+            ;
+
+            
+        
+    
+        var marker_e9d15ae30598478a9e90321238aff32a = L.marker(
+            [19.0399944, -98.3330542],
+            {
+                icon: new L.Icon.Default()
+                }
+            ).addTo(feature_group_2bbe6d36e00946c9b962f21d639e357a);
+        
+    
+
+                var icon_316fd1260b004c7b8e10c6bf73d684ee = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'green',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_e9d15ae30598478a9e90321238aff32a.setIcon(icon_316fd1260b004c7b8e10c6bf73d684ee);
+            
+    
+            var popup_c1702ed4541c4dbb80a38fb6de845c05 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_588fcbe3433e467faa91362e22de5396 = $(`<div id="html_588fcbe3433e467faa91362e22de5396" style="width: 100.0%; height: 100.0%;">Lived here for a bit in 2016</div>`)[0];
+                popup_c1702ed4541c4dbb80a38fb6de845c05.setContent(html_588fcbe3433e467faa91362e22de5396);
+            
+
+            marker_e9d15ae30598478a9e90321238aff32a.bindPopup(popup_c1702ed4541c4dbb80a38fb6de845c05)
+            ;
+
+            
+        
+    
+        var marker_3d2df065731c4a458c4c44932658f10c = L.marker(
+            [35.6189578, -97.4742407],
+            {
+                icon: new L.Icon.Default()
+                }
+            ).addTo(feature_group_2bbe6d36e00946c9b962f21d639e357a);
+        
+    
+
+                var icon_f2f11e48a85c43caa5e19129f4f56ac2 = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'green',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_3d2df065731c4a458c4c44932658f10c.setIcon(icon_f2f11e48a85c43caa5e19129f4f56ac2);
+            
+    
+            var popup_a8155c83b7af4b4688138915b6aed295 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_0ad1188c56e648b8adfa625b99d701f3 = $(`<div id="html_0ad1188c56e648b8adfa625b99d701f3" style="width: 100.0%; height: 100.0%;">Lived here since 2017</div>`)[0];
+                popup_a8155c83b7af4b4688138915b6aed295.setContent(html_0ad1188c56e648b8adfa625b99d701f3);
+            
+
+            marker_3d2df065731c4a458c4c44932658f10c.bindPopup(popup_a8155c83b7af4b4688138915b6aed295)
+            ;
+
+            
+        
+</script>
