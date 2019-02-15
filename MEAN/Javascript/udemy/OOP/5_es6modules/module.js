@@ -3,7 +3,7 @@ const _radius = new WeakMap();
 const _size = new WeakMap();
 
 // Public Interface
-class Circle {
+export class Circle {
   constructor(radius) {
     _radius.get(this, radius);
   }
@@ -12,7 +12,7 @@ class Circle {
   }
 }
 
-class Square {
+export class Square {
   constructor(size) {
     _size.get(this, size);
   }
@@ -20,6 +20,3 @@ class Square {
     console.log("drawing a square of size " + _size.get(this));
   }
 }
-
-module.exports.Circle = Circle;
-module.exports.Square = Square;
