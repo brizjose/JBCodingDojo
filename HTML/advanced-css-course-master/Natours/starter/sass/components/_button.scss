@@ -1,0 +1,72 @@
+.btn {
+  &:link,
+  &:visited {
+    @extend %btn-placeholder;
+  }
+
+  &:hover {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 1rem 2rem rgba($color-blackish, 0.2);
+
+    &::after {
+      transform: scaleX(1.2) scaleY(1.3);
+      opacity: 0;
+    }
+  }
+
+  &:active {
+    transform: translateY(0.1rem);
+    box-shadow: 0 0.5rem 0.5rem rgba($color-blackish, 0.3);
+  }
+
+  &--white {
+    background-color: $color-whiteish;
+
+    &::after {
+      background-color: $color-whiteish;
+    }
+  }
+
+  &--animated {
+    animation: moveInBottom 0.5s ease-out 0.75s;
+    animation-fill-mode: backwards; // automatically apply settings of 0% state at the start
+  }
+
+  &::after {
+    content: ""; // have to specify a content
+    display: inline-block; // have to specify a display
+    height: 100%; // after pseudo elements are treated like child
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute; // doing this separates the pseud from parent
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+  }
+}
+
+.btn-text {
+  &:link,
+  &:visited {
+    font-size: $default-font-size;
+    color: $color-primary;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid $color-primary;
+    padding: 3px;
+    transition: all .2s;
+  }
+
+  &:hover {
+    background-color: $color-primary;
+    color: $color-whiteish;
+    box-shadow: 0 1rem 2rem rgba($color-blackish, .15);
+    transform: translateY(-2px)
+  }
+
+  &:active {
+    box-shadow: 0 .5rem 1rem rgba($color-blackish, .15);
+    transform: translateY(0)
+  }
+}

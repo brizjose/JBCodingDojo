@@ -7,31 +7,99 @@ Dark green: #28b485
 
 */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* do a simple reset, including for before and after pseudo elements */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; /*this is done to force box-sizing inheritance, we set box sizing at body or component level*/
 }
 
+/* set a root font size, from which em and rem can be controlled.  this is done at html level */
+/* a setting of 10px makes it easy:  1rem = 10px! */
+/* after this is done, go down the CSS changing all px to rem */
+
+/* once that is done, convert the font size from px to percent.
+default for browsers is 16px, so, if we want 10px, do 10/16 = 62.5% */
+/* this will keep user's ability to change px size on their side or to zoom in and out */
+html {
+  font-size: 62.5%;
+}
+
+/* do the font-family at level of body to take advantage of inheritance */
 body {
-    font-family: "Lato", sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.7;
-    color: #777;
-    padding: 30px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+
+  box-sizing: border-box;
 }
 
+/* header height in 95vh means 95 pct of the viewport height */
+/* background-size cover means it will cover the width of the element  */
+/* linear gradient takes direction of the gradient, starting color, ending color  */
+/* the opacity is the last parameter of rgba, this will let the see through to the background image */
+/* background-position will anchor the image at top, center or bottom  */
+/* clip-path polygon takes as many parameter pairs as we need corners, starting from top left and working clockwise.
+each point has coordinates (width height): (x y, x y, x y, x y)  */
+/* clippy is a resource that has templates for different shapes */
 .header {
-    height: 95vh;
-    background-image: linear-gradient(
-        to right bottom, 
-        rgba(126, 213, 111, 0.80), 
-        rgba(40, 180, 133, 0.80)), 
-        url(../img/hero.jpg);
-    background-size: cover;
-    background-position: top;
-    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  height: 95vh;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(126, 213, 111, 0.8),
+      rgba(40, 180, 133, 0.8)
+    ),
+    url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  position: relative;
 }
 
+/* logo image is embedded in a div for better control because images are by default in-line elements */
+/* position absolute element sets its top,right,bottom,left references against the first positon relative parent */
+.header__logo-box {
+  position: absolute;
+  top: 4rem;
+  left: 4rem;
+}
 
+/* for images, we only specify hight, width is set by default */
+.header__logo {
+  height: 3.5rem;
+}
+
+/* perfectly centering:
+1. start by setting position absolute, top 50% and left 50% from parent element
+2. transform: translate -50% x and y the position of the element itself */
+.header__text-box {
+  position: absolute;
+  top: 40%; /*in relation to parent element*/
+  left: 50%; /*in relation to parent element*/
+  transform: translate(-50%, -50%); /*in relation to itself*/
+}
+
+/* the ****h1**** is the most important heading and is used for google to do the website classification */
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+}
+
+/* block elements:  they take the whole width and create line breaks after them.  this is great for separating sections horizontally */
+.heading-primary--main {
+  display: block;
+  font-size: 6rem;
+  font-weight: 400;
+  letter-spacing: 3.5rem;
+}
+.heading-primary--sub {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1.75rem;
+}

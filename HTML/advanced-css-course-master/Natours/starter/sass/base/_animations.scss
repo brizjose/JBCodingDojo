@@ -1,0 +1,39 @@
+@keyframes moveInLeft {
+  0% {
+    @include setKeyframeX(0, -1);
+    // opacity: 0;
+    // transform: translateX(-1rem);
+  }
+  80% {
+    @include setKeyframeX(null, 0.2);
+    // transform: translate(.2rem);
+  }
+  100% {
+    @include setKeyframeX(1, 0) // opacity: 1;
+      // transform: translate(0);;;;;
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    @include setKeyframeX(0, 1);
+    // opacity: 0;
+    // transform: translateX(1rem);
+  }
+  80% {
+    @include setKeyframeX(null, -0.2);
+    // transform: translate(-.2rem);
+  }
+  100% {
+    @include setKeyframeX(1, 0) // opacity: 1;
+      // transform: translate(0);;;;;
+  }
+}
+@keyframes moveInBottom {
+  0% {
+    @include setKeyframeY(0, 3);
+  }
+  100% {
+    @include setKeyframeY(1, 0);
+  }
+}

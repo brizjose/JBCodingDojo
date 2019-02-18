@@ -1,0 +1,11 @@
+%btn-placeholder {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    border-radius: 10rem;
+    display: inline-block;
+    transition: all .2s; // this allows the transforms below
+    position: relative;
+    font-size: $default-font-size;
+  }
+  

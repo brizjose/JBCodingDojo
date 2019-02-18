@@ -1,0 +1,96 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+$color-primary: #f9ed69; // yellow
+$color-secondary: #f08a5d; // orange
+$color-tertiary: #b83b5e; // pink
+$color-text-dark: #333; // dark gray
+$color-text-light: #eee; // whiteish
+
+$width-button: 150px;
+
+@function divide($a, $b) {   // functions can do powerful calcs
+  @return $a / $b;
+}
+
+@mixin clearfix {
+  &::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+}
+
+// mixins aggregate style blocks and can take in arguments for variables
+@mixin style-link-text($color) {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: $color;  
+}
+
+nav {
+  // example on function use and convert result to px
+  margin: divide(60, 2) * 1px;
+  background-color: $color-primary;
+  
+  @include clearfix;
+}
+
+.navigation {
+  list-style: none;
+  float: left;
+  
+  li {
+    display: inline-block;
+    margin-left: 30px;
+    
+    &:first-child {
+     margin: 0; 
+    }
+    
+    a:link {
+      @include style-link-text($color-text-dark);
+    }
+  }
+}
+
+.buttons {
+  float: right;
+}
+
+// extends are placeholders where we group styles, then have selectors extend them in order to implement them
+// this is different from mixins in that mixins bring the content into the selector, with extends, it is the selector name is copied to the %rule
+// only use exend if the elements that implement them are thematically and functionally related
+%btn-placeholder {
+  padding: 10px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 100px;
+  width: $width-button;
+  @include style-link-text($color-text-light);
+}
+
+.btn-main {
+  @extend %btn-placeholder;
+  &:link {
+    background-color: $color-secondary;
+  }
+  
+  &:hover {
+    background-color: darken($color-secondary, 15%);
+  }
+}
+
+.btn-hot {
+  @extend %btn-placeholder;
+  &:link {
+    background-color: $color-tertiary;
+  }
+  
+  &:hover {
+    background-color: lighten($color-secondary, 15%);
+  }
+}
+

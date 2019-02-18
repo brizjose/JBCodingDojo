@@ -1,0 +1,17 @@
+@mixin setKeyframeX($opacity, $translate) {
+  opacity: $opacity;
+  transform: translateX($translate * 1rem);
+}
+
+@mixin setKeyframeY($opacity, $translate) {
+  opacity: $opacity;
+  transform: translateY($translate * 1rem);
+}
+
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
